@@ -22,7 +22,7 @@
                                     <div class="form-group">
 
                                         <div class="input-group age_input" >
-                                            <input id="age"class="form-control" type="number" name="age" min="18" placeholder="18">
+                                            <input id="age"class="form-control" type="number" name="age" min="18" placeholder="18" value="{{ Auth()->user()->age?? null }}">
                                            
                                         </div>
                                     </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class=" d-flex justify-content-end   pt-4">
                             <button id="load-button" type="submit" class="button  button-fundrise-orange "
-                                data-test="lead-capture-submit" disabled="true"> Continue </button>
+                                data-test="lead-capture-submit" > Continue </button>
                                 <span class="age-error"></span>
                         </div>
                     </div>
