@@ -1,0 +1,442 @@
+
+
+body{
+    font-family: sans-serif;
+    /* color: #CCA354 !important; */
+    /* color: #cccccc; */
+}
+
+
+/* .bg_img{
+    background: url("img/bg-black.jpg") no-repeat ;
+    background-size: cover;
+    padding: 20px 20px;
+} */
+
+.overline {
+    font-size: 14px;
+    color: #646769;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.font-style-italic {
+    font-style: italic;
+}
+
+.heading-2 {
+    font-size: 34px;
+    line-height: 1;
+    font-family: "Ivar Headline", "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    color: #22262A;
+    font-weight: bold;
+}
+
+ .field__label span {
+    color: #646769;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+
+
+.button.button-fundrise-orange {
+    color: #fff;
+    background-color: #CCA354;
+    border-color: #CCA354;
+}
+.button {
+    position: relative;
+    align-items: center;
+    height: 3em;
+    padding: 0 2em;
+    vertical-align: middle;
+    display: inline-flex;
+    justify-content: center;
+    color: #4C4C4C;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #D3D4D4;
+    border-radius: 2px;
+    letter-spacing: 0.03em;
+    transition: 0.15s all ease;
+    text-transform: uppercase;
+}
+
+.field__input input{
+    align-items: center;
+    height: 3em;
+    padding: 0 1em;
+    vertical-align: middle;
+    display: flex;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #c7ccd1;
+    border-top-color: #b9bfc6;
+    border-radius: 3px;
+    color: #22262A;
+    transition: 0.15s all ease;
+}
+
+
+.fom_sec{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+
+.header_sec img{
+    width: 137px;
+}
+
+.fa_eye {
+    position: absolute;
+    right: 9px;
+    top: 11px;
+}
+
+.fa_eye i{
+    color: #000;
+    font-size: 15px;
+}
+
+.p_txt {
+    padding-top: 12px;
+}
+
+.p_txt p {
+    font-size: 14px;
+}
+
+.p_txt a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.p_txt a:hover {
+    color: #CCA354;
+    text-decoration: underline;
+}
+
+.br, .radio-checkbox-item-large {
+    border-right: 1px solid #e3e6e8;
+}
+.bl, .radio-checkbox-item-large {
+    border-left: 1px solid #e3e6e8;
+}
+.bb, .radio-checkbox-item-large {
+    border-bottom: 1px solid #e3e6e8;
+}
+.radio-checkbox-item-large {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.radio-checkbox-item-large:first-child {
+    border-top: 1px solid #e3e6e8;
+}
+
+.radio-checkbox-item-large label {
+    cursor: pointer;
+    width: 100%;
+    padding: 15px;
+    padding-left: 40px;
+    display: inline-block;
+}
+
+.radio-checkbox-item-large label [type=radio], .radio-checkbox-item-large label [type=checkbox] {
+    opacity: 0;
+    position: absolute;
+}
+.radio-checkbox-item-large label [type=radio]:checked ~ .mask {
+    border: 0.35em solid #cca354;;
+}
+.radio-checkbox-item-large label [type=radio] ~ .mask {
+    border-radius: 50%;
+}
+
+.radio-checkbox-item-large label .mask {
+    display: block;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 50%;
+    left: 1rem;
+    margin-top: -12px;
+    background: #fff;
+    border: 1px solid #b9bfc6;
+    border-top: 1px solid #9da6af;
+    transition: 0.25s all ease;
+    flex-shrink: 0;
+}
+
+ .radio-checkbox-item-large label .mask  {
+    font-size: 24px;
+}
+
+.age_input input{
+    max-width: 5rem;
+}
+
+.invest_page .radio-checkbox-item-large label {
+    cursor: pointer;
+    width: 100%;
+    padding: 15px;
+    padding-left: 20px;
+    display: inline-block;
+}
+
+.right_angle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 31px;
+}
+
+
+/* multistep form css */
+
+
+/*Background color*/
+#grad1 {
+    background-color:#000000;
+    /* background-image: linear-gradient(120deg, #FF4081, #81D4FA); */
+}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+#msform fieldset .form-card {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    /* box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2); */
+    padding: 20px 40px 20px 40px;
+    box-sizing: border-box;
+    width: 94%;
+    /* margin: 0 3% 20px 3%; */
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#msform fieldset .form-card {
+    text-align: left;
+    color: #9E9E9E;
+}
+
+#msform input, #msform textarea {
+    padding: 0px 8px 4px 8px;
+    /* border: none; */
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    /* font-size: 12px; */
+    letter-spacing: 1px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    /* border: none; */
+    font-weight: bold;
+    border-bottom: 2px solid #CCA354;
+    outline-width: 0;
+}
+
+/*Blue Buttons*/
+#msform .action-button {
+    width: 100px;
+    background: skyblue;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #CCA354;
+}
+
+/*Previous Buttons*/
+#msform .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+}
+
+/*Dropdown List Exp Date*/
+select.list-dt {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px;
+}
+
+select.list-dt:focus {
+    border-bottom: 2px solid skyblue;
+}
+
+/*The background card*/
+.card {
+    z-index: 0;
+    border: none;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+/*FieldSet headings*/
+.fs-title {
+    font-size: 25px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+}
+
+#progressbar .active {
+    color: #000000;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 12px;
+    width: 20%;
+    float: left;
+    position: relative;
+}
+
+/*Icons in the ProgressBar*/
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f023";
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007";
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f09d";
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+/*ProgressBar before any progress*/
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before, #progressbar li.active:after {
+       background: #d39e00;
+}
+
+/*Imaged Radio Buttons*/
+.radio-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.radio {
+    display:inline-block;
+    width: 204;
+    height: 104;
+    border-radius: 0;
+    background: lightblue;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor:pointer;
+    margin: 8px 2px; 
+}
+
+.radio:hover {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.radio.selected {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/*Fit image in bootstrap div*/
+.fit-image{
+    width: 100%;
+    object-fit: cover;
+}
