@@ -186,13 +186,25 @@ class QuestionaireController extends Controller
 
    }
 
+  
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
 
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
 
    $data = UserAnswer::create([
 
       'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
       'questionaire_answer_id' => $request->answer_id
    ]);
+
+    }
 
    if($data){
 
@@ -206,6 +218,7 @@ class QuestionaireController extends Controller
       $url = Route('user.sourceofwisdom.store');
 
       $prev_url = Route('user.step.age.store');
+      
 
       // foreach($question->options as $data){
 
@@ -223,8 +236,8 @@ class QuestionaireController extends Controller
 
 
    }
+}
 
-  }
 
   public function sourceofwisdomStore(Request $request){
 
@@ -246,11 +259,25 @@ class QuestionaireController extends Controller
 
     }
 
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
    $data = UserAnswer::create([
 
       'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
       'questionaire_answer_id' => $request->answer_id
    ]);
+
+    }
+
 
    if($data){
 
@@ -262,6 +289,7 @@ class QuestionaireController extends Controller
       $url_slug = 'motivation';
        $prev_url = Route('user.investment.store');
          $pre_slug_url = 'source-of-wisdom';
+         
 
     return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
 
@@ -295,12 +323,25 @@ class QuestionaireController extends Controller
    }
 
    
+$data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
 
    $data = UserAnswer::create([
 
       'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
       'questionaire_answer_id' => $request->answer_id
    ]);
+
+    }
+
 
    if($data){
 
@@ -311,6 +352,7 @@ class QuestionaireController extends Controller
       $url_slug = 'duration-of-investment';
      $prev_url = route('user.sourceofwisdom.store');
       $pre_slug_url = 'survey';
+      
 
     return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
 
@@ -347,11 +389,25 @@ class QuestionaireController extends Controller
       }
    
 
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
    $data = UserAnswer::create([
 
       'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
       'questionaire_answer_id' => $request->answer_id
    ]);
+
+    }
+
 
    if($data){
 
@@ -364,6 +420,7 @@ class QuestionaireController extends Controller
       $url_slug = 'investment-planning';
         $prev_url = route('user.survey.store');
         $pre_slug_url = 'motivation';
+        
 
     return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
 
@@ -400,12 +457,24 @@ class QuestionaireController extends Controller
 
      }
 
+$data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
 
    $data = UserAnswer::create([
 
       'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
       'questionaire_answer_id' => $request->answer_id
    ]);
+
+    }
 
    if($data){
 
@@ -418,6 +487,7 @@ class QuestionaireController extends Controller
       $url_slug = 'signup-checkout/signup';
     $prev_url = route('user.motivation.store');
         $pre_slug_url = 'duration-of-investment';
+        
 
     return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
 
@@ -438,11 +508,25 @@ class QuestionaireController extends Controller
 
   public function investingplanStore(Request $request){
 
-    $data = UserAnswer::create([
+$data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
 
       'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
       'questionaire_answer_id' => $request->answer_id
    ]);
+
+    }
+
 
    if($data){
 

@@ -1,25 +1,28 @@
+{{-- {{ dd($answer[]->questionaire_answer_id); }} --}}
+
 <div class="put-view-here">
  <section class=" container-fluid d-flex justify-content-center fom_sec ">
-
-        <div class="col-12 col-lg-8 ">
+   <div class="col-12 col-lg-8 ">
                 <p class="overline">{{ $question->overline }}</p>
 
                 <h1 class="heading-2  pb-3">{{ $question->question }}</h1>
 
-                <form id="form-question" name="leadCapture" class="lead-capture position-relative mt-25" action="{{ $url}}" data-slug="{{ $url_slug }}">
+                <form id="form-question" name="leadCapture" class="lead-capture position-relative mt-25" action="{{ $url}}" data-slug="{{ $url_slug }}" data-question-id="{{ $question->id }}">
                     <div class="lead-capture__fieldset">
                         <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">
 
                             <ul class="radio-checkbox-list pl-0">
-                                @foreach($question->options as $data)
-                                {{-- @php
-                                $para = explode("-",$data->options);
-                                $p1= $para[0];
-                                $p2= $para[1];
-                                @endphp --}}
+                                @foreach($question->options as $key => $data)
+                               
+                                @php
+                                $answer = \App\Models\UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_answer_id',$data->id)->first();
+                                @endphp
+
                                 <li class="radio-checkbox-item-large"><label>
                                     <input type="radio" id="question" name="question" data-answer="{{ $data->options }}"
-                                            data-test="TAXABLE" value="{{ old('question')?? $data->id }}">
+                                            data-test="TAXABLE" value="{{ $data->id }}"@if(!empty($answer))
+                                            {{
+                                                $answer->questionaire_answer_id == $data->id? 'checked':'' }}@endif>
                                            
                                             <span class="mask"></span>
                                         <div class="pl-3">
@@ -29,6 +32,7 @@
                                     </label>
                                 </li>
                                 @endforeach
+                                
                             </ul>
 
                         </div>

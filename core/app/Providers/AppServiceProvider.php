@@ -10,6 +10,7 @@ use App\Models\Page;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,6 +31,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+
+
+        // $answer = UserAnswer::where('user_id',Auth()->user()->id)->get();
+
+        // dd($answer);
+
         Paginator::useBootstrap();
 
         $activeTemplate = activeTemplate();
@@ -42,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
         $viewShare['pages'] = Page::where('tempname',$activeTemplate)->where('slug','!=','home')->get();
         $viewShare['contact'] =  Frontend::where('data_keys','contact_us.content')->first();
         $viewShare['socials'] = Frontend::where('data_keys','social_icon.element')->get();
+
 
         view()->share($viewShare);
         
