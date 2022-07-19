@@ -32,7 +32,11 @@ class UserController extends Controller
     }
     public function home()
     {
+<<<<<<< HEAD
     
+=======
+        // dd('hi at userscon');
+>>>>>>> 113d42bbe905e18c96330ee0fc42df8b9f38e1f6
 
         $data['page_title'] = 'Dashboard';
         $data['totalInvest'] = Invest::where('user_id', auth()->id())->sum('amount');

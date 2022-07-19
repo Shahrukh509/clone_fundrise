@@ -427,14 +427,14 @@
       <!-- End Icons Nav -->
       <!-- <li class="nav-heading">Pages</li> -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="users-profile.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.portfolio')); ?>">
          <i class="bi bi-person"></i>
          <span>Portfolio</span>
          </a>
       </li>
       <!-- End Profile Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-faq.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.transactions')); ?>">
          <i class="bi bi-question-circle"></i>
          <span>Transactions</span>
          </a>
@@ -454,12 +454,7 @@
          </a>
          </li> -->
       <!-- End Register Page Nav -->
-      <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-login.html">
-         <i class="bi bi-box-arrow-in-right"></i>
-         <span>Login</span>
-         </a>
-      </li>
+
       <!-- End Login Page Nav -->
       <!-- <li class="nav-item">
          <a class="nav-link collapsed" href="pages-error-404.html">
@@ -469,7 +464,7 @@
          </li> -->
       <!-- End Error 404 Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-blank.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.performance')); ?>">
          <i class="bi bi-file-earmark"></i>
          <span>Performance</span>
          </a>
