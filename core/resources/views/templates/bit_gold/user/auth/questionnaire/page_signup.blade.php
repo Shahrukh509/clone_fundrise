@@ -36,17 +36,7 @@
 
                                         <span class="text-danger error-text lastname_error"></span>
                                     </div>
-
-                                    
-
-                                    
-                                    
                                 </div>
-
-
-                                
-
-                                
                             </div>
 
                              <div class="form-card">
@@ -79,15 +69,7 @@
                                     </div>
                                     </div>
                                     <span class="text-danger error-text country_of_residence_error"></span>
-
-                                    
-                                    
                                 </div>
-
-
-                                
-
-                                
                             </div>
                             <input type="button" name="next" class="next action-button" value="Next Step"/>
                         </fieldset>
@@ -102,9 +84,6 @@
                                 <span class="text-danger error-text mobile_error"></span>
 
                                 <textarea  name="address"></textarea>
-
-
-
                             </div>
                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                             <input type="button" name="next2" class="next2 action-button" value="Next Step"/>

@@ -1,72 +1,46 @@
-                  // for email
-
+// for email
 $(document).on('submit','#form',function(e){
-    e.preventDefault();
-    var method = $(this).attr('method');
-     var url = $(this).attr('action');
-     var email = $('#email').val();
-     // alert(id);
-     // return false;
-     $.ajax({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  e.preventDefault();
+  var method = $(this).attr('method');
+  var url = $(this).attr('action');
+  var email = $('#email').val();
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
-      type: "post",
-      url: url,
-      data: {
-      email: email },
-      // dataType: "json",
-      beforeSend:function(){
-        
-        $('#load-button').attr('disabled',true);
-       $('#load-button').html('Please wait');
-       $(document).find('span.text-error').text('');
-
-      },
-      success: function(response){
-
-
-        $('#load-button').attr('disabled',false);
-          $('#load-button').html('add');
-       if(response.exist == true){
-
-        // alert('at response exist');
+    type: "post",
+    url: url,
+    data: {
+      email: email 
+    },
+    beforeSend:function(){
+      $('#load-button').attr('disabled',true);
+      $('#load-button').html('Please wait');
+      $(document).find('span.text-error').text('');
+    },
+    success: function(response){
+      $('#load-button').attr('disabled',false);
+      $('#load-button').html('add');
+      if(response.exist == true){
         location.href = response.data;
-
-       }
-       if(response.error_issue == true){
-
-         // alert('at error true');
-
+      }
+      if(response.error_issue == true){
         $.each(response.error,function(prefix,val){
-
-        $('span.'+prefix+'_error').text('*'+ val);
-
+          $('span.'+prefix+'_error').text('*'+ val);
         });
-
-       }
-       if(response.error_issue != true && response.exist != true ){
-
+      }
+      if(response.error_issue != true && response.exist != true ){
         var url = "password";
-      window.history.pushState({path: url}, "", url);
-      // window.location.replace("http:www.example.com");
-      // console.log(response);
-      // return false;
+        window.history.pushState({path: url}, "", url);
         $('.put-view-here').html(response);
-
-       }
-     }
-
-     });
+      }
+    }
   });
+});
+// end for email
 
-
-                    // end for email
-
-
-                  // for password ajax
-
- $(document).on('submit','#form_password',function(e){
+// for password ajax
+$(document).on('submit','#form_password',function(e){
     e.preventDefault();
     var method = $(this).attr('method');
      var url = $(this).attr('data-url');
@@ -416,10 +390,7 @@ $(document).ready(function(){
 var current_fs, next_fs, previous_fs; //fieldsets
 var opacity;
 
-$(".next").click(function(){
-
- // alert('hi at next');
-    
+$(document).on('click', ".next",function(){
     current_fs = $(this).parent();
     next_fs = $(this).parent().next();
     var url = $('.whereTo').attr('data-action');
@@ -427,9 +398,7 @@ $(".next").click(function(){
     var lastname = $('input[name="lastname"]').val();
     var country_citizen = $('select[name="country_of_citizenship"]').val();
     var country_residence = $('select[name="country_of_residence"]').val();
-    
-    // alert(url);
-    // return false;
+  
     
     //Add Class Active
    $.ajax({
@@ -502,7 +471,7 @@ $(".next").click(function(){
 });
 
                          // for next2 button
-$(".next2").click(function(){
+$(document).on('click', ".next2",function(){
 
  // alert('hi at next');
     
@@ -586,7 +555,7 @@ $(".next2").click(function(){
 });
                          // end next2 button
 
-$(".previous").click(function(){
+  $(document).on('click', ".previous",function(){
     
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();

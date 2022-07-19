@@ -478,11 +478,11 @@ MIX_PUSHER_APP_CLUSTER='${PUSHER_APP_CLUSTER}'
 								</div>
 								<div class="item text-right">
 									<?php
-									if ($error!=1) {
+									// if ($error!=1) {
 										echo '<a class="theme-button choto" href="?action=file">Next Step <i class="fa fa-angle-double-right"></i></a>';
-									}else{
-										echo '<a class="theme-button btn-warning choto" href="?action=server">ReCheck <i class="fa fa-sync-alt"></i></a>';
-									}
+									// }else{
+									// 	echo '<a class="theme-button btn-warning choto" href="?action=server">ReCheck <i class="fa fa-sync-alt"></i></a>';
+									// }
 									?>
 								</div>
 							</div>

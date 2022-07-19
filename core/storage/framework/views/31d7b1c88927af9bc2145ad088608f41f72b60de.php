@@ -5,8 +5,8 @@
             Set a secure password to create your account and save your responses. 
         </p>
         <h1 class="heading-2 line-height-150 mt-50 mb-100-smo mb-200-md">Choose a Password</h1>
-        <form id= "form_password" data-url ="{{ route('user.personal-info.password.store') }}"name="leadCapture" class="lead-capture position-relative mt-25" method="POST" after-url = "{{ route('user.step.age') }}" data-id = {{ $id }}>
-            @csrf
+        <form id= "form_password" data-url ="<?php echo e(route('user.personal-info.password.store')); ?>"name="leadCapture" class="lead-capture position-relative mt-25" method="POST" after-url = "<?php echo e(route('user.step.age')); ?>" data-id = <?php echo e($id); ?>>
+            <?php echo csrf_field(); ?>
             <div class="lead-capture__fieldset">
                 <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">
                     <div>
@@ -47,3 +47,4 @@
     });
 </script>
 
+<?php /**PATH C:\xampp\htdocs\clone_fundrise\core\resources\views/templates/bit_gold/user/auth/questionnaire/ajax_user_password.blade.php ENDPATH**/ ?>

@@ -64,115 +64,82 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        // dd('hi');
         $page_title = "Sign Up";
         $activeTemplate = $this->activeTemplate;
         $ajax = false;
-        // $info = json_decode(json_encode(getIpInfo()), true);
-        // // dd($info);
-        // $mobile_code = @implode(',', $info['code']);
-        // $countries = json_decode(file_get_contents(resource_path('views/partials/country.json')));
         return view($this->activeTemplate . 'user.auth.questionnaire.check_email', compact('page_title','activeTemplate','ajax'));
     }
    
-     public function saveEmail(Request $request)
+    public function saveEmail(Request $request)
     {
         $data = User::where('email',$request->email)->first();
         if($data){
-
-           return response()->json([
-            'success' => false,
-            'exist' => true,
-            'data' => url('/').'/login'
-        ]);
-
-        // return redirect()->route('users.login.history');
-
+            return response()->json([
+                'success' => false,
+                'exist' => true,
+                'data' => url('/').'/login'
+            ]);
         }else{
+            $validator = Validator::make($request->all(),['email' => 'required|string|email|max:160|']);
+            if(!$validator->passes()){
+                return response()->json([
+                    'success' => false,
+                    'error_issue' => true,
+                    'error' => $validator->errors()->toArray()
+                ]);
+            }
 
-        $validator = Validator::make($request->all(),[
-            'email' => 'required|string|email|max:160|']);
-        if(!$validator->passes()){
+            $data = User::create([
+                'email' => $request->email
+            ]);
 
-          return response()->json([
-            'success' => false,
-            'error_issue' => true,
-             'error' => $validator->errors()->toArray()
-         ]);
+            Session::put('user_id', $data->id);
+            $id = Session::get('user_id');
+            $page_title = "Sign Up";
 
+           return view($this->activeTemplate . 'user.auth.questionnaire.ajax_user_password', compact('page_title','id'));       
         }
+    }
 
-        $data = User::create([
-            'email' => $request->email
-        ]);
-
-        Session::put('user_id', $data->id);
-        $id = Session::get('user_id');
+    public function showPasswordPage(){
         $page_title = "Sign Up";
-      
-
-           return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_user_password', compact('page_title','id'));       
-}
-}
-
-
-   public function showPasswordPage(){
-
-     $page_title = "Sign Up";
-    $activeTemplate = $this->activeTemplate;
-    $id = Session::get('user_id');
-     $ajax = false;
-    return view($this->activeTemplate . 'user.auth.questionnaire.user_password', compact('id','activeTemplate','page_title','ajax'));
-   }
+        $activeTemplate = $this->activeTemplate;
+        $id = Session::get('user_id');
+        $ajax = false;
+        return view($this->activeTemplate . 'user.auth.questionnaire.user_password', compact('id','activeTemplate','page_title','ajax'));
+    }
 
     public function savePassword(Request $request)
     {
-
-
         $validator = Validator::make($request->all(),[
             'password' => 'required|min:6']);
         if(!$validator->passes()){
-
-          return response()->json([
-            'success' => false,
-            'error_issue' => true,
-             'error' => $validator->errors()->toArray()
-         ]);
-
+            return response()->json([
+                'success' => false,
+                'error_issue' => true,
+                'error' => $validator->errors()->toArray()
+            ]);
         }
 
-
         $data = User::where('id',$request->id)->first();
+
         if($data){
-
             $data->password = Hash::make($request->password);
-
             $data->save();
-
             Auth::login($data);
-            
-           // Session::put('user_id', $data->id);
+
             $id = Auth()->user()->id;
             $page_title = "Sign Up";
             $ajax = true;
 
            return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age', compact('page_title','ajax')); 
-
-
-        // return redirect()->route('users.login.history');
-
         }else{
-
-         return response()->json([
-            'success' => false,
-            'exist' => false
-        ]);
-
-
+            return response()->json([
+                'success' => false,
+                'exist' => false
+            ]);
         }
-      
-
-}
+    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -229,21 +196,15 @@ class RegisterController extends Controller
             ?: redirect($this->redirectPath());
     }
 
-
-
     protected function create(array $data)
     {
-
         $gnl = GeneralSetting::first();
-
-
         $referBy = session()->get('reference');
         if ($referBy != null) {
             $referUser = User::where('username', $referBy)->first();
         } else {
             $referUser = null;
         }  
-
 
         $user = new User();
         $user->firstname = isset($data['firstname']) ? $data['firstname'] : null;
@@ -282,7 +243,6 @@ class RegisterController extends Controller
         $userLogin->country = @implode(',', $info['country']);
         $userLogin->save();
 
-
         $adminNotification = new AdminNotification();
         $adminNotification->user_id = $user->id;
         $adminNotification->title = 'New member registered';
@@ -291,7 +251,6 @@ class RegisterController extends Controller
 
         return $user;
     }
-
 
     protected function registered(Request $request, $user)
     {
@@ -314,9 +273,6 @@ class RegisterController extends Controller
             $transaction->save();
         }
 
-
-
         return redirect()->route('user.home');
     }
-
 }
