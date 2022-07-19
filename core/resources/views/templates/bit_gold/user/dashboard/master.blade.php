@@ -454,12 +454,7 @@
          </a>
          </li> -->
       <!-- End Register Page Nav -->
-      <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-login.html">
-         <i class="bi bi-box-arrow-in-right"></i>
-         <span>Login</span>
-         </a>
-      </li>
+
       <!-- End Login Page Nav -->
       <!-- <li class="nav-item">
          <a class="nav-link collapsed" href="pages-error-404.html">
@@ -475,7 +470,7 @@
          </a>
       </li>
       <li class="nav-item">
-         <a class="nav-link collapsed" href="../dashboard/components-tabs.html">
+         <a class="nav-link collapsed" href="{{ route('user.profile-setting') }}">
          <i class="bi bi-dash-circle"></i>
          <span>Settings</span>
          </a>
