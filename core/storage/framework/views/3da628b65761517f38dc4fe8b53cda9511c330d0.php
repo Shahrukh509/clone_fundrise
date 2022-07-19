@@ -8,27 +8,26 @@
     <title>Dashboard </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/user/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/user/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="<?php echo e(asset('assets/user/img/favicon.png')); ?>" rel="icon">
+    <link href="<?php echo e(asset('assets/user/img/apple-touch-icon.png')); ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/user/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/user/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/user/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/user/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/user/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/user/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/user/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/bootstrap-icons/bootstrap-icons.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/boxicons/css/boxicons.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/quill/quill.snow.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/quill/quill.bubble.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/remixicon/remixicon.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/vendor/simple-datatables/style.css')); ?>" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/user/css/style.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/user/css/style.css')); ?>" rel="stylesheet">
 
     <!-- =======================================================
 
@@ -38,12 +37,12 @@
 <body>
   
 
-               {{-- HERE IS HEADER --}}
+               
 
    <header id="header" class="header fixed-top d-flex align-items-center">
    <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-         <img src="{{ asset('assets/user/img/logo.png') }}" alt="">
+         <img src="<?php echo e(asset('assets/user/img/logo.png')); ?>" alt="">
          <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -145,7 +144,7 @@
                </li>
                <li class="message-item">
                   <a href="#">
-                     <img src="{{ asset('assets/user/img/messages-1.jpg') }}" alt="" class="rounded-circle">
+                     <img src="<?php echo e(asset('assets/user/img/messages-1.jpg')); ?>" alt="" class="rounded-circle">
                      <div>
                         <h4>Maria Hudson</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -158,7 +157,7 @@
                </li>
                <li class="message-item">
                   <a href="#">
-                     <img src="{{ asset('assets/user/img/messages-2.jpg') }}" alt="" class="rounded-circle">
+                     <img src="<?php echo e(asset('assets/user/img/messages-2.jpg')); ?>" alt="" class="rounded-circle">
                      <div>
                         <h4>Anna Nelson</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -171,7 +170,7 @@
                </li>
                <li class="message-item">
                   <a href="#">
-                     <img src="{{ asset('assets/user/img/messages-3.jpg') }}" alt="" class="rounded-circle">
+                     <img src="<?php echo e(asset('assets/user/img/messages-3.jpg')); ?>" alt="" class="rounded-circle">
                      <div>
                         <h4>David Muldon</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -191,7 +190,7 @@
          <!-- End Messages Nav -->
          <li class="nav-item dropdown pe-3">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('assets/user/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+            <img src="<?php echo e(asset('assets/user/img/profile-img.jpg')); ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
             </a>
             <!-- End Profile Iamge Icon -->
@@ -244,12 +243,12 @@
    </nav>
    <!-- End Icons Navigation -->
 </header>
-                          {{-- HERE SIDEBAR --}}
+                          
 
 <aside id="sidebar" class="sidebar">
    <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-         <a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="{{ route('user.home') }}">
+         <a class="nav-link " href="<?php echo e(route('user.home')); ?>">
          <i class="bi bi-grid"></i>
          <span>Dashboard</span>
          </a>
@@ -428,14 +427,14 @@
       <!-- End Icons Nav -->
       <!-- <li class="nav-heading">Pages</li> -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="{{ route('user.portfolio') }}">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.portfolio')); ?>">
          <i class="bi bi-person"></i>
          <span>Portfolio</span>
          </a>
       </li>
       <!-- End Profile Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="{{ route('user.transactions') }}">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.transactions')); ?>">
          <i class="bi bi-question-circle"></i>
          <span>Transactions</span>
          </a>
@@ -465,13 +464,13 @@
          </li> -->
       <!-- End Error 404 Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="{{ route('user.performance') }}">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.performance')); ?>">
          <i class="bi bi-file-earmark"></i>
          <span>Performance</span>
          </a>
       </li>
       <li class="nav-item">
-         <a class="nav-link {{ request()->is('profile-setting') ? 'active' : '' }}" href="{{ route('user.profile-setting') }}">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.profile-setting')); ?>">
          <i class="bi bi-dash-circle"></i>
          <span>Settings</span>
          </a>
@@ -480,22 +479,22 @@
    </ul>
 </aside>
 
-@yield('content')
+<?php echo $__env->yieldContent('content'); ?>
 
-<script src="{{ asset('assets/user/vendor/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/user/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{ asset('assets/user/vendor/chart.js/chart.min.js')}}"></script>
-<script src="{{ asset('assets/user/vendor/echarts/echarts.min.js')}}"></script>
-<script src="{{ asset('assets/user/vendor/quill/quill.min.js') }}"></script>
-<script src="{{ asset('assets/user/vendor/simple-datatables/simple-datatables.js')}}"></script>
-<script src="{{ asset('assets/user/vendor/tinymce/tinymce.min.js')}}"></script>
-<script src="{{ asset('assets/user/vendor/php-email-form/validate.js')}}"></script>
+<script src="<?php echo e(asset('assets/user/vendor/apexcharts/apexcharts.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/chart.js/chart.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/echarts/echarts.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/quill/quill.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/simple-datatables/simple-datatables.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/tinymce/tinymce.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/vendor/php-email-form/validate.js')); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Template Main JS File -->
-<script src="{{ asset('assets/user/js/main.js')}}"></script>
-<script src="{{ asset('assets/user/js/form.js')}}"></script>
-@yield('js')
+<script src="<?php echo e(asset('assets/user/js/main.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/user/js/form.js')); ?>"></script>
+<?php echo $__env->yieldContent('js'); ?>
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -504,4 +503,4 @@
 </script>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\towork\core\resources\views/templates/bit_gold/user/dashboard/master.blade.php ENDPATH**/ ?>

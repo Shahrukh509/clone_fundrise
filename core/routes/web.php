@@ -383,9 +383,13 @@ Route::name('user.')->prefix('user')->group(function () {
         Route::middleware(['checkStatus'])->group(function () {
             Route::get('dashboard', 'UserController@home')->name('home');
 
+<<<<<<< HEAD
             //customization
             Route::get('profile-setting', 'UserController@profile')->name('profile-setting');
             Route::post('profile-setting', 'UserController@submitProfile');
+=======
+            
+>>>>>>> 79c11098b518c07eb3d2cfb41a0abe95453e0408
             Route::get('change-password', 'UserController@changePassword')->name('change-password');
             Route::post('change-password', 'UserController@submitPassword');
 
@@ -427,9 +431,14 @@ Route::name('user.')->prefix('user')->group(function () {
   Route::get('portfolio', 'UserController@portfolio')->name('portfolio');
 
 
+  Route::get('profile-setting', 'UserController@profile')->name('profile-setting');
+
+  Route::post('add_joint_account', 'JointAccountController@add_joint_account')->name('add.joint.account');
+
 
 
             //end of customization
+
             Route::get('transactions/deposit-wallet', 'UserController@transactionsDeposit')->name('transactions.deposit');
             Route::get('transactions/interest-wallet', 'UserController@transactionsInterest')->name('transactions.interest');
 
