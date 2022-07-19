@@ -470,11 +470,7 @@ Route::name('user.')->group(function () {
   // FOR SAVING EMAIL AND CHECKING
 
   Route::Post('questionnaire/personal-info/email/storing', 'Auth\RegisterController@saveEmail')->name('personal-info.email.store');
-<<<<<<< HEAD
-  //END FOR SAVING EMAIL
-=======
   //END FOR SAVING EMAIL 
->>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
 
   //showing password page 
   Route::get('questionnaire/password','Auth\RegisterController@showPasswordPage')->name('password.show');

@@ -32,7 +32,6 @@ class UserController extends Controller
     }
     public function home()
     {
-        // dd('hi at userscon');
         $data['page_title'] = 'Dashboard';
         $data['totalInvest'] = Invest::where('user_id', auth()->id())->sum('amount');
         $data['totalWithdraw'] = Withdrawal::where('user_id', Auth::id())->whereIn('status', [1])->sum('amount');
