@@ -492,7 +492,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/user/js/main.js')}}"></script>
-
+<script src="{{ asset('assets/user/js/form.js')}}"></script>
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

@@ -454,12 +454,7 @@
          </a>
          </li> -->
       <!-- End Register Page Nav -->
-      <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-login.html">
-         <i class="bi bi-box-arrow-in-right"></i>
-         <span>Login</span>
-         </a>
-      </li>
+
       <!-- End Login Page Nav -->
       <!-- <li class="nav-item">
          <a class="nav-link collapsed" href="pages-error-404.html">
@@ -475,15 +470,9 @@
          </a>
       </li>
       <li class="nav-item">
-         <a class="nav-link collapsed" href="../dashboard/components-tabs.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.profile-setting')); ?>">
          <i class="bi bi-dash-circle"></i>
          <span>Settings</span>
-         </a>
-      </li>
-      <li class="nav-item">
-         <a class="nav-link collapsed" href="../dashboard/inviteFriend.html">
-         <i class="bi bi-dash-circle"></i>
-         <span>Invite a friend</span>
          </a>
       </li>
       <!-- End Blank Page Nav -->
@@ -503,7 +492,7 @@
 
 <!-- Template Main JS File -->
 <script src="<?php echo e(asset('assets/user/js/main.js')); ?>"></script>
-
+<script src="<?php echo e(asset('assets/user/js/form.js')); ?>"></script>
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

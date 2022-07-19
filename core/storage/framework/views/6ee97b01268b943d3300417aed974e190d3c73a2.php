@@ -1,5 +1,5 @@
-@extends($activeTemplate.'user.dashboard.master')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Settings</h1>
@@ -942,4 +942,5 @@
         </section>
 
     </main>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($activeTemplate.'user.dashboard.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\towork\core\resources\views/templates/bit_gold/user/profile_settings.blade.php ENDPATH**/ ?>
