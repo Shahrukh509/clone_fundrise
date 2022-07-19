@@ -383,6 +383,7 @@ Route::name('user.')->prefix('user')->group(function () {
         Route::middleware(['checkStatus'])->group(function () {
             Route::get('dashboard', 'UserController@home')->name('home');
 
+            //customization
             Route::get('profile-setting', 'UserController@profile')->name('profile-setting');
             Route::post('profile-setting', 'UserController@submitProfile');
             Route::get('change-password', 'UserController@changePassword')->name('change-password');

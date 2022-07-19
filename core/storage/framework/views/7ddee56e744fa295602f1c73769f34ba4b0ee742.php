@@ -248,7 +248,7 @@
 <aside id="sidebar" class="sidebar">
    <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-         <a class="nav-link " href="<?php echo e(route('user.home')); ?>">
+         <a class="nav-link <?php echo e(request()->is('home') ? 'active' : ''); ?>" href="<?php echo e(route('user.home')); ?>">
          <i class="bi bi-grid"></i>
          <span>Dashboard</span>
          </a>
@@ -470,7 +470,7 @@
          </a>
       </li>
       <li class="nav-item">
-         <a class="nav-link collapsed" href="<?php echo e(route('user.profile-setting')); ?>">
+         <a class="nav-link <?php echo e(request()->is('profile-setting') ? 'active' : ''); ?>" href="<?php echo e(route('user.profile-setting')); ?>">
          <i class="bi bi-dash-circle"></i>
          <span>Settings</span>
          </a>

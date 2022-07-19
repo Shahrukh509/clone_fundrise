@@ -19,7 +19,6 @@
                         <div class="card-body">
                             <!-- Vertical Pills Tabs -->
                             <div class="d-flex align-items-start">
-                                <!-- <h5 class="card-title">Vertical Pills Tabs</h5> -->
                                 <div class="nav flex-column nav-pills me-3 py-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                     <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Personal Information</button>
                                     <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Notifications</button>
@@ -46,90 +45,110 @@
                                                 <tr>
                                                     <td>Full name </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Farhan Aslam</td>
+                                                    <td><?php echo e(Auth::user()->firstname); ?> <?php echo e(Auth::user()->lastname); ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Address </td>
+                                                    <td>Address 1 </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Abs kahi
-                                                    </td>
+                                                    <td><?php echo e(Auth::user()->address->address1??''); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Address 2 </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>St-24 karachi </td>
+                                                    <td><?php echo e(Auth::user()->address->address2??''); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>City</td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Canassa</td>
+                                                    <td><?php echo e(Auth::user()->address->city??''); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>State </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>AU </td>
+                                                    <td><?php echo e(Auth::user()->address->state??''); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>ZIP Code </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>1232 </td>
+                                                    <td><?php echo e(Auth::user()->address->zip??''); ?> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Country </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>AU </td>
+                                                    <td><?php echo e(Auth::user()->address->country??''); ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <!-- on click it shws -->
                                         <div class="form-card d-none" id="editinfo">
-                                            <h2 style="font-size: 20px;">Contact Information</h2>
-                                            <div class=" forms_edits">
-                                                <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                                <small>This should be the address used for tax purposes</small>
-                                            </div>
-                                            <div class="forms_edits">
-                                                <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                                <!-- <small>This should be the address used for tax purposes</small> -->
-                                            </div>
-                                            <div class="form-row forms_edits">
-                                                <div class="form-group col-md-8">
-                                                    <label for="inputCity">City</label>
-                                                    <input type="text" class="form-control" id="inputCity">
-                                                </div>
-                                                <div class="form-group col-md-4 forms_edits">
-                                                    <label for="inputState">State</label>
-                                                    <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
-                                              </select>
-                                                </div>
-                                                <div class="form-group col-md-2">
-                                                    <label for="inputZip">ZIP CODE</label>
-                                                    <input type="text" class="form-control" id="inputZip">
-                                                </div>
-                                                <div class="form-group col-12">
-                                                    <label for="inputAddress">PHONE NUMBER (MOBILE PREFERRED)</label>
-                                                    <input type="text" class="form-control" id="inputAddress" placeholder="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-start    pt-4">
-                                                        <button id="cancel_edit" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
-                                                    <small>Cancel</small> </button>
+                                            <h2 style="font-size: 20px;">Personal Information</h2>
+                                            <form action="">
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="first_name">First Name</label>
+                                                        <input type="text" class="form-control" id="first_name" value="<?php echo e(Auth::user()->firstname); ?>" placeholder="Enter first name">
+                                                        <small id="error-first-name" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="last_name">First Name</label>
+                                                        <input type="text" class="form-control" id="last_name" value="<?php echo e(Auth::user()->lastname); ?>" placeholder="Enter last name">
+                                                        <small id="error-last-name" style="color: red"></small>
                                                     </div>
                                                 </div>
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-end   pt-4">
-
-                                                        <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Save </button>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="address_first">Address 1</label>
+                                                        <input type="text" class="form-control" id="address_first" value="<?php echo e(Auth::user()->address->address1??''); ?>" placeholder="Enter first address">
+                                                        <small id="error-first-address" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="address_second">Address 2</label>
+                                                        <input type="text" class="form-control" id="address_second" value="<?php echo e(Auth::user()->address->address2??''); ?>" placeholder="Enter second address">
+                                                        <small id="error-first-second" style="color: red"></small>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="city">City</label>
+                                                        <input type="text" class="form-control" id="city" value="<?php echo e(Auth::user()->address->city??''); ?>" placeholder="Enter city name">
+                                                        <small id="error-city" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="state">State</label>
+                                                        <input type="text" class="form-control" id="state" value="<?php echo e(Auth::user()->address->state??''); ?>" placeholder="Enter state name">
+                                                        <small id="error-state" style="color: red"></small>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="zip_code">Zip Code</label>
+                                                        <input type="text" class="form-control" id="zip_code" value="<?php echo e(Auth::user()->address->zip??''); ?>" placeholder="Enter zip code">
+                                                        <small id="error-zip-code" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="country">Country</label>
+                                                        <input type="text" class="form-control" id="country" value="<?php echo e(Auth::user()->address->country??''); ?>" placeholder="Enter country name">
+                                                        <small id="error-country" style="color: red"></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-start    pt-4">
+                                                            <button id="cancel_edit" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
+                                                        <small>Cancel</small> </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-end   pt-4">
+                                                            <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Save </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                         <!-- on click it shws  ends-->
                                     </div>
@@ -172,40 +191,57 @@
                                         <!-- on click it show 2nd tab -->
                                         <div class="form-card d-none" id="editnotif">
                                             <div class="card-body">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> &nbsp; I would like to receive email notifications about:
+                                                <input class="form-check-input me-1" id="email-notification" type="checkbox" value="" aria-label="..."> &nbsp; 
+                                                <label label for='email-notification'> I would like to receive email notifications about: </label>
                                                 <!-- List group With Checkboxes and radios -->
                                                 <ul class="list-group py-3">
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Insights and Resources <br>
-                                                        <span><small>Investor tips, articles, white papers, and other information to help you get the most out of
-                                                    Fundrise.</small></span>
+                                                        <input class="form-check-input me-1" type="checkbox" id="insights" value="" aria-label="..."> 
+                                                        <label label for='insights'> Insights and Resources </label>
+                                                        <br>
+                                                        <span>
+                                                            <small>
+                                                                Investor tips, articles, white papers, and other information to help you get the most out of Fundrise.
+                                                            </small>
+                                                        </span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Product and Feature Announcements <br>
+                                                        <input class="form-check-input me-1" id="product-feature" type="checkbox" value="" aria-label="..."> 
+                                                        <label label for='product-feature'> Product and Feature Announcements </label>
+                                                        <br>
                                                         <span>
                                                             <small>New product launches, offerings, and investment features. </small>
                                                         </span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Portfolio Performance <br>
-                                                        <span><small>
-                                                    Updates and account reminders about your Fundrise investments.
-                                        
-                                                  </small></span>
+                                                        <input class="form-check-input me-1" id="portfolio" type="checkbox" value="" aria-label="..."> 
+                                                        <label label for='portfolio'> Portfolio Performance </label>
+                                                        <br>
+                                                        <span>
+                                                            <small>
+                                                                Updates and account reminders about your Fundrise investments.
+                                                            </small>
+                                                        </span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Project Updates <br>
-                                                        <span><small>
-                                                    Progress updates about the projects included in your portfolio.
-                                        
-                                                  </small></span>
+                                                        <input class="form-check-input me-1" id="project-updates" type="checkbox" value="" aria-label="..."> 
+                                                        <label label for='project-updates'> Project Updates </label>
+                                                        <br>
+                                                        <span>
+                                                            <small>
+                                                                Progress updates about the projects included in your portfolio.
+                                                            </small>
+                                                        </span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Newsletter <br>
-                                                        <span><small>
-                                                    A weekly newsletter dedicated to long-term thinking.
-                                        
-                                                  </small></span>
+                                                        <input class="form-check-input me-1" id="newsletter" type="checkbox" value="" aria-label="..."> 
+                                                        <label label for='newsletter'> Newsletter </label>
+                                                        <br>
+                                                        <span>
+                                                            <small>
+                                                                A weekly newsletter dedicated to long-term thinking.
+                                                            </small>
+                                                        </span>
                                                     </li>
                                                 </ul>
                                                 <!-- End List Checkboxes and radios -->
@@ -312,7 +348,6 @@
                                         </div>
                                     </div>
                                     <!-- 4rd  tab ends -->
-
 
                                     <!-- 5th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-number" role="tabpanel" aria-labelledby="v-pills-number-tab">
@@ -421,11 +456,9 @@
                                     </div>
                                     <!-- 6th  tab ends -->
 
-
                                     <!-- 7th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-investment" role="tabpanel" aria-labelledby="v-pills-investment-tab">
                                         <h5 class="card-title">Investment Plan</h5>
-
                                         <table class="table table-borderless table-responsive d-block" id="view_nick">
                                             <tbody>
                                                 <tr>
@@ -433,22 +466,17 @@
                                                         Individual Account No. 1677652
                                                     </td>
                                                 </tr>
-
                                                 <tr>
-
                                                     <td>You must upgrade to a Core account to unlock the Standard plans
                                                         <a href="#">Upgrade Now</a>
                                                     </td>
                                                 </tr>
-
                                                 <tr>
                                                     <td>Investment Plan
                                                     </td>
                                                     <td colspan="3" class="d-flex"></td>
-
                                                     <td>
                                                         Starter Portfolio
-
                                                     </td>
                                                 </tr>
                                             </tbody>
