@@ -467,23 +467,6 @@
              <span>Error 404</span>
          </a>
          </li> -->
-<<<<<<< HEAD
-        <!-- End Error 404 Page Nav -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
-            <i class="bi bi-file-earmark"></i>
-            <span>Performance</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route('user.profile-setting') }}">
-            <i class="bi bi-dash-circle"></i>
-            <span>Settings</span>
-            </a>
-        </li>
-        <!-- End Blank Page Nav -->
-    </ul>
-=======
       <!-- End Error 404 Page Nav -->
       <li class="nav-item">
          <a class="nav-link collapsed" href="{{ route('user.performance') }}">
@@ -497,15 +480,8 @@
          <span>Settings</span>
          </a>
       </li>
-      <li class="nav-item">
-         <a class="nav-link collapsed" href="../dashboard/inviteFriend.html">
-         <i class="bi bi-dash-circle"></i>
-         <span>Invite a friend</span>
-         </a>
-      </li>
       <!-- End Blank Page Nav -->
    </ul>
->>>>>>> 8e9441abbfb76845f5d609c063a62bcfeef41ff3
 </aside>
 
 @yield('content')

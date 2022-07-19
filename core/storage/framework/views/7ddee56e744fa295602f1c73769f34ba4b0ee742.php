@@ -427,14 +427,14 @@
       <!-- End Icons Nav -->
       <!-- <li class="nav-heading">Pages</li> -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="users-profile.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.portfolio')); ?>">
          <i class="bi bi-person"></i>
          <span>Portfolio</span>
          </a>
       </li>
       <!-- End Profile Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-faq.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.transactions')); ?>">
          <i class="bi bi-question-circle"></i>
          <span>Transactions</span>
          </a>
@@ -469,15 +469,21 @@
          </li> -->
       <!-- End Error 404 Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-blank.html">
+         <a class="nav-link collapsed" href="<?php echo e(route('user.performance')); ?>">
          <i class="bi bi-file-earmark"></i>
          <span>Performance</span>
          </a>
       </li>
       <li class="nav-item">
-         <a class="nav-link collapsed" href="<?php echo e(route('user.profile-setting')); ?>">
+         <a class="nav-link collapsed" href="../dashboard/components-tabs.html">
          <i class="bi bi-dash-circle"></i>
          <span>Settings</span>
+         </a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link collapsed" href="../dashboard/inviteFriend.html">
+         <i class="bi bi-dash-circle"></i>
+         <span>Invite a friend</span>
          </a>
       </li>
       <!-- End Blank Page Nav -->
