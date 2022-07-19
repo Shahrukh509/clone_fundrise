@@ -137,6 +137,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('user/add-sub-balance/{id}', 'ManageUsersController@addSubBalance')->name('users.addSubBalance');
         Route::get('user/send-email/{id}', 'ManageUsersController@showEmailSingleForm')->name('users.email.single');
         Route::post('user/send-email/{id}', 'ManageUsersController@sendEmailSingle')->name('users.email.single');
+
         Route::get('user/transactions/{id}', 'ManageUsersController@transactions')->name('users.transactions');
         Route::get('user/invests/{id}', 'ManageUsersController@invests')->name('users.invests');
         Route::get('user/referrals/{id}', 'ManageUsersController@referrals')->name('users.referrals');
@@ -416,6 +417,21 @@ Route::name('user.')->prefix('user')->group(function () {
 
 
             // Transaction
+
+
+            // Customization
+
+ Route::get('transactions', 'UserController@transactions')->name('transactions');
+
+  Route::get('performance', 'UserController@performance')->name('performance');
+
+
+  Route::get('portfolio', 'UserController@portfolio')->name('portfolio');
+
+
+
+
+            //end of customization
             Route::get('transactions/deposit-wallet', 'UserController@transactionsDeposit')->name('transactions.deposit');
             Route::get('transactions/interest-wallet', 'UserController@transactionsInterest')->name('transactions.interest');
 

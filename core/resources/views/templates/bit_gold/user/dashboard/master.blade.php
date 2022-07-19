@@ -248,7 +248,7 @@
 <aside id="sidebar" class="sidebar">
    <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-         <a class="nav-link " href="index.html">
+         <a class="nav-link " href="{{ route('user.home') }}">
          <i class="bi bi-grid"></i>
          <span>Dashboard</span>
          </a>
@@ -427,14 +427,14 @@
       <!-- End Icons Nav -->
       <!-- <li class="nav-heading">Pages</li> -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="users-profile.html">
+         <a class="nav-link collapsed" href="{{ route('user.portfolio') }}">
          <i class="bi bi-person"></i>
          <span>Portfolio</span>
          </a>
       </li>
       <!-- End Profile Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-faq.html">
+         <a class="nav-link collapsed" href="{{ route('user.transactions') }}">
          <i class="bi bi-question-circle"></i>
          <span>Transactions</span>
          </a>
@@ -469,7 +469,7 @@
          </li> -->
       <!-- End Error 404 Page Nav -->
       <li class="nav-item">
-         <a class="nav-link collapsed" href="pages-blank.html">
+         <a class="nav-link collapsed" href="{{ route('user.performance') }}">
          <i class="bi bi-file-earmark"></i>
          <span>Performance</span>
          </a>
