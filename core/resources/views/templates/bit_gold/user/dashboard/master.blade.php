@@ -489,10 +489,11 @@
 <script src="assets/vendor/simple-datatables/simple-datatables.js')"></script>
 <script src="{{ asset('assets/user/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/user/js/main.js')}}"></script>
-
+@yield('js')
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {

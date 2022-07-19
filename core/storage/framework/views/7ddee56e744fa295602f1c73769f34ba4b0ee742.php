@@ -489,10 +489,11 @@
 <script src="assets/vendor/simple-datatables/simple-datatables.js')"></script>
 <script src="<?php echo e(asset('assets/user/vendor/tinymce/tinymce.min.js')); ?>"></script>
 <script src="assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="<?php echo e(asset('assets/user/js/main.js')); ?>"></script>
-
+<?php echo $__env->yieldContent('js'); ?>
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -501,5 +502,4 @@
 </script>
 </body>
 
-</html>
-<?php /**PATH C:\xampp\htdocs\clone_fundrise\core\resources\views/templates/bit_gold/user/dashboard/master.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\clone_fundrise\core\resources\views/templates/bit_gold/user/dashboard/master.blade.php ENDPATH**/ ?>
