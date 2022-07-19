@@ -28,7 +28,7 @@
                                             <input id="password" class="form-control"  type="password" placeholder="password" name="password">
 
                                             <div class="input-group-addon fa_eye">
-                                                <a href="#"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                          <span style="color:red" class="text-danger error-text password_error"></span>
@@ -51,3 +51,9 @@
         </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).on('click', '.fa_eye', function(){
+        $('#password').attr('type', 'text');
+    });
+</script>

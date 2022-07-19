@@ -35,7 +35,7 @@
                         </div>
                         <div class=" d-flex justify-content-end   pt-4">
                             <button id="load-button" type="submit" class="button  button-fundrise-orange "
-                                data-test="lead-capture-submit" > Continue </button>
+                                data-test="lead-capture-submit"> Continue </button>
                                 <span class="age-error"></span>
                         </div>
                     </div>
