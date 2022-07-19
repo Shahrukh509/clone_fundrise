@@ -1,7 +1,6 @@
 @extends($activeTemplate.'user.dashboard.master')
 @section('content')
-<main id="main" class="main">
-
+    <main id="main" class="main">
         <div class="pagetitle">
             <button type="button" class="btn btn-warning rounded-pill bx-pull-right text-white" data-bs-toggle="modal" data-bs-target="#verticalycentered">Add Funds </button>
 
@@ -761,7 +760,6 @@
 
             </div>
         </section>
-
     </main>
     <!-- End #main -->
 
@@ -776,9 +774,6 @@
                 </div>
                 <div class="modal-body">
                     Would you like to make a one-time investment or set up a recurring investment?
-
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">One Time investment</button>

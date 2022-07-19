@@ -396,7 +396,6 @@ Route::name('user.')->prefix('user')->group(function () {
             Route::post('twofactor/enable', 'UserController@create2fa')->name('twofactor.enable');
             Route::post('twofactor/disable', 'UserController@disable2fa')->name('twofactor.disable');
 
-
             // Deposit
             Route::any('/deposit', 'Gateway\PaymentController@deposit')->name('deposit');
             Route::post('deposit/insert', 'Gateway\PaymentController@depositInsert')->name('deposit.insert');
@@ -412,8 +411,6 @@ Route::name('user.')->prefix('user')->group(function () {
             Route::get('/withdraw/preview', 'UserController@withdrawPreview')->name('withdraw.preview');
             Route::post('/withdraw/preview', 'UserController@withdrawSubmit')->name('withdraw.submit');
             Route::get('/withdraw/history', 'UserController@withdrawLog')->name('withdraw.history');
-
-
 
             // Transaction
             Route::get('transactions/deposit-wallet', 'UserController@transactionsDeposit')->name('transactions.deposit');
@@ -431,10 +428,8 @@ Route::name('user.')->prefix('user')->group(function () {
             Route::get('/plan', 'UserController@plan')->name('plan');
             Route::post('/getCheckoutToken', 'UserController@getCheckoutToken')->name('getCheckoutToken');
 
-
             //Promotions
             Route::get('promotional-tool','UserController@promotions')->name('promotions.tool');
-
         });
     });
 });
@@ -451,10 +446,8 @@ Route::post('/contact', 'SiteController@contactSubmit')->name('contact.send');
 Route::get('/change/{lang?}', 'SiteController@changeLanguage')->name('lang');
 Route::post('/subscribe', 'SiteController@subscribe')->name('subscribe');
 
-
 Route::get('/plan', 'SiteController@plan')->name('plan');
 Route::post('/planCalculator', 'SiteController@planCalculator')->name('planCalculator');
-
 
 Route::get('links/{slug}/{id}', 'SiteController@linkDetails')->name('linkDetails');
 
@@ -463,8 +456,7 @@ Route::get('/cookie/accept', 'SiteController@cookieAccept')->name('cookie.accept
 Route::get('placeholder-image/{size?}', 'SiteController@placeholderImage')->name('placeholderImage');
 Route::get('/{slug}', 'SiteController@pages')->name('pages');
 
-
-//custimzation
+//==================================================customization==================================//
 Route::name('user.')->group(function () {
   Route::get('questionnaire/personal-info', 'Auth\RegisterController@showRegistrationForm')->name('register');
   // FOR SAVING EMAIL AND CHECKING

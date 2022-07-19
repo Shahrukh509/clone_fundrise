@@ -30,7 +30,6 @@ class SiteController extends Controller
     }
 
     public function index(){
-        // dd('hi');
         $count = Page::where('tempname',$this->activeTemplate)->where('slug','home')->count();
         if($count == 0){
             $in['tempname'] = $this->activeTemplate;

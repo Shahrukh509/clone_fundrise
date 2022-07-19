@@ -49,12 +49,12 @@ class UserController extends Controller
     {
         $data['page_title'] = "Profile Setting";
         $data['user'] = Auth::user();
-        return view($this->activeTemplate. 'user.profile-setting', $data);
+        return view($this->activeTemplate. 'user.profile_settings', $data);
     }
 
     public function submitProfile(Request $request)
     {
-
+        return $request;
         $user = Auth::user();
         $request->validate([
             'firstname' => 'required|string|max:50',
@@ -841,5 +841,6 @@ class UserController extends Controller
         $empty_message  = "No Tools Yet";
         return view($this->activeTemplate.'user.promotions', compact('page_title', 'empty_message', 'tools'));
     }
+
 
 }

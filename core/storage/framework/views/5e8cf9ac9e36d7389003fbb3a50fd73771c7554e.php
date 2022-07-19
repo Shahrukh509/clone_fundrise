@@ -26,8 +26,6 @@
 </head>
   <body>
 <?php echo  fbComment() ?>
-    
-  
     <!-- scroll-to-top start -->
     <div class="scroll-to-top">
       <span class="scroll-icon">
