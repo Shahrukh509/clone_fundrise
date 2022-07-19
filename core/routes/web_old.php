@@ -353,6 +353,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 */
 
 Route::name('user.')->group(function () {
+
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login');
     Route::get('logout', 'Auth\LoginController@logoutGet')->name('logout');
@@ -368,6 +369,148 @@ Route::name('user.')->group(function () {
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/verify-code', 'Auth\ForgotPasswordController@verifyCode')->name('password.verify-code');
+
+
+           // C U S T O M I Z A T I O N
+// ADDING MY ROUTES 
+
+    Route::get('questionnaire/personal-info', 'Auth\RegisterController@showRegistrationForm')->name('register');
+                // FOR SAVING EMAIL AND CHECKING
+
+    Route::Post('questionnaire/personal-info/email/storing', 'Auth\RegisterController@saveEmail')->name('personal-info.email.store');
+
+               //END FOR SAVING EMAIL 
+
+
+                //showing password page 
+
+    Route::get('questionnaire/password','Auth\RegisterController@showPasswordPage')->name('password.show');
+
+                   
+                // END OF SHOWING PASSWORD PAGE
+
+               // SAVING PASSWORD IN DB
+
+Route::Post('questionnaire/password/storing', 'Auth\RegisterController@savePassword')->name('personal-info.password.store');
+
+               // END OF SAVING PASSWORD
+
+
+
+                // Start questionaire step==account-type
+ // Route::get('questionnaire/account-type',function(){
+
+ //    return view('user.auth.questionnaire.account_type');
+ //  });
+
+ //    Route::get('questionnaire/account-type/store','Auth\QuestionaireController@accounttypeStore')->name('investment.store');
+
+
+
+
+                // END of account type
+
+           
+              // Start questionaire step==age
+  Route::get('questionnaire/age','Auth\QuestionaireController@showAge')->name('step.age');
+
+  Route::get('questionnaire/age/store','Auth\QuestionaireController@storeAge')->name('step.age.store');
+
+                // END AGE
+
+                 // investment-experience
+
+  Route::get('questionnaire/investment-experience',function(){
+
+    return redirect()->route('user.step.age');
+  });
+
+    Route::get('questionnaire/investment-experience/store','Auth\QuestionaireController@investStore')->name('investment.store');
+
+                 // end of investment
+
+ Route::get('questionnaire/source-of-wisdom',function(){
+
+    return redirect()->route('user.step.age');
+  });                // source of wisdom
+
+    Route::get('questionnaire/sourceofwisdom/store','Auth\QuestionaireController@sourceofwisdomStore')->name('sourceofwisdom.store');
+
+                 // end of source of wisdom
+
+                  // Survey question
+
+  Route::get('questionnaire/survey',function(){
+
+    return redirect()->route('user.step.age');
+  }); 
+    
+ Route::get('questionnaire/survey/store','Auth\QuestionaireController@surveyStore')->name('survey.store');
+
+                   // END OF SURVEY QUESTION
+
+
+                    // Motivation question
+
+  Route::get('questionnaire/motivation',function(){
+
+    return redirect()->route('user.step.age');
+  }); 
+    
+ Route::get('questionnaire/motivation/store','Auth\QuestionaireController@motivationStore')->name('motivation.store');
+
+                   // END OF Motivation QUESTION
+
+
+                    // DUration of investment
+
+
+ Route::get('questionnaire/duration-of-investment',function(){
+
+    return redirect()->route('user.step.age');
+  }); 
+    
+
+ Route::get('questionnaire/duration-of-investment/store','Auth\QuestionaireController@dofinvestmentStore')->name('dofinvestmen.store');
+
+                   // END OF DUration investment
+
+
+
+                // investment planning
+
+
+ Route::get('questionnaire/investment-planning',function(){
+
+    return redirect()->route('user.step.age');
+  }); 
+    
+ Route::get('questionnaire/investment-planning/store','Auth\QuestionaireController@investingplanStore')->name('investingplanstore.store');
+
+                   // END OF investment planning
+
+                   // AJAX BACK
+ Route::get('questionnaire/ajax/back','Auth\QuestionaireController@ajax_back')->name('ajaxback');
+
+                     // END OF AJAX BACK
+                 
+                  // signup-checkout/signup
+
+  Route::get('questionnaire/signup-checkout/signup','Auth\QuestionaireController@showsignup')->name('show.signup.page');
+
+  Route::Post('signup/basic-info/storing','Auth\QuestionaireController@storingbasicinfo')->name('store.signup.basicinfo');
+
+    Route::Post('signup/account-details/storing','Auth\QuestionaireController@storingaccdetails')->name('store.signup.accountdetails');
+
+    Route::Post('signup/funding/storing','Auth\QuestionaireController@storingfunding')->name('store.signup.funding');
+
+
+ // Route::get('reits/signup-checkout/signup','Auth\QuestionaireController@signup')->name('signup.page');
+
+                // end of signup-checkout/signup
+
+           // E N D O F C U S T O M I Z A T I O N
+
 });
 
 Route::name('user.')->prefix('user')->group(function () {
@@ -439,6 +582,11 @@ Route::name('user.')->prefix('user')->group(function () {
     });
 });
 
+
+
+
+
+
 Route::get('/change/{lang?}', 'SiteController@changeLanguage')->name('lang');
 
 Route::get('/', 'SiteController@index')->name('home');
@@ -463,90 +611,3 @@ Route::get('/cookie/accept', 'SiteController@cookieAccept')->name('cookie.accept
 Route::get('placeholder-image/{size?}', 'SiteController@placeholderImage')->name('placeholderImage');
 Route::get('/{slug}', 'SiteController@pages')->name('pages');
 
-
-//custimzation
-Route::name('user.')->group(function () {
-  Route::get('questionnaire/personal-info', 'Auth\RegisterController@showRegistrationForm')->name('register');
-  // FOR SAVING EMAIL AND CHECKING
-
-  Route::Post('questionnaire/personal-info/email/storing', 'Auth\RegisterController@saveEmail')->name('personal-info.email.store');
-<<<<<<< HEAD
-  //END FOR SAVING EMAIL
-=======
-  //END FOR SAVING EMAIL 
->>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
-
-  //showing password page 
-  Route::get('questionnaire/password','Auth\RegisterController@showPasswordPage')->name('password.show');
-  // END OF SHOWING PASSWORD PAGE
-
-  // SAVING PASSWORD IN DB
-  Route::Post('questionnaire/password/storing', 'Auth\RegisterController@savePassword')->name('personal-info.password.store');
-  // END OF SAVING PASSWORD
-       
-  // Start questionaire step==age
-  Route::get('questionnaire/age','Auth\QuestionaireController@showAge')->name('step.age');
-
-  Route::get('questionnaire/age/store','Auth\QuestionaireController@storeAge')->name('step.age.store');
-  // END AGE
-
-  Route::get('questionnaire/investment-experience',function(){
-    return redirect()->route('user.step.age');
-  });
-
-  Route::get('questionnaire/investment-experience/store','Auth\QuestionaireController@investStore')->name('investment.store');
-  // end of investment
-
-  Route::get('questionnaire/source-of-wisdom',function(){
-    return redirect()->route('user.step.age');
-  });                // source of wisdom
-
-  Route::get('questionnaire/sourceofwisdom/store','Auth\QuestionaireController@sourceofwisdomStore')->name('sourceofwisdom.store');
-  // end of source of wisdom
-
-  // Survey question
-  Route::get('questionnaire/survey',function(){
-    return redirect()->route('user.step.age');
-  }); 
-  
-  Route::get('questionnaire/survey/store','Auth\QuestionaireController@surveyStore')->name('survey.store');
-  // END OF SURVEY QUESTION
-
-  // Motivation question
-  Route::get('questionnaire/motivation',function(){
-    return redirect()->route('user.step.age');
-  }); 
-  
-  Route::get('questionnaire/motivation/store','Auth\QuestionaireController@motivationStore')->name('motivation.store');
-  // END OF Motivation QUESTION
-
-  // DUration of investment
-  Route::get('questionnaire/duration-of-investment',function(){
-    return redirect()->route('user.step.age');
-  }); 
-
-  Route::get('questionnaire/duration-of-investment/store','Auth\QuestionaireController@dofinvestmentStore')->name('dofinvestmen.store');
-  // END OF DUration investment
-
-  // investment planning
-  Route::get('questionnaire/investment-planning',function(){
-    return redirect()->route('user.step.age');
-  }); 
-  
-  Route::get('questionnaire/investment-planning/store','Auth\QuestionaireController@investingplanStore')->name('investingplanstore.store');
-  // END OF investment planning
-
-  // AJAX BACK
-  Route::get('questionnaire/ajax/back','Auth\QuestionaireController@ajax_back')->name('ajaxback');
-  // END OF AJAX BACK
-               
-  // signup-checkout/signup
-  Route::get('questionnaire/signup-checkout/signup','Auth\QuestionaireController@showsignup')->name('show.signup.page');
-
-  Route::Post('signup/basic-info/storing','Auth\QuestionaireController@storingbasicinfo')->name('store.signup.basicinfo');
-
-  Route::Post('signup/account-details/storing','Auth\QuestionaireController@storingaccdetails')->name('store.signup.accountdetails');
-
-  Route::Post('signup/funding/storing','Auth\QuestionaireController@storingfunding')->name('store.signup.funding');
-});
-//custimzation

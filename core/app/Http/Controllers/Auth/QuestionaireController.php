@@ -135,6 +135,7 @@ class QuestionaireController extends Controller
       }
    }
 
+<<<<<<< HEAD
    public function investStore(Request $request){
       if($request->ajaxback){
          $page_title = "Sign Up";
@@ -166,12 +167,60 @@ class QuestionaireController extends Controller
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
       }else{
          return response()->json([
+=======
+  
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
+
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
+      'questionaire_answer_id' => $request->answer_id
+   ]);
+
+    }
+
+   if($data){
+
+      $page_title = "Sign Up";
+      $question = Questionaire::where('url_slug','source-of-wisdom')->first();
+     
+      // basically we inject the slug of next step, u can say two step ahead url
+      $url_slug = 'survey
+      ';
+      $pre_slug_url = 'investment-experience';
+      $url = Route('user.sourceofwisdom.store');
+
+      $prev_url = Route('user.step.age.store');
+      
+
+      // foreach($question->options as $data){
+
+      //   dd($data);
+      // }
+
+    return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
+
+   }else{
+
+      return response()->json([
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
             'success' => false,
             'added' => false
          ]);
       }
    }
+}
 
+<<<<<<< HEAD
    public function sourceofwisdomStore(Request $request){
       if($request->ajaxback){
          $page_title = "Sign Up";
@@ -191,6 +240,50 @@ class QuestionaireController extends Controller
          'user_id' => Auth()->user()->id,
          'questionaire_answer_id' => $request->answer_id
       ]);
+=======
+
+  public function sourceofwisdomStore(Request $request){
+
+    if($request->ajaxback){
+
+     $page_title = "Sign Up";
+      $question = Questionaire::where('url_slug','survey')->first();
+      // dd()
+      $url = Route('user.survey.store');
+      // basically we inject the slug of next step
+      $url_slug = 'motivation';
+
+      // previous url is mendatory it tells go to specific route and show desire page 
+       $prev_url = Route('user.investment.store');
+       $pre_slug_url = 'source-of-wisdom';
+
+    return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url'));
+
+
+    }
+
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
+
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
+      'questionaire_answer_id' => $request->answer_id
+   ]);
+
+    }
+
+
+   if($data){
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
 
       if($data){
          $page_title = "Sign Up";
@@ -200,6 +293,7 @@ class QuestionaireController extends Controller
          $url_slug = 'motivation';
          $prev_url = Route('user.investment.store');
          $pre_slug_url = 'source-of-wisdom';
+         
 
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
       }else{
@@ -210,6 +304,7 @@ class QuestionaireController extends Controller
       }
    }
 
+<<<<<<< HEAD
    public function surveyStore(Request $request){
       if($request->ajaxback){
          $page_title = "Sign Up";
@@ -236,6 +331,41 @@ class QuestionaireController extends Controller
          $url_slug = 'duration-of-investment';
          $prev_url = route('user.sourceofwisdom.store');
          $pre_slug_url = 'survey';
+=======
+   
+$data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
+
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
+      'questionaire_answer_id' => $request->answer_id
+   ]);
+
+    }
+
+
+   if($data){
+
+      $page_title = "Sign Up";
+      $question = Questionaire::where('url_slug','motivation')->first();
+      $url = Route('user.motivation.store');
+      // basically we inject the slug of next step
+      $url_slug = 'duration-of-investment';
+     $prev_url = route('user.sourceofwisdom.store');
+      $pre_slug_url = 'survey';
+      
+
+    return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
 
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
 
@@ -261,6 +391,7 @@ class QuestionaireController extends Controller
 
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url'));
       }
+<<<<<<< HEAD
 
       $data = UserAnswer::create([
          'user_id' => Auth()->user()->id,
@@ -277,6 +408,44 @@ class QuestionaireController extends Controller
          $url_slug = 'investment-planning';
          $prev_url = route('user.survey.store');
          $pre_slug_url = 'motivation';
+=======
+   
+
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
+
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
+      'questionaire_answer_id' => $request->answer_id
+   ]);
+
+    }
+
+
+   if($data){
+
+      $page_title = "Sign Up";
+      $question = Questionaire::where('url_slug','duration-of-investment')->first();
+      $url = Route('user.dofinvestmen.store'); 
+      // this is the route where its function has been defined in lower portion of this file
+
+         // basically we inject the slug of next step
+      $url_slug = 'investment-planning';
+        $prev_url = route('user.survey.store');
+        $pre_slug_url = 'motivation';
+        
+
+    return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
 
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
       }else{
@@ -302,10 +471,35 @@ class QuestionaireController extends Controller
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url'));
       }
 
+<<<<<<< HEAD
       $data = UserAnswer::create([
          'user_id' => Auth()->user()->id,
          'questionaire_answer_id' => $request->answer_id
       ]);
+=======
+     }
+
+$data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
+
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
+      'questionaire_answer_id' => $request->answer_id
+   ]);
+
+    }
+
+   if($data){
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
 
       if($data){
          $page_title = "Sign Up";
@@ -314,9 +508,16 @@ class QuestionaireController extends Controller
          $url = Route('user.investingplanstore.store');
 
          // basically we inject the slug of next step
+<<<<<<< HEAD
          $url_slug = 'signup-checkout/signup';
          $prev_url = route('user.motivation.store');
          $pre_slug_url = 'duration-of-investment';
+=======
+      $url_slug = 'signup-checkout/signup';
+    $prev_url = route('user.motivation.store');
+        $pre_slug_url = 'duration-of-investment';
+        
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
 
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
       }else{
@@ -327,6 +528,7 @@ class QuestionaireController extends Controller
       }
    }
 
+<<<<<<< HEAD
    public function investingplanStore(Request $request){
       $data = UserAnswer::create([
          'user_id' => Auth()->user()->id,
@@ -338,6 +540,52 @@ class QuestionaireController extends Controller
          return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_page_signup', compact('page_title')); 
       }else{
          return response()->json([
+=======
+
+
+
+  }
+
+  public function investingplanStore(Request $request){
+
+$data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->question_id)->first();
+
+   if($data){
+
+    $data->questionaire_answer_id = $request->answer_id;
+    $data->save();
+   }
+   else
+   {
+
+   $data = UserAnswer::create([
+
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->question_id,
+      'questionaire_answer_id' => $request->answer_id
+   ]);
+
+    }
+
+
+   if($data){
+
+      $page_title = "Sign Up";
+      // $question = Questionaire::where('url_slug','investment-planning')->first();
+
+      // $url = Route('user.investingplanstore.store');
+
+      //    // basically we inject the slug of next step
+      // $url_slug = 'signup-checkout/signup';
+
+      // $prev_url = 'investment-planning';
+
+    return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_page_signup', compact('page_title')); 
+
+   }else{
+
+      return response()->json([
+>>>>>>> 4db87aa6ce058774a5b8c0fafbafbedcc2b5f652
             'success' => false,
             'added' => false
          ]);
