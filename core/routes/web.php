@@ -424,15 +424,15 @@ Route::name('user.')->prefix('user')->group(function () {
 
   Route::get('portfolio', 'UserController@portfolio')->name('portfolio');
 
+
   Route::get('profile-setting', 'UserController@profile')->name('profile-setting');
 
-  Route::post('profile-setting', 'UserController@submitProfile');
-
+  Route::post('add_joint_account', 'JointAccountController@add_joint_account')->name('add.joint.account');
 
 
 
             //end of customization
-  
+
             Route::get('transactions/deposit-wallet', 'UserController@transactionsDeposit')->name('transactions.deposit');
             Route::get('transactions/interest-wallet', 'UserController@transactionsInterest')->name('transactions.interest');
 

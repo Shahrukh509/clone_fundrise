@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo e(asset('assets/user/favicon.png')); ?>" rel="icon">
-    <link href="<?php echo e(asset('assets/user/apple-touch-icon.png')); ?>" rel="apple-touch-icon">
+    <link href="<?php echo e(asset('assets/user/img/favicon.png')); ?>" rel="icon">
+    <link href="<?php echo e(asset('assets/user/img/apple-touch-icon.png')); ?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -42,7 +42,7 @@
    <header id="header" class="header fixed-top d-flex align-items-center">
    <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-         <img src="<?php echo e(asset('assets/user/logo.png')); ?>" alt="">
+         <img src="<?php echo e(asset('assets/user/img/logo.png')); ?>" alt="">
          <!-- <span class="d-none d-lg-block">NiceAdmin</span> -->
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -144,7 +144,7 @@
                </li>
                <li class="message-item">
                   <a href="#">
-                     <img src="<?php echo e(asset('assets/user/messages-1.jpg')); ?>" alt="" class="rounded-circle">
+                     <img src="<?php echo e(asset('assets/user/img/messages-1.jpg')); ?>" alt="" class="rounded-circle">
                      <div>
                         <h4>Maria Hudson</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -157,7 +157,7 @@
                </li>
                <li class="message-item">
                   <a href="#">
-                     <img src="<?php echo e(asset('assets/user/messages-2.jpg')); ?>" alt="" class="rounded-circle">
+                     <img src="<?php echo e(asset('assets/user/img/messages-2.jpg')); ?>" alt="" class="rounded-circle">
                      <div>
                         <h4>Anna Nelson</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -170,7 +170,7 @@
                </li>
                <li class="message-item">
                   <a href="#">
-                     <img src="<?php echo e(asset('assets/user/messages-3.jpg')); ?>" alt="" class="rounded-circle">
+                     <img src="<?php echo e(asset('assets/user/img/messages-3.jpg')); ?>" alt="" class="rounded-circle">
                      <div>
                         <h4>David Muldon</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -190,7 +190,7 @@
          <!-- End Messages Nav -->
          <li class="nav-item dropdown pe-3">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="<?php echo e(asset('assets/user/profile-img.jpg')); ?>" alt="Profile" class="rounded-circle">
+            <img src="<?php echo e(asset('assets/user/img/profile-img.jpg')); ?>" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
             </a>
             <!-- End Profile Iamge Icon -->
@@ -484,15 +484,17 @@
 <script src="<?php echo e(asset('assets/user/vendor/apexcharts/apexcharts.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/user/vendor/bootstrap/js/bootstrap.bundle.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/user/vendor/chart.js/chart.min.js')); ?>"></script>
-<script src="assets/vendor/echarts/echarts.min.js')}}"></script>
+<script src="<?php echo e(asset('assets/user/vendor/echarts/echarts.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/user/vendor/quill/quill.min.js')); ?>"></script>
-<script src="assets/vendor/simple-datatables/simple-datatables.js')"></script>
+<script src="<?php echo e(asset('assets/user/vendor/simple-datatables/simple-datatables.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/user/vendor/tinymce/tinymce.min.js')); ?>"></script>
-<script src="assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="<?php echo e(asset('assets/user/vendor/php-email-form/validate.js')); ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="<?php echo e(asset('assets/user/js/main.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/user/js/form.js')); ?>"></script>
+<?php echo $__env->yieldContent('js'); ?>
 <script>
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -501,5 +503,4 @@
 </script>
 </body>
 
-</html>
-<?php /**PATH C:\xampp\htdocs\towork\core\resources\views/templates/bit_gold/user/dashboard/master.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\xampp\htdocs\towork\core\resources\views/templates/bit_gold/user/dashboard/master.blade.php ENDPATH**/ ?>

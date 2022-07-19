@@ -6,7 +6,6 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-
                     <li class="breadcrumb-item active">Settings</li>
                 </ol>
             </nav>
@@ -15,14 +14,9 @@
 
         <section class="section">
             <div class="row">
-
-
                 <div class="col-lg-12">
-
                     <div class="card tabs_class">
                         <div class="card-body">
-
-
                             <!-- Vertical Pills Tabs -->
                             <div class="d-flex align-items-start">
                                 <!-- <h5 class="card-title">Vertical Pills Tabs</h5> -->
@@ -32,108 +26,69 @@
                                     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Email Address</button>
                                     <button class="nav-link" id="v-pills-Password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Password" type="button" role="tab" aria-controls="v-pills-Password" aria-selected="false">Password</button>
                                     <button class="nav-link" id="v-pills-number-tab" data-bs-toggle="pill" data-bs-target="#v-pills-number" type="button" role="tab" aria-controls="v-pills-number" aria-selected="false">Mobile Number</button>
-
                                     <button class="nav-link" id="v-pills-account-tab" data-bs-toggle="pill" data-bs-target="#v-pills-account" type="button" role="tab" aria-controls="v-pills-account" aria-selected="false">Account Nick Name</button>
-
                                     <button class="nav-link" id="v-pills-investment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-investment" type="button" role="tab" aria-controls="v-pills-investment" aria-selected="false">Investment Plan</button>
-
                                     <button class="nav-link" id="v-pills-Reinvestment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Reinvestment" type="button" role="tab" aria-controls="v-pills-investment" aria-selected="false">Dividend Reinvestment</button>
-
                                     <button class="nav-link" id="v-pills-Payment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Payment" type="button" role="tab" aria-controls="v-pills-Payment" aria-selected="false">Payment Methods</button>
-
                                     <button class="nav-link" id="v-pills-add-tab" data-bs-toggle="pill" data-bs-target="#v-pills-add" type="button" role="tab" aria-controls="v-pills-add" aria-selected="false">Add Account</button>
-
-
-
                                 </div>
                                 <div class="tab-content py-3 pull-right w-100" id="v-pills-tabContent">
-
                                     <!-- 1st tab starts here -->
                                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                         <h5 class="card-title">Personal Information</h5>
-                                        <span class="d-flex justify-content-end"><a class="edit_info_class"><i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
+                                        <span class="d-flex justify-content-end">
+                                            <a class="edit_info_class">
+                                                <i class="bi bi-pencil"></i> &nbsp; Edit
+                                            </a>
+                                        </span>
                                         <table class="table table-borderless table-responsive d-block" id="viewinfo">
-
                                             <tbody>
                                                 <tr>
-
-                                                    <td>Full name
-                                                    </td>
+                                                    <td>Full name </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Farhan Aslam
-                                                    </td>
+                                                    <td>Farhan Aslam</td>
                                                 </tr>
                                                 <tr>
-
                                                     <td>Address </td>
                                                     <td colspan="5" class="d-flex"></td>
-
                                                     <td>Abs kahi
                                                     </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>Address 2
-
-                                                    </td>
+                                                    <td>Address 2 </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>St-24 karachi
-                                                    </td>
+                                                    <td>St-24 karachi </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>City
-                                                    </td>
+                                                    <td>City</td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Canassa
-                                                    </td>
+                                                    <td>Canassa</td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>State
-                                                    </td>
+                                                    <td>State </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>AU
-                                                    </td>
+                                                    <td>AU </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>ZIP Code
-
-                                                    </td>
+                                                    <td>ZIP Code </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>1232
-                                                    </td>
+                                                    <td>1232 </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>Country
-                                                    </td>
+                                                    <td>Country </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>AU
-                                                    </td>
+                                                    <td>AU </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
-
-
                                         <!-- on click it shws -->
                                         <div class="form-card d-none" id="editinfo">
-
                                             <h2 style="font-size: 20px;">Contact Information</h2>
                                             <div class=" forms_edits">
                                                 <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
                                                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
                                                 <small>This should be the address used for tax purposes</small>
                                             </div>
-
                                             <div class="forms_edits">
                                                 <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
                                                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
@@ -155,12 +110,10 @@
                                                     <label for="inputZip">ZIP CODE</label>
                                                     <input type="text" class="form-control" id="inputZip">
                                                 </div>
-
                                                 <div class="form-group col-12">
                                                     <label for="inputAddress">PHONE NUMBER (MOBILE PREFERRED)</label>
                                                     <input type="text" class="form-control" id="inputAddress" placeholder="">
                                                 </div>
-
                                             </div>
 
                                             <div class="row">
@@ -170,7 +123,6 @@
                                                     <small>Cancel</small> </button>
                                                     </div>
                                                 </div>
-
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-end   pt-4">
 
@@ -178,83 +130,49 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                         <!-- on click it shws  ends-->
-
-                                        <!-- ends -->
                                     </div>
                                     <!-- 1st tab ends -->
                                     <!-- 2nd tab strats -->
                                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <h5 class="card-title">Notifications</h5>
                                         <span class="d-flex justify-content-end"><a class="edit_notif_class"><i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
-                                        <p>I would like to receive email notifications about:
-                                        </p>
+                                        <p>I would like to receive email notifications about: </p>
                                         <table class="table table-borderless table-responsive d-block" id="viewnotif">
-
                                             <tbody>
                                                 <tr>
-
-                                                    <td>Insights and Resources
-
-                                                    </td>
+                                                    <td>Insights and Resources </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Enabled
-                                                    </td>
+                                                    <td>Enabled </td>
                                                 </tr>
                                                 <tr>
-
                                                     <td>Product and Feature Announcements </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Enabled
-                                                    </td>
+                                                    <td>Enabled </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>Portfolio Performance
-
-
-                                                    </td>
+                                                    <td>Portfolio Performance </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Enabled
-                                                    </td>
+                                                    <td>Enabled  </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>Project Updates
-
-                                                    </td>
+                                                    <td>Project Updates </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Enabled
-                                                    </td>
+                                                    <td>Enabled </td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>Newsletter
-                                                    </td>
+                                                    <td>Newsletter </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>Disabled
-                                                    </td>
+                                                    <td>Disabled </td>
                                                 </tr>
-
-
                                             </tbody>
                                         </table>
 
                                         <!-- on click it show 2nd tab -->
                                         <div class="form-card d-none" id="editnotif">
                                             <div class="card-body">
-
                                                 <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> &nbsp; I would like to receive email notifications about:
-
-
                                                 <!-- List group With Checkboxes and radios -->
                                                 <ul class="list-group py-3">
                                                     <li class="list-group-item">
@@ -264,9 +182,9 @@
                                                     </li>
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Product and Feature Announcements <br>
-                                                        <span><small>New product launches, offerings, and investment features.
-                                        
-                                                  </small></span>
+                                                        <span>
+                                                            <small>New product launches, offerings, and investment features. </small>
+                                                        </span>
                                                     </li>
                                                     <li class="list-group-item">
                                                         <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Portfolio Performance <br>
@@ -306,34 +224,22 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                     <!-- 2nd tab ends -->
-
-
-                                    <!-- ends -->
-
 
                                     <!-- 3rd  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                         <h5 class="card-title">Email Address</h5>
                                         <span class="d-flex justify-content-end"><a class="edit_email"><i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
                                         <table class="table table-borderless table-responsive d-block" id="viewemail">
-
                                             <tbody>
                                                 <tr>
-
-                                                    <td>My Email
-
-                                                    </td>
+                                                    <td>My Email </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>farhan_aslam@gmail.com
-                                                    </td>
+                                                    <td>farhan_aslam@gmail.com </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
 
@@ -350,10 +256,8 @@
                                                     <small>Cancel</small> </button>
                                                     </div>
                                                 </div>
-
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-end   pt-4">
-
                                                         <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Save </button>
                                                     </div>
                                                 </div>
@@ -367,26 +271,18 @@
                                         <h5 class="card-title">Password</h5>
                                         <span class="d-flex justify-content-end"><a class="edit_password"><i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
                                         <table class="table table-borderless table-responsive d-block" id="viewpass">
-
                                             <tbody>
                                                 <tr>
-
-                                                    <td>Password
-
-                                                    </td>
+                                                    <td>Password </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-                                                    <td>*******
-                                                    </td>
+                                                    <td>******* </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 4rd tab div -->
                                         <div class="form-card d-none" id="editpass">
-                                            <p>To change your password, enter your current password and then create a new one using the following form.
-                                            </p>
+                                            <p>To change your password, enter your current password and then create a new one using the following form.</p>
                                             <label for="exampleFormControlInput1">CURRENT PASSWORD</label>
                                             <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
                                             <br>
@@ -433,41 +329,29 @@
                                                     <td colspan="5"> Fundrise may use this phone number to keep your account secure. To edit or verify this number, Fundrise will send a temporary verification code to your phone. Standard messaging and data rates may apply.</td>
                                                 </tr>
                                                 <tr>
-
-                                                    <td>Phone number
-
-                                                    </td>
+                                                    <td>Phone number </td>
                                                     <td colspan="5" class="d-flex"></td>
-
                                                     <td>
                                                         (234) 342-4244
                                                     </td>
                                                 </tr>
-
                                                 <tr>
-
                                                     <td>
                                                         Status
                                                     </td>
                                                     <td colspan="5" class="d-flex"></td>
-
                                                     <td>
                                                         <i class="fa fa-ban"></i> Unverified
                                                     </td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 5th tab div -->
                                         <div class="form-card d-none" id="editnum">
-
                                             <label for="exampleFormControlInput1">PHONE NUMBER</label>
                                             <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="(234) 342-4244">
                                             <br>
-
-
-
                                             <div class="row">
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-start    pt-4">
@@ -487,8 +371,6 @@
                                     </div>
                                     <!-- 5th  tab ends -->
 
-
-
                                     <!-- 6th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
                                         <h5 class="card-title">Account Nickname</h5>
@@ -497,45 +379,29 @@
                                                 <i class="bi bi-pencil"></i>&nbsp;Edit
                                             </a>
                                         </span>
-
                                         <table class="table table-borderless table-responsive d-block" id="view_nick">
                                             <tbody>
-
                                                 <tr>
-
-                                                    <td>Account Nickname
-
-
-                                                    </td>
+                                                    <td>Account Nickname </td>
                                                     <td colspan="5" class="d-flex"></td>
-
                                                     <td>
                                                         n/a
                                                     </td>
                                                 </tr>
-
                                                 <tr>
-
                                                     <td>
                                                         Status
                                                     </td>
                                                     <td colspan="5" class="d-flex"></td>
-
-
                                                 </tr>
-
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 6th tab div -->
                                         <div class="form-card d-none" id="editnick">
-
                                             <label for="exampleFormControlInput1">NICKNAME</label>
                                             <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="(234) 342-4244">
                                             <br>
-
-
-
                                             <div class="row">
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-start    pt-4">
@@ -559,11 +425,6 @@
                                     <!-- 7th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-investment" role="tabpanel" aria-labelledby="v-pills-investment-tab">
                                         <h5 class="card-title">Investment Plan</h5>
-                                        <!-- <span class="d-flex justify-content-end">
-                                            <a class="edit_nick">
-                                                <i class="bi bi-pencil"></i>&nbsp;Edit
-                                            </a>
-                                        </span> -->
 
                                         <table class="table table-borderless table-responsive d-block" id="view_nick">
                                             <tbody>
@@ -577,17 +438,11 @@
 
                                                     <td>You must upgrade to a Core account to unlock the Standard plans
                                                         <a href="#">Upgrade Now</a>
-
-
                                                     </td>
-
                                                 </tr>
 
                                                 <tr>
-
                                                     <td>Investment Plan
-
-
                                                     </td>
                                                     <td colspan="3" class="d-flex"></td>
 
@@ -596,21 +451,14 @@
 
                                                     </td>
                                                 </tr>
-
-
-
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 6th tab div -->
                                         <div class="form-card d-none" id="editnick">
-
                                             <label for="exampleFormControlInput1">NICKNAME</label>
                                             <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="(234) 342-4244">
                                             <br>
-
-
-
                                             <div class="row">
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-start    pt-4">
@@ -630,7 +478,6 @@
                                     </div>
                                     <!-- 7th  tab ends -->
 
-
                                     <!-- 8th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-Reinvestment" role="tabpanel" aria-labelledby="v-pills-Reinvestment-tab">
                                         <h5 class="card-title">Dividend Reinvestment</h5>
@@ -642,22 +489,13 @@
 
                                         <table class="table table-borderless table-responsive d-block" id="view_dividens">
                                             <tbody>
-
                                                 <tr>
-
-                                                    <td>Preference
-
-
-                                                    </td>
+                                                    <td>Preference </td>
                                                     <td colspan="5" class="d-flex"></td>
-
                                                     <td>
                                                         Enabled
                                                     </td>
                                                 </tr>
-
-
-
                                             </tbody>
                                         </table>
 
@@ -686,7 +524,6 @@
                                                 </label>
                                             </div>
 
-
                                             <div class="row">
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-start    pt-4">
@@ -706,29 +543,21 @@
                                     </div>
                                     <!-- 8th  tab ends -->
 
-
                                     <!-- 9th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-Payment" role="tabpanel" aria-labelledby="v-pills-Payment-tab">
                                         <h5 class="card-title">Payment Methods</h5>
                                         <span class="d-flex justify-content-end">
-                                           
                                             <a class="edit_pay">
                                                 <i class="bi bi-pencil"></i>&nbsp;Edit
                                             </a>
                                         </span>
-                                        <h5 class="card-title">Bank Accounts
-                                        </h5>
-
-
+                                        <h5 class="card-title">Bank Accounts </h5>
                                         <table class="table table-borderless table-responsive d-block" id="view_pay">
                                             <thead>
                                                 <tr>
-
                                                     Manage the bank accounts that are connected to your Fundrise account.
-
                                                 </tr>
                                                 <tr>
-
                                                     <th scope="col">Bank Account</th>
                                                     <th scope="col">Type</th>
                                                     <th scope="col">Account #</th>
@@ -736,19 +565,16 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-
                                                     <td>Farhan</td>
                                                     <td>single</td>
                                                     <td>$3245</td>
                                                 </tr>
                                                 <tr>
-
                                                     <td>Farhan</td>
                                                     <td>single</td>
                                                     <td>$3245</td>
                                                 </tr>
                                                 <tr>
-
                                                     <td>Farhan</td>
                                                     <td>single</td>
                                                     <td>$3245</td>
@@ -758,12 +584,9 @@
 
                                         <!-- on click show this 9th tab div -->
                                         <div class="form-card  d-none" id="editpay">
-
-
                                             <table class="table table-borderless table-responsive d-block">
                                                 <thead>
                                                     <tr>
-
                                                         <th scope="col">Bank Account</th>
                                                         <th scope="col">Type</th>
                                                         <th scope="col">Account #</th>
@@ -771,7 +594,6 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-
                                                         <td>Farhan</td>
                                                         <td>single</td>
                                                         <td>$3245</td>
@@ -779,20 +601,17 @@
                                                         <td><button class="button_new">Remove</button></td>
                                                     </tr>
                                                     <tr>
-
                                                         <td>Farhan</td>
                                                         <td>single</td>
                                                         <td>$3245</td>
                                                     </tr>
                                                     <tr>
-
                                                         <td>Farhan</td>
                                                         <td>single</td>
                                                         <td>$3245</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-
 
                                             <div class="row">
                                                 <div class="col">
@@ -813,14 +632,10 @@
                                     </div>
                                     <!-- 9th  tab ends -->
 
-
-
-
                                     <!-- 10th  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-add" role="tabpanel" aria-labelledby="v-pills-add-tab">
                                         <h5 class="card-title">Joint Account Information </h5>
                                         <span class="d-flex justify-content-end">
-                                    
                                             <!-- <a class="edit_add">
                                                 <i class="bi bi-pencil"></i>&nbsp;Edit
                                             </a> -->
@@ -831,7 +646,6 @@
                                                 <option>Rights of Survivorship</option>
                                                 <option>Tenats in common</option>
                                                 <option>Community in property</option>
-                                               
                                             </select>
                                         </div>
                                         <div class=" forms_edits">
@@ -839,8 +653,36 @@
                                             <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
                                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
                                             <small>This should be the address used for tax purposes</small>
+                                        </div>
 
+                                        <div class=" forms_edits">
+                                            <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
+                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                        </div>
 
+                                        <div class="form-group col-md-8">
+                                            <label for="inputCity">City</label>
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+
+                                        <div class="form-group col-md-4 forms_edits">
+                                            <label for="inputState">State</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected="">Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip">ZIP CODE</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                        <!-- account 2 -->
+
+                                        <div class=" forms_edits">
+                                            <label for="exampleFormControlInput1"><b>Account Holder 2</b></label> <br>
+                                            <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
+                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            <small>This should be the address used for tax purposes</small>
                                         </div>
 
                                         <div class=" forms_edits">
@@ -865,45 +707,6 @@
                                             <input type="text" class="form-control" id="inputZip">
                                         </div>
 
-
-                                        <!-- account 2 -->
-
-                                        <div class=" forms_edits">
-                                            <label for="exampleFormControlInput1"><b>Account Holder 2</b></label> <br>
-                                            <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                            <small>This should be the address used for tax purposes</small>
-
-
-                                        </div>
-
-                                        <div class=" forms_edits">
-                                            <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                        </div>
-
-                                        <div class="form-group col-md-8">
-                                            <label for="inputCity">City</label>
-                                            <input type="text" class="form-control" id="inputCity">
-                                        </div>
-
-                                        <div class="form-group col-md-4 forms_edits">
-                                            <label for="inputState">State</label>
-                                            <select id="inputState" class="form-control">
-                                                            <option selected="">Choose...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="inputZip">ZIP CODE</label>
-                                            <input type="text" class="form-control" id="inputZip">
-                                        </div>
-
-
-
-
-
-
                                         <div class="row">
                                             <div class="col">
                                                 <div class=" d-flex justify-content-start    pt-4">
@@ -915,32 +718,174 @@
                                             <div class="col">
                                                 <div class=" d-flex justify-content-end   pt-4">
 
-                                                    <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit" id="add-account"> Save </button>
+                                                    <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit" id="add-account" url = <?php echo e(route('user.add.joint.account')); ?>> Save </button>
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
-
-
                                     </div>
                                     <!-- 10th  tab ends -->
-
-                                    <!-- ends -->
                                 </div>
                             </div>
                             <!-- End Vertical  Tabs -->
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
-
     </main>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
+<script>
+    $('.edit_info_class').click(function(event) {
+        event.preventDefault();
+        $('#viewinfo').removeClass('d-block');
+        $('#viewinfo').addClass('d-none');
+
+        $('#editinfo').removeClass('d-none');
+        $('#editinfo').addClass('d-block');
+    });
+
+    $('#cancel_edit').click(function(event) {
+        event.preventDefault();
+        $('#viewinfo').removeClass('d-none');
+        $('#viewinfo').addClass('d-block');
+
+        $('#editinfo').removeClass('d-block');
+        $('#editinfo').addClass('d-none');
+    });
+
+    //notification
+    $('.edit_notif_class').click(function(event) {
+        event.preventDefault();
+        $('#viewnotif').removeClass('d-block');
+        $('#viewnotif').addClass('d-none');
+
+        $('#editnotif').removeClass('d-none');
+        $('#editnotif').addClass('d-block');
+    });
+
+    $('#cancel_edit_notif').click(function(event) {
+        event.preventDefault();
+        $('#viewnotif').removeClass('d-none');
+        $('#viewnotif').addClass('d-block');
+
+        $('#editnotif').removeClass('d-block');
+        $('#editnotif').addClass('d-none');
+    });
+
+    //email
+    $('.edit_email').click(function(event) {
+        event.preventDefault();
+        $('#viewemail').removeClass('d-block');
+        $('#viewemail').addClass('d-none');
+
+        $('#editemail').removeClass('d-none');
+        $('#editemail').addClass('d-block');
+    });
+
+    $('#cancel_edit_email').click(function(event) {
+        event.preventDefault();
+        $('#viewemail').removeClass('d-none');
+        $('#viewnotif').addClass('d-block');
+
+        $('#editemail').removeClass('d-block');
+        $('#editemail').addClass('d-none');
+    });
+
+    //password
+    $('.edit_password').click(function(event) {
+        event.preventDefault();
+        $('#viewpass').removeClass('d-block');
+        $('#viewpass').addClass('d-none');
+
+        $('#editpass').removeClass('d-none');
+        $('#editpass').addClass('d-block');
+    });
+
+    $('#cancel_edit_pass').click(function(event) {
+        event.preventDefault();
+        $('#viewpass').removeClass('d-none');
+        $('#viewpass').addClass('d-block');
+
+        $('#editpass').removeClass('d-block');
+        $('#editpass').addClass('d-none');
+    });
+    //mobile num
+
+    $('.edit_number').click(function(event) {
+        event.preventDefault();
+        $('#view_num').removeClass('d-block');
+        $('#view_num').addClass('d-none');
+
+        $('#editnum').removeClass('d-none');
+        $('#editnum').addClass('d-block');
+    });
+
+    $('#cancel_edit_num').click(function(event) {
+        event.preventDefault();
+        $('#view_num').removeClass('d-none');
+        $('#view_num').addClass('d-block');
+
+        $('#editnum').removeClass('d-block');
+        $('#editnum').addClass('d-none');
+    });
+    //edit nick
+
+    $('.edit_nick').click(function(event) {
+        event.preventDefault();
+        $('#view_nick').removeClass('d-block');
+        $('#view_nick').addClass('d-none');
+
+        $('#editnick').removeClass('d-none');
+        $('#editnick').addClass('d-block');
+    });
+
+    $('#cancel_edit_nick').click(function(event) {
+        event.preventDefault();
+        $('#view_nick').removeClass('d-none');
+        $('#view_nick').addClass('d-block');
+
+        $('#editnick').removeClass('d-block');
+        $('#editnick').addClass('d-none');
+    });
+    //edit Dividend Reinvestment
+
+    $('.edit_dividends').click(function(event) {
+        event.preventDefault();
+        $('#view_dividens').removeClass('d-block');
+        $('#view_dividens').addClass('d-none');
+
+        $('#editdividends').removeClass('d-none');
+        $('#editdividends').addClass('d-block');
+    });
+
+    $('#cancel_edit_dividens').click(function(event) {
+        event.preventDefault();
+        $('#view_dividens').removeClass('d-none');
+        $('#view_dividens').addClass('d-block');
+
+        $('#editdividends').removeClass('d-block');
+        $('#editdividends').addClass('d-none');
+    });
+    //edit pay
+
+    $('.edit_pay').click(function(event) {
+        event.preventDefault();
+        $('#view_pay').removeClass('d-block');
+        $('#view_pay').addClass('d-none');
+
+        $('#editpay').removeClass('d-none');
+        $('#editpay').addClass('d-block');
+    });
+
+    $('#cancel_edit_pay').click(function(event) {
+        event.preventDefault();
+        $('#view_pay').removeClass('d-none');
+        $('#view_pay').addClass('d-block');
+
+        $('#editpay').removeClass('d-block');
+        $('#editpay').addClass('d-none');
+    });
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make($activeTemplate.'user.dashboard.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\towork\core\resources\views/templates/bit_gold/user/profile_settings.blade.php ENDPATH**/ ?>
