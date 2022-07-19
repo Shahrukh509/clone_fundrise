@@ -32,6 +32,11 @@ class UserController extends Controller
     }
     public function home()
     {
+<<<<<<< HEAD
+=======
+        // dd('hi at userscon');
+
+>>>>>>> 8e9441abbfb76845f5d609c063a62bcfeef41ff3
         $data['page_title'] = 'Dashboard';
         $data['totalInvest'] = Invest::where('user_id', auth()->id())->sum('amount');
         $data['totalWithdraw'] = Withdrawal::where('user_id', Auth::id())->whereIn('status', [1])->sum('amount');
@@ -426,6 +431,33 @@ class UserController extends Controller
             return back()->with($notify);
         }
     }
+
+
+
+                // CUSTOMZATION
+
+  public function transactions(Request $request){
+    // dd('hi');
+   
+   return view($this->activeTemplate.'user.transactions');
+
+
+  }
+
+   public function performance(Request $request){
+    // dd('hi');
+   
+   return view($this->activeTemplate.'user.performance');
+
+
+  }
+
+  public function portfolio(Request $request){
+
+    return view($this->activeTemplate.'user.portfolio');
+
+  }
+                // END OF CUSTOMIZATION
 
 
 
