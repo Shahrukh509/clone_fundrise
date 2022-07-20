@@ -642,7 +642,7 @@
                                         </span>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">JOINT ACCOUNT TYPE</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <select class="form-control" id="account_type_1" name="account_type">
                                                 <option>Rights of Survivorship</option>
                                                 <option>Tenats in common</option>
                                                 <option>Community in property</option>
@@ -650,61 +650,70 @@
                                         </div>
                                         <div class=" forms_edits">
                                             <label for="exampleFormControlInput1"><b>Account Holder 1</b></label> <br>
-                                            <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            <label for="">ADDRESS LINE 1</label>
+                                            <input type="text" class="form-control" id="line_address_1_1" name="line_address_1" placeholder="">
                                             <small>This should be the address used for tax purposes</small>
                                         </div>
 
                                         <div class=" forms_edits">
                                             <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            <input type="text" class="form-control" id="line_address_2_1" name="line_address_2" placeholder="">
                                         </div>
 
                                         <div class="form-group col-md-8">
                                             <label for="inputCity">City</label>
-                                            <input type="text" class="form-control" id="inputCity">
+                                            <input type="text" class="form-control" id="city1" name="city1">
+                                             <span class=" text-danger text-error city1_error"></span>
                                         </div>
+
 
                                         <div class="form-group col-md-4 forms_edits">
                                             <label for="inputState">State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
+                                            <select id="state1" class="form-control" name="state">
+                                                <option value="">Choose...</option>
+                                                <option>California</option>
+                                                <option>Texas</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="inputZip">ZIP CODE</label>
-                                            <input type="text" class="form-control" id="inputZip">
+                                            <input type="text" class="form-control" name="zip_code1" id="zip_code1">
+                                            <span class=" text-danger text-error zip_code1_error"></span>
                                         </div>
                                         <!-- account 2 -->
 
                                         <div class=" forms_edits">
-                                            <label for="exampleFormControlInput1"><b>Account Holder 2</b></label> <br>
-                                            <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            <label for=""><b>Account Holder 2</b></label> <br>
+                                            <label for="">ADDRESS LINE 1</label>
+                                            <input type="text" class="form-control" id="line_address_1_2" name="line_address_1" placeholder="">
                                             <small>This should be the address used for tax purposes</small>
                                         </div>
 
                                         <div class=" forms_edits">
                                             <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            <input type="text" class="form-control" id="line_address_2_2" name="line_address_2" placeholder="">
                                         </div>
 
                                         <div class="form-group col-md-8">
                                             <label for="inputCity">City</label>
-                                            <input type="text" class="form-control" id="inputCity">
+                                            <input type="text" class="form-control" id="city2" name="city2">
+                                            <span class=" text-danger text-error city2_error"></span>
                                         </div>
 
                                         <div class="form-group col-md-4 forms_edits">
                                             <label for="inputState">State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
+                                            <select id="state2" class="form-control" name="state">
+                                                <option value="">Choose...</option>
+                                                <option>California</option>
+                                                <option>Texas</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="inputZip">ZIP CODE</label>
-                                            <input type="text" class="form-control" id="inputZip">
+                                            <input type="text" class="form-control" name="zip_code2" id="zip_code2">
+                                            <span class=" text-danger text-error zip_code2_error"></span>
                                         </div>
 
                                         <div class="row">
@@ -718,7 +727,7 @@
                                             <div class="col">
                                                 <div class=" d-flex justify-content-end   pt-4">
 
-                                                    <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit" id="add-account" url = <?php echo e(route('user.add.joint.account')); ?>> Save </button>
+                                                    <button type="submit" class="button  button-fundrise-orange add-account" data-test="lead-capture-submit" id="add-account" url = <?php echo e(route('user.add.joint.account')); ?>> Save </button>
                                                 </div>
                                             </div>
                                         </div>

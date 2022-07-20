@@ -17,7 +17,7 @@
 
                        {{-- FORM --}}
 
-                <form id= "form_password" data-url ="{{ route('user.personal-info.password.store') }}"name="leadCapture" class="lead-capture position-relative mt-25" method="POST" after-url = "{{ route('user.step.age') }}" data-id = {{ $id }}>
+                <form id= "form_password" data-url ="{{ route('user.personal-info.password.store') }}"name="leadCapture" class="lead-capture position-relative mt-25" method="POST" after-url = "{{ route('user.step.account.type') }}" data-id = {{ $id }}>
                     @csrf
                     <div class="lead-capture__fieldset">
                         <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">

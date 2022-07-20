@@ -31,6 +31,16 @@ class QuestionaireController extends Controller
         $this->activeTemplate = activeTemplate();
     }
 
+    public function showaccountType()
+    {
+   
+      $page_title = "Sign Up";
+      $activeTemplate = $this->activeTemplate;
+      $question = Questionaire::where('url_slug','account-type')->first();
+        return view($this->activeTemplate . 'user.auth.questionnaire.account_type', compact('page_title','activeTemplate','question'));
+
+    }
+
   
   public function showAge(Request $request){
      $page_title = "Sign Up";
@@ -88,6 +98,58 @@ class QuestionaireController extends Controller
 
 
   // }
+
+  public function storeAccountType(Request $request)
+  {
+
+   if($request->ajaxback){
+      //  $page_title = "Sign Up";
+      // $question = Questionaire::where('url_slug','age')->first();
+
+      // // basically we inject the slug of next step
+      // $url_slug = 'investment-experience';
+      // $prev_url = 'account-type';
+      // $url = Route('user.investment.store');
+      // $pre_slug_url = 'investment-experience';
+
+      // // foreach($question->options as $data){
+
+      // //   dd($data);
+      // // }
+
+    return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
+
+   }
+
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
+   if($data){
+
+
+    $data->questionaire_answer_id = $request->account_type;
+
+
+   }else{
+
+    $data = UserAnswer::create([
+      'user_id' => Auth()->user()->id,
+      'questionaire_id' => $request->questionaire_id,
+      'questionaire_answer_id' => $request->account_type
+   ]);
+   }
+
+    if($data){
+
+      return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
+    }
+    else{
+
+      return response()->json([
+         'added' => false
+      ]);
+    }
+
+   
+  }
 
   public function storeAge(Request $request){
 

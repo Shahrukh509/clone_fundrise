@@ -8,6 +8,7 @@
     <title>Dashboard </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
 
     <!-- Favicons -->
     <link href="<?php echo e(asset('assets/user/img/favicon.png')); ?>" rel="icon">
@@ -28,6 +29,7 @@
 
     <!-- Template Main CSS File -->
     <link href="<?php echo e(asset('assets/user/css/style.css')); ?>" rel="stylesheet">
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 
     <!-- =======================================================
 

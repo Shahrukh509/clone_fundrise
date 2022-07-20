@@ -16,7 +16,7 @@
 
                        
 
-                <form id= "form_password" data-url ="<?php echo e(route('user.personal-info.password.store')); ?>"name="leadCapture" class="lead-capture position-relative mt-25" method="POST" after-url = "<?php echo e(route('user.step.age')); ?>" data-id = <?php echo e($id); ?>>
+                <form id= "form_password" data-url ="<?php echo e(route('user.personal-info.password.store')); ?>"name="leadCapture" class="lead-capture position-relative mt-25" method="POST" after-url = "<?php echo e(route('user.step.account.type')); ?>" data-id = <?php echo e($id); ?>>
                     <?php echo csrf_field(); ?>
                     <div class="lead-capture__fieldset">
                         <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">

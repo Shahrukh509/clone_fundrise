@@ -8,6 +8,7 @@ use App\Models\GeneralSetting;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\UserLogin;
+use App\Models\Questionaire;
 use App\Models\UserWallet;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -72,6 +73,17 @@ class RegisterController extends Controller
    
     public function saveEmail(Request $request)
     {
+        if($request->ajaxback){
+
+         $page_title = "Sign Up";
+            $question = Questionaire::where('url_slug','account-type')->first();
+             $id = Session::get('user_id');
+
+
+           return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_user_password', compact('page_title','question','id'));
+
+
+        }
         $data = User::where('email',$request->email)->first();
         if($data){
             return response()->json([
@@ -111,6 +123,7 @@ class RegisterController extends Controller
 
     public function savePassword(Request $request)
     {
+
         $validator = Validator::make($request->all(),[
             'password' => 'required|min:6']);
         if(!$validator->passes()){
@@ -130,9 +143,10 @@ class RegisterController extends Controller
 
             $id = Auth()->user()->id;
             $page_title = "Sign Up";
-            $ajax = true;
+            $question = Questionaire::where('url_slug','account-type')->first();
 
-           return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age', compact('page_title','ajax')); 
+
+           return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_account_type', compact('page_title','question')); 
         }else{
             return response()->json([
                 'success' => false,

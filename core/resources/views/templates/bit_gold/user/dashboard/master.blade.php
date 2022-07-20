@@ -29,6 +29,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/user/css/style.css') }}" rel="stylesheet">
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 
     <!-- =======================================================
 

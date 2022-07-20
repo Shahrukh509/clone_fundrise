@@ -477,7 +477,9 @@ Route::get('placeholder-image/{size?}', 'SiteController@placeholderImage')->name
 Route::get('/{slug}', 'SiteController@pages')->name('pages');
 
 //==================================================customization==================================//
+
 Route::name('user.')->group(function () {
+
   Route::get('questionnaire/personal-info', 'Auth\RegisterController@showRegistrationForm')->name('register');
   // FOR SAVING EMAIL AND CHECKING
 
@@ -486,24 +488,49 @@ Route::name('user.')->group(function () {
 
   //showing password page 
   Route::get('questionnaire/password','Auth\RegisterController@showPasswordPage')->name('password.show');
-  // END OF SHOWING PASSWORD PAGE
+            // END OF SHOWING PASSWORD PAGE
 
-  // SAVING PASSWORD IN DB
+            // SAVING PASSWORD IN DB
   Route::Post('questionnaire/password/storing', 'Auth\RegisterController@savePassword')->name('personal-info.password.store');
-  // END OF SAVING PASSWORD
-       
-  // Start questionaire step==age
-  Route::get('questionnaire/age','Auth\QuestionaireController@showAge')->name('step.age');
+           // END OF SAVING PASSWORD
 
-  Route::get('questionnaire/age/store','Auth\QuestionaireController@storeAge')->name('step.age.store');
-  // END AGE
 
+            
+         // Start questionaire step == account-type
+
+  Route::get('questionnaire/account-type','Auth\QuestionaireController@showaccountType')->name('step.account.type');
+
+  Route::post('questionnaire/account-type/store','Auth\QuestionaireController@storeAccountType')->name('step.account.type.store');
+
+
+             // END account-type
+
+                    //start of investment
   Route::get('questionnaire/investment-experience',function(){
     return redirect()->route('user.step.age');
   });
 
   Route::get('questionnaire/investment-experience/store','Auth\QuestionaireController@investStore')->name('investment.store');
-  // end of investment
+                      // end of investment
+
+
+       
+              // Start questionaire step==age
+  Route::get('questionnaire/age','Auth\QuestionaireController@showAge')->name('step.age');
+
+  Route::get('questionnaire/age/store','Auth\QuestionaireController@storeAge')->name('step.age.store');
+                    
+                    // END AGE
+
+
+  //                 // start of investment-experience
+
+  // Route::get('questionnaire/investment-experience',function(){
+  //   return redirect()->route('user.step.age');
+  // });
+
+  // Route::get('questionnaire/investment-experience/store','Auth\QuestionaireController@investStore')->name('investment.store');
+  //           // end of investment
 
   Route::get('questionnaire/source-of-wisdom',function(){
     return redirect()->route('user.step.age');
