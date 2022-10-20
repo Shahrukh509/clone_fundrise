@@ -35,7 +35,7 @@
                         <i class="bi bi-currency-dollar"></i>
                      </div>
                      <div class="ps-3">
-                        <h6>$24,242.00</h6>
+                        <h6>{{ $contribution }}</h6>
                         <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
                      </div>
                   </div>
@@ -533,7 +533,7 @@
                         <tr>
                            <td>Total</td>
                            <td>---</td>
-                           <td>47</td>
+                           <td>--</td>
                         </tr>
                      </tbody>
                   </table>
@@ -557,7 +557,7 @@
                   </ul>
                </div>
                <div class="card-body pb-0">
-                  <h5 class="card-title"> <span> Your portfolio</span> | $24,242.00 </h5>
+                  <h5 class="card-title"> <span> Your portfolio</span> | {{ $contribution }} </h5>
                   <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
                   <script>
                      document.addEventListener("DOMContentLoaded", () => {
@@ -575,7 +575,7 @@
                            radius: ['40%', '70%'],
                            avoidLabelOverlap: false,
                            label: {
-                               show: false,
+                               show: true,
                                position: 'center'
                            },
                            emphasis: {
@@ -590,7 +590,7 @@
                            },
                            data: [{
                                value: 1048,
-                               name: 'Search Engine'
+                               name: 'Your Portfolio | ${{ $contribution }}'
                            }, {
                                value: 735,
                                name: 'Direct'

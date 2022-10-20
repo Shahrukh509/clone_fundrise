@@ -15,7 +15,11 @@ use App\Models\SupportTicket;
 use App\Models\TimeSetting;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\ContributionAmount;
 use App\Models\WithdrawMethod;
+use App\Models\Questionaire;
+use App\Models\UserAnswer;
+use App\Models\BankDetail;
 use App\Models\Withdrawal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,74 +38,76 @@ class UserController extends Controller
     {
         // dd('hi at userscon');
 
-        $data['page_title'] = 'Dashboard';
-        $data['totalInvest'] = Invest::where('user_id', auth()->id())->sum('amount');
-        $data['totalWithdraw'] = Withdrawal::where('user_id', Auth::id())->whereIn('status', [1])->sum('amount');
-        $data['lastWithdraw'] = Withdrawal::where('user_id', Auth::id())->whereIn('status', [1])->latest()->first('amount');
-        $data['totalDeposit'] = Deposit::where('user_id', Auth::id())->where('status', 1)->sum('amount');
-        $data['lastDeposit'] = Deposit::where('user_id', Auth::id())->where('status', 1)->latest()->first('amount');
-        $data['totalTicket'] = SupportTicket::where('user_id', Auth::id())->count();
-        $data['user'] = Auth::user();
-        $data['transactions'] = $data['user']->transactions->sortByDesc('id')->take(8);
+        // $data['page_title'] = 'Dashboard';
+        // $data['totalInvest'] = Invest::where('user_id', auth()->id())->sum('amount');
+        // $data['totalWithdraw'] = Withdrawal::where('user_id', Auth::id())->whereIn('status', [1])->sum('amount');
+        // $data['lastWithdraw'] = Withdrawal::where('user_id', Auth::id())->whereIn('status', [1])->latest()->first('amount');
+        // $data['totalDeposit'] = Deposit::where('user_id', Auth::id())->where('status', 1)->sum('amount');
+        // $data['lastDeposit'] = Deposit::where('user_id', Auth::id())->where('status', 1)->latest()->first('amount');
+        // $data['totalTicket'] = SupportTicket::where('user_id', Auth::id())->count();
+        // $data['user'] = Auth::user();
+        // $data['transactions'] = $data['user']->transactions->sortByDesc('id')->take(8);
+        $data['contribution'] = ContributionAmount::select('amount')->where('user_id',Auth()->user()->id)->sum('amount');
+        // dd($data);
 
         return view($this->activeTemplate . 'user.dashboard', $data);
     }
 
-    public function profile()
-    {
-        $data['page_title'] = "Profile Setting";
-        $data['user'] = Auth::user();
-        return view($this->activeTemplate. 'user.profile_settings', $data);
-    }
+    // public function profile()
+    // {
+    //     $data['page_title'] = "Profile Setting";
+    //     $data['user'] = Auth::user();
+    //     return view($this->activeTemplate. 'user.profile_settings', $data);
+    // }
 
-    public function submitProfile(Request $request)
-    {
-        return $request;
-        $user = Auth::user();
-        $request->validate([
-            'firstname' => 'required|string|max:50',
-            'lastname' => 'required|string|max:50',
-            'address' => "sometimes|required|max:80",
-            'state' => 'sometimes|required|max:80',
-            'zip' => 'sometimes|required|max:40',
-            'city' => 'sometimes|required|max:50',
-            'image' => 'mimes:png,jpg,jpeg'
-        ],[
-            'firstname.required'=>'First Name Field is required',
-            'lastname.required'=>'Last Name Field is required'
-        ]);
+    // public function submitProfile(Request $request)
+    // {
+    //     return $request;
+    //     $user = Auth::user();
+    //     $request->validate([
+    //         'firstname' => 'required|string|max:50',
+    //         'lastname' => 'required|string|max:50',
+    //         'address' => "sometimes|required|max:80",
+    //         'state' => 'sometimes|required|max:80',
+    //         'zip' => 'sometimes|required|max:40',
+    //         'city' => 'sometimes|required|max:50',
+    //         'image' => 'mimes:png,jpg,jpeg'
+    //     ],[
+    //         'firstname.required'=>'First Name Field is required',
+    //         'lastname.required'=>'Last Name Field is required'
+    //     ]);
 
 
-        $in['firstname'] = $request->firstname;
-        $in['lastname'] = $request->lastname;
-        $country = @$user->address->country;
-        $in['address'] = [
-            'address' => $request->address,
-            'state' => $request->state,
-            'zip' => $request->zip,
-            'country' => $country,
-            'city' => $request->city,
-        ];
+    //     $in['firstname'] = $request->firstname;
+    //     $in['lastname'] = $request->lastname;
+    //     $country = @$user->address->country;
+    //     $in['address'] = [
+    //         'address' => $request->address,
+    //         'state' => $request->state,
+    //         'zip' => $request->zip,
+    //         'country' => $country,
+    //         'city' => $request->city,
+    //     ];
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = time() . '_' . $user->username . '.jpg';
-            $location = imagePath()['profile']['path'] .'/'. $filename;
-            $in['image'] = $filename;
+    //     if ($request->hasFile('image')) {
+    //         $image = $request->file('image');
+    //         $filename = time() . '_' . $user->username . '.jpg';
+    //         $location = imagePath()['profile']['path'] .'/'. $filename;
+    //         $in['image'] = $filename;
 
-            $path = imagePath()['profile']['path'] .'/';
-            $link = $path . $user->image;
-            if (file_exists($link)) {
-                @unlink($link);
-            }
-            $image = Image::make($image);
-            $image->resize(800, 800);
-            $image->save($location);
-        }
-        $user->fill($in)->save();
-        $notify[] = ['success', 'Profile Updated successfully.'];
-        return back()->withNotify($notify);
-    }
+    //         $path = imagePath()['profile']['path'] .'/';
+    //         $link = $path . $user->image;
+    //         if (file_exists($link)) {
+    //             @unlink($link);
+    //         }
+    //         $image = Image::make($image);
+    //         $image->resize(800, 800);
+    //         $image->save($location);
+    //     }
+    //     $user->fill($in)->save();
+    //     $notify[] = ['success', 'Profile Updated successfully.'];
+    //     return back()->withNotify($notify);
+    // }
 
     public function changePassword()
     {
@@ -119,20 +125,179 @@ class UserController extends Controller
         try {
             $user = auth()->user();
             if (Hash::check($request->current_password, $user->password)) {
+
+
                 $password = Hash::make($request->password);
                 $user->password = $password;
                 $user->save();
-                $notify[] = ['success', 'Password Changes successfully.'];
-                return back()->withNotify($notify);
+
+                return response()->json([
+                    'success' => true
+                ]);
             } else {
-                $notify[] = ['error', 'Current password not match.'];
-                return back()->withNotify($notify);
+                 return response()->json([
+                    'success' => false
+                ]);
             }
         } catch (\PDOException $e) {
             $notify[] = ['error', $e->getMessage()];
             return back()->withNotify($notify);
         }
     }
+
+    public function submitEmail(Request $request)
+    {
+
+        $this->validate($request, [
+            'email' => 'required|email|unique:users'
+        ]);
+        try {
+            $user = auth()->user();
+            $user->email = $request->email;
+            $user->save();
+            if($user){
+
+               return response()->json([
+                    'success' => true
+                ]);  
+            
+                
+               
+            } else {
+                 return response()->json([
+                    'success' => false
+                ]);
+            
+        }
+        } catch (\PDOException $e) {
+            $notify[] = ['error', $e->getMessage()];
+            return back()->withNotify($notify);
+        }
+    }
+
+    public function submitNotification(Request $request)
+    {
+
+        // $this->validate($request, [
+        //     'email' => 'required|email|unique:users'
+        // ]);
+        try {
+            $user = auth()->user();
+            $user->notification_setting = [
+                "InsightsAndResources" => $request->insight?? 0,
+                "ProductAndFeatureAnnouncements" =>$request->product?? 0,
+                "PortfolioPerformance" =>$request->portfolio?? 0,
+                "ProjectUpdates"=>$request->project?? 0,
+                "Newsletter" =>$request->newsletter?? 0
+            ];
+            $user->save();
+            if($user){
+
+               return response()->json([
+                    'success' => true
+                ]);  
+            
+                
+               
+            } else {
+                 return response()->json([
+                    'success' => false
+                ]);
+            
+        }
+        } catch (\PDOException $e) {
+            $notify[] = ['error', $e->getMessage()];
+            return back()->withNotify($notify);
+        }
+    }
+
+    public function submitDividend(Request $request)
+    {
+     
+
+        try {
+
+            $user = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
+
+                // dd($user);
+
+            if($user){
+
+
+
+             $user->questionaire_answer_id = $request->questionaire_answer_id;
+             $user->update();
+
+             return response()->json([
+                    'success' => true,
+                    'status' => 'updated'
+                ]); 
+            }
+            else{
+
+             return response()->json([
+                    'success' => false,
+                    'status' => 'notupdated'
+                ]);  
+            
+                
+               
+            } 
+        } catch (\PDOException $e) {
+            $notify[] = ['error', $e->getMessage()];
+            return back()->withNotify($notify);
+        }
+    }
+
+  
+
+    public function  submitPaymentMethod(Request $request)
+    {
+     
+
+        try {
+
+            $bankdata = BankDetail::where('user_id',Auth()->user()->id)->where('id',$request->id)->first();
+
+            $give_status_zero_to_all = BankDetail::where('user_id',Auth()->user()->id)->update(['status' => 0]);
+
+                // dd($user);
+
+            if($bankdata){
+
+
+
+             $bankdata->status = $request->status;
+             // if($request->status == 1){
+
+             //  $make_other_zero = BankDetail::where('user_id',Auth()->user()->id)->where('id','!=',$bankdata->id)->update(['status',0]);  
+
+             // }
+             
+             $bankdata->update();
+
+             return response()->json([
+                    'success' => true,
+                    'status' => 'updated'
+                ]); 
+            }
+            else{
+
+             return response()->json([
+                    'success' => false,
+                    'status' => 'notupdated'
+                ]);  
+            
+                
+               
+            } 
+        } catch (\PDOException $e) {
+            $notify[] = ['error', $e->getMessage()];
+            return back()->withNotify($notify);
+        }
+    }
+
+
 
     /*
      * Deposit History
@@ -432,26 +597,92 @@ class UserController extends Controller
 
 
                 // CUSTOMZATION
+  public function profile()
+    {
+        $data['page_title'] = "Profile Setting";
+        $data['user'] = Auth::user();
+        return view($this->activeTemplate. 'user.profile_settings', $data);
+    }
 
-  public function transactions(Request $request){
+    public function submitProfile(Request $request)
+    {
+        $user = User::where('id',Auth::user()->id)->first();
+
+        // dd('hi at here');
+        $request->validate([
+            'firstname' => 'required|string|max:50',
+            'lastname' => 'required|string|max:50',
+            'address_first' => "required|required|max:255",
+            'state' => 'required|required|max:80',
+            'zip' => 'required|integer|regex:/\b\d{5}\b/',
+            'city' => 'required|required|max:50',
+            'country' => 'required|required|max:50',
+        ]);
+
+        $user->firstname = $request->firstname;
+       $user->lastname  = $request->lastname;
+        $user->address =  $request->address_first;
+        $user->state = $request->state;
+        $user->zip_code =$request->zip ;
+        $user->country_of_citizenship =$request->country;
+        $user->city=$request->city;
+    
+        $user->save();
+        /* $notify[] = ['success', 'Profile Updated successfully.'];
+        return back()->withNotify($notify); */
+        return 'success';
+    }
+
+
+    public function updateMobile(Request $request)
+    {
+        $this->validate($request, [
+            'mobile' => 'required',
+        ]);
+        try {
+            $user = auth()->user();
+            $user->mobile = $request->mobile;
+            $user->save();
+            return 'success';
+        } catch (\PDOException $e) {
+            /* $notify[] = ['error', $e->getMessage()];
+            return back()->withNotify($notify); */
+            return 'failed';
+        }
+    }
+
+
+    public function transactions(Request $request){
     // dd('hi');
+
+    $data['contribution'] = ContributionAmount::select('amount')->where('user_id',Auth()->user()->id)->sum('amount');
+
+    // $questionaire_id = Questionaire::where('url_slug','plan')->first()->id;
+    $data['plans'] = ContributionAmount::where('user_id',Auth()->user()->id)->get();
+    // dd($data['plans'][0]['bankdetails']);
    
-   return view($this->activeTemplate.'user.transactions');
+   return view($this->activeTemplate.'user.transactions',$data);
 
 
   }
 
    public function performance(Request $request){
     // dd('hi');
+     $data['contribution'] = ContributionAmount::select('amount')->where('user_id',Auth()->user()->id)->sum('amount');
+    $data['contribution'] = ContributionAmount::where('user_id',Auth()->user()->id)->first();
    
-   return view($this->activeTemplate.'user.performance');
+   return view($this->activeTemplate.'user.performance',$data);
 
 
   }
 
   public function portfolio(Request $request){
 
-    return view($this->activeTemplate.'user.portfolio');
+    $data['contribution'] = ContributionAmount::select('amount')->where('user_id',Auth()->user()->id)->sum('amount');
+    // print_r($data);
+    // exit;
+
+    return view($this->activeTemplate.'user.portfolio',$data);
 
   }
                 // END OF CUSTOMIZATION

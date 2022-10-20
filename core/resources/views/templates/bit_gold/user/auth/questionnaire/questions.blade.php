@@ -7,7 +7,7 @@
    
                    <h1 class="heading-2  pb-3">{{ $question->question }}</h1>
    
-                   <form id="form-question" name="leadCapture" class="lead-capture position-relative mt-25" action="{{ $url}}" data-slug="{{ $url_slug }}" data-question-id="{{ $question->id }}">
+                   <form id="form-question" name="leadCapture" class="lead-capture position-relative mt-25" action="{{ $url }}" data-slug="{{ $url_slug }}" data-question-id="{{ $question->id }}">
                        <div class="lead-capture__fieldset">
                            <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">
    
@@ -18,7 +18,8 @@
                                    $answer = \App\Models\UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_answer_id',$data->id)->first();
                                    @endphp
    
-                                   <li class="radio-checkbox-item-large"><label>
+                                   <li class="radio-checkbox-item-large">
+                                    <label>
                                        <input type="radio" id="question" name="question" data-answer="{{ $data->options }}"
                                                data-test="TAXABLE" value="{{ $data->id }}"@if(!empty($answer))
                                                {{

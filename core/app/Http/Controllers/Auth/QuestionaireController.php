@@ -12,6 +12,8 @@ use App\Models\QuestionaireAnswer;
 use App\Models\UserAnswer;
 use App\Models\UserLogin;
 use App\Models\UserWallet;
+use App\Models\ContributionAmount;
+use App\Models\BankDetail;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -99,128 +101,213 @@ class QuestionaireController extends Controller
 
   // }
 
-  public function storeAccountType(Request $request)
-  {
+  // public function storeAccountType(Request $request)
+  // {
 
-   if($request->ajaxback){
-      //  $page_title = "Sign Up";
-      // $question = Questionaire::where('url_slug','age')->first();
+  //  if($request->ajaxback){
+  //     //  $page_title = "Sign Up";
+  //     // $question = Questionaire::where('url_slug','age')->first();
 
-      // // basically we inject the slug of next step
-      // $url_slug = 'investment-experience';
-      // $prev_url = 'account-type';
-      // $url = Route('user.investment.store');
-      // $pre_slug_url = 'investment-experience';
+  //     // // basically we inject the slug of next step
+  //     // $url_slug = 'investment-experience';
+  //     // $prev_url = 'account-type';
+  //     // $url = Route('user.investment.store');
+  //     // $pre_slug_url = 'investment-experience';
 
-      // // foreach($question->options as $data){
+  //     // // foreach($question->options as $data){
 
-      // //   dd($data);
-      // // }
+  //     // //   dd($data);
+  //     // // }
 
-    return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
+  //   return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
 
-   }
+  //  }
 
-   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
-   if($data){
-
-
-    $data->questionaire_answer_id = $request->account_type;
+  //  $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
+  //  if($data){
 
 
-   }else{
+  //   $data->questionaire_answer_id = $request->account_type;
 
-    $data = UserAnswer::create([
-      'user_id' => Auth()->user()->id,
-      'questionaire_id' => $request->questionaire_id,
-      'questionaire_answer_id' => $request->account_type
-   ]);
-   }
 
-    if($data){
+  //  }else{
 
-      return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
-    }
-    else{
+  //   $data = UserAnswer::create([
+  //     'user_id' => Auth()->user()->id,
+  //     'questionaire_id' => $request->questionaire_id,
+  //     'questionaire_answer_id' => $request->account_type
+  //  ]);
+  //  }
 
-      return response()->json([
-         'added' => false
-      ]);
-    }
+  //   if($data){
+
+  //     return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
+  //   }
+  //   else{
+
+  //     return response()->json([
+  //        'added' => false
+  //     ]);
+  //   }
 
    
-  }
+  // }
 
-  public function storeAge(Request $request){
+  public function storeAccountType(Request $request)
+   {  
+      if($request->ajaxback){
+         return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age'); 
+      }
 
-    if($request->ajaxback){
-       $page_title = "Sign Up";
-      $question = Questionaire::where('url_slug','investment-experience')->first();
+      $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
 
-      // basically we inject the slug of next step
-      $url_slug = 'source-of-wisdom';
-      $prev_url = 'investment-experience';
-      $url = Route('user.investment.store');
-      $pre_slug_url = 'investment-experience';
+      if($data){
+         $data->questionaire_answer_id = $request->account_type;
+         $data->save();
+      }else{
+         $data = UserAnswer::create([
+            'user_id' => Auth()->user()->id,
+            'questionaire_id' => $request->questionaire_id,
+            'questionaire_answer_id' => $request->account_type
+         ]);
+      }
 
-      // foreach($question->options as $data){
-
-      //   dd($data);
-      // }
-
-    return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
-
+      if($data){
+         $account_type = $data->hasAccountType->options;
+         return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_age', compact('account_type')); 
+      }
+      else{
+         return response()->json([
+            'added' => false
+         ]);
+      }
    }
 
-  
 
-   $validator = Validator::make($request->all(),[
-            'age' => 'required']);
-        if(!$validator->passes()){
+  public function storeAge(Request $request){
+      if($request->ajaxback){
+         $page_title = "Sign Up";
+         $question = Questionaire::where('url_slug','investment-experience')->first();
+         // basically we inject the slug of next step
+         $url_slug = 'source-of-wisdom';
+         $prev_url = 'investment-experience';
+         $url = Route('user.investment.store');
+         $pre_slug_url = 'investment-experience';
 
-          return response()->json([
+         return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
+      }
+
+      $validator = Validator::make($request->all(),
+      [
+         'age' => 'required'
+      ]);
+      if(!$validator->passes()){
+         return response()->json([
             'success' => false,
             'error_issue' => true,
-             'error' => $validator->errors()->toArray()
+            'error' => $validator->errors()->toArray()
          ]);
+      }
     
-    }
-    // dd(Auth()->user()->id);
-    
-   $data = User::where('id',Auth()->user()->id)->first();
+      $data = User::where('id',Auth()->user()->id)->first();
 
+      $data->age = $request->age;
+      $data->save();
 
+      if($data){
+         $page_title = "Sign Up";
+         $question = Questionaire::where('url_slug','investment-experience')->first();
+         // basically we inject the slug of next step
+          $url_slug = 'source-of-wisdom';
+         $prev_url = 'investment-experience';
+         $url = Route('user.investment.store');
+         $pre_slug_url = 'investment-experience'; 
 
-   $data->age = $request->age;
-   $data->save();
-   if($data){
-
-      $page_title = "Sign Up";
-      $question = Questionaire::where('url_slug','investment-experience')->first();
-      // basically we inject the slug of next step
-      $url_slug = 'source-of-wisdom';
-      $prev_url = 'investment-experience';
-      $url = Route('user.investment.store');
-      $pre_slug_url = 'investment-experience';
-
-      // foreach($question->options as $data){
-
-      //   dd($data);
-      // }
-
-    return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
-
-   }else{
-
-      return response()->json([
+         if(isset($request->account_type) && $request->account_type=='Retirement Account'){
+            $account_type = $request->account_type;
+            $ira_view = (string) view($this->activeTemplate . 'user.auth.questionnaire.ira.ajax_page_signup', compact('page_title','question', 'account_type'));
+            return response()->json(['account_type'=>'retired', 'view' => $ira_view]); 
+         }else{
+            return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url_slug','prev_url','url','pre_slug_url')); 
+         }
+      }else{
+         return response()->json([
             'success' => false,
             'added' => false
          ]);
-
-
-
+      }
    }
-  }
+
+  // public function storeAge(Request $request){
+
+  //   if($request->ajaxback){
+  //      $page_title = "Sign Up";
+  //     $question = Questionaire::where('url_slug','investment-experience')->first();
+
+  //     // basically we inject the slug of next step
+  //     $url_slug = 'source-of-wisdom';
+  //     $prev_url = 'investment-experience';
+  //     $url = Route('user.investment.store');
+  //     $pre_slug_url = 'investment-experience';
+
+  //     // foreach($question->options as $data){
+
+  //     //   dd($data);
+  //     // }
+
+  //   return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
+
+  //  }
+
+  
+
+  //  $validator = Validator::make($request->all(),[
+  //           'age' => 'required']);
+  //       if(!$validator->passes()){
+
+  //         return response()->json([
+  //           'success' => false,
+  //           'error_issue' => true,
+  //            'error' => $validator->errors()->toArray()
+  //        ]);
+    
+  //   }
+  //   // dd(Auth()->user()->id);
+    
+  //  $data = User::where('id',Auth()->user()->id)->first();
+
+
+
+  //  $data->age = $request->age;
+  //  $data->save();
+  //  if($data){
+
+  //     $page_title = "Sign Up";
+  //     $question = Questionaire::where('url_slug','investment-experience')->first();
+  //     // basically we inject the slug of next step
+  //     $url_slug = 'source-of-wisdom';
+  //     $prev_url = 'investment-experience';
+  //     $url = Route('user.investment.store');
+  //     $pre_slug_url = 'investment-experience';
+
+  //     // foreach($question->options as $data){
+
+  //     //   dd($data);
+  //     // }
+
+  //   return (string) view($this->activeTemplate . 'user.auth.questionnaire.questions', compact('page_title','question','url','url_slug','prev_url','pre_slug_url')); 
+
+  //  }else{
+
+  //     return response()->json([
+  //           'success' => false,
+  //           'added' => false
+  //        ]);
+
+
+
+  //  }
+  // }
 
 
   public function investStore(Request $request){
@@ -593,14 +680,6 @@ $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id'
    if($data){
 
       $page_title = "Sign Up";
-      // $question = Questionaire::where('url_slug','investment-planning')->first();
-
-      // $url = Route('user.investingplanstore.store');
-
-      //    // basically we inject the slug of next step
-      // $url_slug = 'signup-checkout/signup';
-
-      // $prev_url = 'investment-planning';
 
     return (string) view($this->activeTemplate . 'user.auth.questionnaire.ajax_page_signup', compact('page_title')); 
 
@@ -636,15 +715,26 @@ $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id'
 
 // }
 
-
 public function showsignup(Request $request){
+      $page_title = "Sign Up";
+      $questionairAnswer = QuestionaireAnswer::where('options', 'Retirement Account')->first();
+      $userAnswer =  UserAnswer::where('user_id', Auth::user()->id)->where('questionaire_id', $questionairAnswer->questionaire_id)->where('questionaire_answer_id', $questionairAnswer->id)->first();
+      if(!empty($userAnswer)){
+         $account_type = $questionairAnswer->options;
+         return (string) view($this->activeTemplate . 'user.auth.questionnaire.ira.page_signup', compact('page_title', 'account_type'));
+      }else{
+         return (string) view($this->activeTemplate . 'user.auth.questionnaire.page_signup', compact('page_title'));
+      }
+   }
+// public function showsignup(Request $request){
  
-   $page_title = "Sign Up";
+//    $page_title = "Sign Up";
 
-  return (string) view($this->activeTemplate . 'user.auth.questionnaire.page_signup',compact('page_title'));
+//   return (string) view($this->activeTemplate . 'user.auth.questionnaire.page_signup',compact('page_title'));
 
 
-}
+// }
+
 
 public function storingbasicinfo(Request $request){
 
@@ -685,8 +775,11 @@ public function storingbasicinfo(Request $request){
 
 public function storingaccdetails(Request $request){
 
+
+
 $validator = Validator::make($request->all(),[
-            'mobile' => 'required|min:5'
+            'zip_code' => 'integer|regex:/\b\d{5}\b/',
+            'form_account' => 'required'
          ]);
 
         if(!$validator->passes()){
@@ -699,21 +792,201 @@ $validator = Validator::make($request->all(),[
 
         }
 
-   $user = User::where('id',Auth()->user()->id)->first();
+   $user= User::where('id',Auth()->user()->id)->first();
    $user->mobile = $request->mobile;
-   $user->address = $request->address??null;
+   $user->address = $request->address;
+   $user->city = $request->city;
+   $user->state = $request->state;
+   $user->zip_code = $request->zip_code;
    $user->save();
-   if($user){
 
-      return response()->json([
+
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
+
+   if($data){
+
+      $data->user_id = Auth()->user()->id;
+      $data->questionaire_id = $request->questionaire_id;
+      $data->questionaire_answer_id = $request->form_account;
+      $data->save();
+
+      // here form_account is questionaire_answer_id in user_answer table
+
+   }else{
+
+      $data = UserAnswer::create([
+         'user_id' => Auth()->user()->id,
+         'questionaire_id' => $request->questionaire_id,
+         'questionaire_answer_id' => $request->form_account 
+      ]);
+
+
+   }
+
+   if($data){
+
+    return response()->json([
             'success' => true,
             'message' => 'data added'
+         ]);
+
+
+   }else{
+  
+
+      return response()->json([
+            'success' => false,
+            'message' => 'data not added'
          ]);
 
 
    }
 
 }
+
+public function storingfunding(Request $request){
+
+
+
+$validator = Validator::make($request->all(),[
+            'amount' => 'required|numeric|gt:0',
+            'social_sec_num' => 'required',
+            'dob' => 'required|date',
+            'bank_name' =>'required|max:255',
+            'routing_num' => 'required|numeric',
+            'bank_account_number' => 'min:12|required_with:confirm_bankaccno|same:bank_account_number'
+
+         ]);
+
+        if(!$validator->passes()){
+
+          return response()->json([
+            'success' => false,
+            'error_issue' => true,
+             'error' => $validator->errors()->toArray()
+         ]);
+
+        }
+
+  // dd('everything is good');
+   $contributed_amount = ContributionAmount::where('user_id', Auth()->user()->id)->where('comment','1stcontribution')->first();
+   $data = UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$request->questionaire_id)->first();
+   $bankdata = BankDetail::where('user_id',Auth()->user()->id)->where('account_number',$request->bank_account_number)->first();
+
+   if($contributed_amount){
+
+    $contributed_amount->user_id = Auth()->user()->id;
+
+   $contributed_amount->amount = $request->amount;
+   $contributed_amount->bill = $request->amount;
+   $contributed_amount->comment = '1stcontribution';
+   $contributed_amount->save();
+    }
+
+   if($data){
+
+      $data->user_id = Auth()->user()->id;
+      $data->questionaire_id = $request->questionaire_id;
+      $data->questionaire_answer_id = $request->answer_id;
+      $data->save();
+
+      // here form_account is questionaire_answer_id in user_answer table
+
+      if($bankdata){
+       
+       $bankdata->user_id = Auth()->user()->id;
+       $bankdata->account_type = $request->account_type;
+       $bankdata->name = $request->bank_name;
+       $bankdata->routing_number = $request->routing_num;
+       $bankdata->account_number = $request->bank_account_number;
+       $bankdata->social_security_number= $request->social_sec_num;
+       $bankdata->date_of_birth = $request->dob;
+       $bankdata->save();
+       }
+
+   }else{
+
+
+      $contributed_amount = ContributionAmount::create([
+      'user_id' => Auth()->user()->id,
+      'amount' => $request->amount,
+      'bill' => $request->amount,
+      'comment' => '1stcontribution' ]);
+
+      $bankdata = BankDetail::create([
+      'user_id' => Auth()->user()->id,
+     'account_type' => $request->account_type,
+     'name' => $request->bank_name,
+     'routing_number' => $request->routing_num,
+    'account_number' => $request->bank_account_number,
+    'social_security_number' => $request->social_sec_num,
+    'date_of_birth' => $request->dob,
+]);
+      $data = UserAnswer::create([
+         'user_id' => Auth()->user()->id,
+         'questionaire_id' => $request->questionaire_id,
+         'questionaire_answer_id' => $request->answer_id 
+      ]);
+
+
+   }
+
+   if($data && $contributed_amount && $bankdata){
+      // dd('hi everything saved');
+
+    return response()->json([
+            'success' => true,
+            'message' => 'data added'
+         ]);
+
+
+   }else{
+  
+
+      return response()->json([
+            'success' => false,
+            'message' => 'data not added'
+         ]);
+
+
+   }
+
+}
+
+public function storeIraAddress(Request $request)
+   {
+      $validator = $request->validate([
+         'address' => 'required|max:255',
+         'city' => 'required|max:255',
+         'date_of_birth' => 'required',
+         'state' => 'required',
+         'phone' => 'required|max:20',
+         'social_security' => 'required|max:15',
+         'zip' => 'required|max:10',
+     ]); 
+
+      $user = Auth::user();
+      $user->address = $request->address;
+      $user->city = $request->city;
+      $user->state = $request->state;
+      $user->zip_code = $request->zip;
+      $user->mobile  = $request->phone;
+      $user->save();
+
+      $bank_details = BankDetail::create([
+         'user_id' => Auth::user()->id,
+         'account_type' => $request->account_type,
+         'social_security_number' => $request->social_security,
+         'date_of_birth' => $request->date_of_birth,
+      ]);
+      
+      if($bank_details){
+         return response()->json([
+            'success' => true,
+            'message' => 'data added'
+         ]);
+      }
+   }
 
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2022 at 04:01 PM
+-- Generation Time: Jul 21, 2022 at 01:52 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `username`, `email_verified_at`, `image`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Supper Admin', 'srkshah1998@gmail.com', 'admin', NULL, '5eea09e65cefb1592396262.jpg', '$2y$10$nZwHEGoPXQ6PG5VH/A6dDOgW.c2bkcoLmvOAbc62H8gWllZ/ZBegK', NULL, '2020-07-25 01:35:29');
+(1, 'Supper Admin', 'srkshah1998@gmail.com', 'admin', NULL, '5eea09e65cefb1592396262.jpg', '$2y$10$5Jhl1IIb9nR1Iwb8ruYn9.W3ybNWy.TVb3uHFdcqhI6fFJXjsEl2a', NULL, '2020-07-25 01:35:29');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `admin_notifications` (
 --
 
 INSERT INTO `admin_notifications` (`id`, `user_id`, `title`, `read_status`, `click_url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'New member registered', 0, '/admin/user/detail/1', '2022-06-29 06:03:56', '2022-06-29 06:03:56');
+(1, 1, 'New member registered', 1, '/admin/user/detail/1', '2022-06-29 06:03:56', '2022-07-18 10:57:21');
 
 -- --------------------------------------------------------
 
@@ -103,31 +103,9 @@ CREATE TABLE `answeroptions` (
 --
 
 INSERT INTO `answeroptions` (`id`, `questionaire_answers_id`, `sub_options`, `created_at`, `updated_at`) VALUES
-(1, 13, 'Streaming Tv', NULL, NULL),
-(2, 13, 'Cable Tv', NULL, NULL),
-(3, 13, 'Radio', NULL, NULL),
-(4, 14, 'Bigger Pockets', '2022-07-07 12:41:04', '2022-07-07 12:41:04'),
-(5, 14, 'NPR Podcast', '2022-07-07 12:41:30', '2022-07-07 12:41:30'),
-(6, 14, 'New York Times Podcast', '2022-07-07 12:42:20', '2022-07-07 12:42:20'),
-(7, 14, 'New Smartless', '2022-07-07 12:42:34', '2022-07-07 12:42:34'),
-(8, 14, 'New Personal Finance Podcast', '2022-07-07 12:42:51', '2022-07-07 12:42:51'),
-(9, 14, 'WNYC Podcast', '2022-07-07 12:43:07', '2022-07-07 12:43:07'),
-(10, 14, 'New Yorker Radio Hour', '2022-07-07 12:43:46', '2022-07-07 12:43:46'),
-(11, 16, 'Legacy Investing Show', '2022-07-07 12:44:43', '2022-07-07 12:44:43'),
-(12, 16, 'Johne Finance', '2022-07-07 12:45:09', '2022-07-07 12:45:09'),
-(13, 16, 'Michael Elefante', '2022-07-07 12:45:28', '2022-07-07 12:45:28'),
-(14, 16, 'Austin Hankwitz', '2022-07-07 12:45:49', '2022-07-07 12:45:49'),
-(15, 16, 'Daniel Iles', '2022-07-07 12:46:10', '2022-07-07 12:46:10'),
-(16, 16, 'Mrs Dow Jones', '2022-07-07 12:46:38', '2022-07-07 12:46:38'),
-(17, 17, 'Facebook/ Meta', '2022-07-07 12:48:21', '2022-07-07 12:48:21'),
-(18, 17, 'Instagram', '2022-07-07 12:48:38', '2022-07-07 12:48:38'),
-(19, 17, 'Reddit', '2022-07-07 12:48:47', '2022-07-07 12:48:47'),
-(20, 17, 'Youtube', '2022-07-07 12:48:58', '2022-07-07 12:48:58'),
-(21, 18, 'Morning Brew', '2022-07-07 12:49:36', '2022-07-07 12:49:36'),
-(22, 18, 'The Hustle', '2022-07-07 12:49:57', '2022-07-07 12:49:57'),
-(23, 18, 'The Skimm', '2022-07-07 12:50:20', '2022-07-07 12:50:20'),
-(24, 18, 'Kiplinger', '2022-07-07 12:50:38', '2022-07-07 12:50:38'),
-(25, 18, 'Side Hustle Nation', '2022-07-07 12:50:55', '2022-07-07 12:50:55');
+(26, 79, 'Entity account type', '2022-07-21 10:39:35', '2022-07-21 10:39:35'),
+(27, 79, 'Joint account type', '2022-07-21 10:39:58', '2022-07-21 10:39:58'),
+(28, 79, 'Trust account type', '2022-07-21 10:40:07', '2022-07-21 10:40:07');
 
 -- --------------------------------------------------------
 
@@ -204,7 +182,8 @@ INSERT INTO `email_logs` (`id`, `user_id`, `mail_sender`, `from`, `to`, `subject
 (1, 1, 'php', 'HYIPLab do-not-reply@email.com', 'user@site.com', 'Deposit Completed Successfully', '<table style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(0, 23, 54); text-decoration-style: initial; text-decoration-color: initial;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#001736\"><tbody><tr><td valign=\"top\" align=\"center\"><table class=\"mobile-shell\" width=\"650\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"td container\" style=\"width: 650px; min-width: 650px; font-size: 0pt; line-height: 0pt; margin: 0px; font-weight: normal; padding: 55px 0px;\"><div style=\"text-align: center;\"><img src=\"https://i.imgur.com/C9IS7Z1.png\" style=\"height: 240 !important;width: 338px;margin-bottom: 20px;\"></div><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"padding-bottom: 10px;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"tbrr p30-15\" style=\"padding: 60px 30px; border-radius: 26px 26px 0px 0px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"color: rgb(255, 255, 255); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 46px; padding-bottom: 25px; font-weight: bold;\">Hi username ,</td></tr><tr><td style=\"color: rgb(193, 205, 220); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 30px; padding-bottom: 25px;\"><div>Your deposit of <b>100 USD</b> is via&nbsp; <b>Stripe Storefront - USD </b>has been completed Successfully.<b><br></b></div><div><b><br></b></div><div><b>Details of your Deposit :<br></b></div><div><br></div><div>Amount : 100 USD</div><div>Charge: <font color=\"#000000\">3 USD</font></div><div><br></div><div>Conversion Rate : 1 USD = 1 USD</div><div>Payable : 103 USD <br></div><div>Paid via :&nbsp; Stripe Storefront - USD</div><div><br></div><div>Transaction Number : 851KSCNW6G7D</div><div><font size=\"5\"><b><br></b></font></div><div><font size=\"5\">Your current Balance is <b>2910 USD</b></font></div><div><br></div><div><br><br><br></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"p30-15 bbrr\" style=\"padding: 50px 30px; border-radius: 0px 0px 26px 26px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"text-footer1 pb10\" style=\"color: rgb(0, 153, 255); font-family: Muli, Arial, sans-serif; font-size: 18px; line-height: 30px; text-align: center; padding-bottom: 10px;\">© 2020 ViserLab. All Rights Reserved.</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>', '2021-05-29 09:38:39', '2021-05-29 09:38:39'),
 (2, 79, 'php', 'HYIPLab do-not-reply@email.com', 'admin@admin.com', 'Please verify your email address', '<table style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(0, 23, 54); text-decoration-style: initial; text-decoration-color: initial;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#001736\"><tbody><tr><td valign=\"top\" align=\"center\"><table class=\"mobile-shell\" width=\"650\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"td container\" style=\"width: 650px; min-width: 650px; font-size: 0pt; line-height: 0pt; margin: 0px; font-weight: normal; padding: 55px 0px;\"><div style=\"text-align: center;\"><img src=\"https://i.imgur.com/C9IS7Z1.png\" style=\"height: 240 !important;width: 338px;margin-bottom: 20px;\"></div><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"padding-bottom: 10px;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"tbrr p30-15\" style=\"padding: 60px 30px; border-radius: 26px 26px 0px 0px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"color: rgb(255, 255, 255); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 46px; padding-bottom: 25px; font-weight: bold;\">Hi  ,</td></tr><tr><td style=\"color: rgb(193, 205, 220); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 30px; padding-bottom: 25px;\"><div><br></div><div>Thanks For join with us. <br></div><div>Please use below code to verify your email address. <br></div><div><br></div><div>Your email verification code is:<font size=\"6\"><b> 611693</b></font></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"p30-15 bbrr\" style=\"padding: 50px 30px; border-radius: 0px 0px 26px 26px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"text-footer1 pb10\" style=\"color: rgb(0, 153, 255); font-family: Muli, Arial, sans-serif; font-size: 18px; line-height: 30px; text-align: center; padding-bottom: 10px;\">© 2020 ViserLab. All Rights Reserved.</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>', '2022-07-06 06:03:36', '2022-07-06 06:03:36'),
 (3, 81, 'php', 'HYIPLab do-not-reply@email.com', 'admin@admin.com', 'Please verify your email address', '<table style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(0, 23, 54); text-decoration-style: initial; text-decoration-color: initial;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#001736\"><tbody><tr><td valign=\"top\" align=\"center\"><table class=\"mobile-shell\" width=\"650\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"td container\" style=\"width: 650px; min-width: 650px; font-size: 0pt; line-height: 0pt; margin: 0px; font-weight: normal; padding: 55px 0px;\"><div style=\"text-align: center;\"><img src=\"https://i.imgur.com/C9IS7Z1.png\" style=\"height: 240 !important;width: 338px;margin-bottom: 20px;\"></div><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"padding-bottom: 10px;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"tbrr p30-15\" style=\"padding: 60px 30px; border-radius: 26px 26px 0px 0px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"color: rgb(255, 255, 255); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 46px; padding-bottom: 25px; font-weight: bold;\">Hi  ,</td></tr><tr><td style=\"color: rgb(193, 205, 220); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 30px; padding-bottom: 25px;\"><div><br></div><div>Thanks For join with us. <br></div><div>Please use below code to verify your email address. <br></div><div><br></div><div>Your email verification code is:<font size=\"6\"><b> 680502</b></font></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"p30-15 bbrr\" style=\"padding: 50px 30px; border-radius: 0px 0px 26px 26px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"text-footer1 pb10\" style=\"color: rgb(0, 153, 255); font-family: Muli, Arial, sans-serif; font-size: 18px; line-height: 30px; text-align: center; padding-bottom: 10px;\">© 2020 ViserLab. All Rights Reserved.</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>', '2022-07-06 06:27:16', '2022-07-06 06:27:16'),
-(4, 82, 'php', 'HYIPLab do-not-reply@email.com', 'admin@admin.com', 'Please verify your email address', '<table style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(0, 23, 54); text-decoration-style: initial; text-decoration-color: initial;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#001736\"><tbody><tr><td valign=\"top\" align=\"center\"><table class=\"mobile-shell\" width=\"650\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"td container\" style=\"width: 650px; min-width: 650px; font-size: 0pt; line-height: 0pt; margin: 0px; font-weight: normal; padding: 55px 0px;\"><div style=\"text-align: center;\"><img src=\"https://i.imgur.com/C9IS7Z1.png\" style=\"height: 240 !important;width: 338px;margin-bottom: 20px;\"></div><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"padding-bottom: 10px;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"tbrr p30-15\" style=\"padding: 60px 30px; border-radius: 26px 26px 0px 0px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"color: rgb(255, 255, 255); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 46px; padding-bottom: 25px; font-weight: bold;\">Hi  ,</td></tr><tr><td style=\"color: rgb(193, 205, 220); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 30px; padding-bottom: 25px;\"><div><br></div><div>Thanks For join with us. <br></div><div>Please use below code to verify your email address. <br></div><div><br></div><div>Your email verification code is:<font size=\"6\"><b> 805825</b></font></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"p30-15 bbrr\" style=\"padding: 50px 30px; border-radius: 0px 0px 26px 26px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"text-footer1 pb10\" style=\"color: rgb(0, 153, 255); font-family: Muli, Arial, sans-serif; font-size: 18px; line-height: 30px; text-align: center; padding-bottom: 10px;\">© 2020 ViserLab. All Rights Reserved.</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>', '2022-07-06 06:51:53', '2022-07-06 06:51:53');
+(4, 82, 'php', 'HYIPLab do-not-reply@email.com', 'admin@admin.com', 'Please verify your email address', '<table style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(0, 23, 54); text-decoration-style: initial; text-decoration-color: initial;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#001736\"><tbody><tr><td valign=\"top\" align=\"center\"><table class=\"mobile-shell\" width=\"650\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"td container\" style=\"width: 650px; min-width: 650px; font-size: 0pt; line-height: 0pt; margin: 0px; font-weight: normal; padding: 55px 0px;\"><div style=\"text-align: center;\"><img src=\"https://i.imgur.com/C9IS7Z1.png\" style=\"height: 240 !important;width: 338px;margin-bottom: 20px;\"></div><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"padding-bottom: 10px;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"tbrr p30-15\" style=\"padding: 60px 30px; border-radius: 26px 26px 0px 0px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"color: rgb(255, 255, 255); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 46px; padding-bottom: 25px; font-weight: bold;\">Hi  ,</td></tr><tr><td style=\"color: rgb(193, 205, 220); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 30px; padding-bottom: 25px;\"><div><br></div><div>Thanks For join with us. <br></div><div>Please use below code to verify your email address. <br></div><div><br></div><div>Your email verification code is:<font size=\"6\"><b> 805825</b></font></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"p30-15 bbrr\" style=\"padding: 50px 30px; border-radius: 0px 0px 26px 26px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"text-footer1 pb10\" style=\"color: rgb(0, 153, 255); font-family: Muli, Arial, sans-serif; font-size: 18px; line-height: 30px; text-align: center; padding-bottom: 10px;\">© 2020 ViserLab. All Rights Reserved.</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>', '2022-07-06 06:51:53', '2022-07-06 06:51:53'),
+(5, 129, 'php', 'HYIPLab do-not-reply@email.com', 'admin@admin.com', 'Please verify your email address', '<table style=\"color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(0, 23, 54); text-decoration-style: initial; text-decoration-color: initial;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#001736\"><tbody><tr><td valign=\"top\" align=\"center\"><table class=\"mobile-shell\" width=\"650\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"td container\" style=\"width: 650px; min-width: 650px; font-size: 0pt; line-height: 0pt; margin: 0px; font-weight: normal; padding: 55px 0px;\"><div style=\"text-align: center;\"><img src=\"https://i.imgur.com/C9IS7Z1.png\" style=\"height: 240 !important;width: 338px;margin-bottom: 20px;\"></div><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"padding-bottom: 10px;\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"tbrr p30-15\" style=\"padding: 60px 30px; border-radius: 26px 26px 0px 0px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td style=\"color: rgb(255, 255, 255); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 46px; padding-bottom: 25px; font-weight: bold;\">Hi  ,</td></tr><tr><td style=\"color: rgb(193, 205, 220); font-family: Muli, Arial, sans-serif; font-size: 20px; line-height: 30px; padding-bottom: 25px;\"><div><br></div><div>Thanks For join with us. <br></div><div>Please use below code to verify your email address. <br></div><div><br></div><div>Your email verification code is:<font size=\"6\"><b> 885115</b></font></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table style=\"width: 650px; margin: 0px auto;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"p30-15 bbrr\" style=\"padding: 50px 30px; border-radius: 0px 0px 26px 26px;\" bgcolor=\"#000036\"><table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tbody><tr><td class=\"text-footer1 pb10\" style=\"color: rgb(0, 153, 255); font-family: Muli, Arial, sans-serif; font-size: 18px; line-height: 30px; text-align: center; padding-bottom: 10px;\">© 2020 ViserLab. All Rights Reserved.</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>', '2022-07-15 09:31:10', '2022-07-15 09:31:10');
 
 -- --------------------------------------------------------
 
@@ -526,6 +505,37 @@ CREATE TABLE `invests` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `joint_accounts`
+--
+
+CREATE TABLE `joint_accounts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `account_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `line_address1_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `line_address2_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code1` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `line_address1_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `line_address2_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip_code2` varchar(5) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `joint_accounts`
+--
+
+INSERT INTO `joint_accounts` (`id`, `user_id`, `account_type`, `line_address1_1`, `line_address2_1`, `city1`, `state1`, `zip_code1`, `line_address1_2`, `line_address2_2`, `city2`, `state2`, `zip_code2`, `created_at`, `updated_at`) VALUES
+(5, 1, 'Rights of Survivorship', 'andheri gali', 'andheri gali', 'karachi', 'California', '11223', 'andheri gali', 'andheri gali', 'karachi', 'Texas', '11227', '2022-07-20 06:18:41', '2022-07-20 06:18:41');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `languages`
 --
 
@@ -583,7 +593,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2022_07_04_115131_create_questionaires_table', 12),
 (21, '2022_07_04_115223_create_questionaire_answers_table', 12),
 (22, '2022_07_06_134817_create_user_answers_table', 13),
-(24, '2022_07_07_122740_create_answeroptions_table', 14);
+(24, '2022_07_07_122740_create_answeroptions_table', 14),
+(26, '2022_07_19_143720_create_joint_accounts_table', 15);
 
 -- --------------------------------------------------------
 
@@ -743,11 +754,13 @@ INSERT INTO `questionaires` (`id`, `overline`, `question`, `url_slug`, `status`,
 (2, 'INVESTMENT EXPERIENCE', 'How would you describe your level of familiarity with investing?', 'investment-experience', 1, NULL, NULL),
 (3, 'SOURCE OF WISDOM', 'Where do you go for investing advice?', 'source-of-wisdom', 1, NULL, NULL),
 (4, 'HELP US IMPROVE', 'How did you first hear about Fundrise? ', 'survey', 1, NULL, NULL),
-(5, NULL, 'What is the primary reason you\'re interested in investing with Fundrise?', 'motivation', 1, NULL, NULL),
-(6, NULL, 'How long do you plan to hold your Fundrise investment?', 'duration-of-investment', 1, NULL, NULL),
-(7, NULL, 'Across all of your investments, how much do you hope to invest on a yearly basis?', 'investment-planning', 1, NULL, NULL),
+(5, 'Motivation', 'What is the primary reason you\'re interested in investing with Fundrise?', 'motivation', 1, NULL, NULL),
+(6, 'DURATION OF INVESTMENT', 'How long do you plan to hold your Fundrise investment?', 'duration-of-investment', 1, NULL, NULL),
+(7, 'INVESTMENT PLANNING', 'Across all of your investments, how much do you hope to invest on a yearly basis?', 'investment-planning', 1, NULL, NULL),
 (8, NULL, 'Are you an accredited investor?', 'accreditation', 1, NULL, NULL),
-(9, NULL, 'How do you want to get started?', 'quick-invest', 1, NULL, NULL);
+(9, NULL, 'How do you want to get started?', 'quick-invest', 1, NULL, NULL),
+(11, 'OUR ACCOUNTS TYPES', 'What kind of account would you like to open?', 'account-type', 1, NULL, NULL),
+(12, 'let\'s finish getting your account setup', 'what type of account would you like to open?', 'select-account-form', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -759,6 +772,7 @@ CREATE TABLE `questionaire_answers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `questionaire_id` bigint(20) UNSIGNED NOT NULL,
   `options` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -767,46 +781,42 @@ CREATE TABLE `questionaire_answers` (
 -- Dumping data for table `questionaire_answers`
 --
 
-INSERT INTO `questionaire_answers` (`id`, `questionaire_id`, `options`, `created_at`, `updated_at`) VALUES
-(2, 2, 'Novice-I’m new to investing', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(3, 2, 'Beginners-have an employer-based 401k, IRA, or other retirement account but my involvement is limited in selecting the actual investments', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(4, 2, 'Competent-I’m relatively experienced when it comes to investing in the stock market and may be familiar with real estate investing', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(5, 2, 'Proficient-I invest in a wide variety of stocks and bonds, this can include real estate investing', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(8, 2, 'Expert-I have experience investing in private real estate deals or have owned my own investment properties', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(9, 3, 'Investment advisor-I have an investment advisor that I pay to manage my portfolio', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(10, 3, 'Self-educate-I read books and articles, picking investments based on my own in-depth analysis', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(11, 3, 'Friends and family-I rely on the advice of friends and family that I trust', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(12, 3, 'I don’t seek advice-Historically, I don’t invest outside of my employer-based plan, so I own whatever they’ve selected for me', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(13, 4, 'TV or Radio', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(14, 4, 'Podcast', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(15, 4, 'Postcard/Mailer', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(16, 4, 'Social Media Influencer', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(17, 4, 'Social Media Ad', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(18, 4, 'Newsletter', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(19, 4, 'Mint', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(20, 4, 'Investopedia', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(21, 4, 'Family or Friend', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(22, 5, 'Diversification-I’m looking to diversify outside of just the stock market', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(23, 5, 'Income-I’m interested in generating consistent cash flow', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(24, 5, 'Retirement-I want to invest towards retirement', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(25, 5, 'Major Purchase-I’m working towards a large purchase like home ownership', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(26, 5, 'Education-I want to invest towards my child’s education', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(27, 5, 'Building Wealth-I’m generally interested in building wealth', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(28, 6, 'Less than 3 years', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(29, 6, '3-5 years', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(30, 6, '6-10 years', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(31, 6, 'More than 10 years', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(32, 7, 'Less than $5,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(33, 7, '$5,000 - $10,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(34, 7, '$11,000 - $20,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(35, 7, '$21,000 - $30,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(36, 7, '$31,000 - $50,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(37, 7, '$51,000 - $100,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(38, 7, 'More than $100,000', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(39, 8, 'yes(You have annual income in excess of $200,000 (or $300,000 joint income) for the last two years and expectation of the same for the current year, or household net worth in excess of $1 million, not including your primary residence)', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(40, 8, 'no', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(41, 9, 'Start investing right away(The fastest way to start investing today in our low-minimum Starter Portfolio)', '2022-07-04 14:36:57', '2022-07-04 14:37:11'),
-(42, 9, 'Explore and compare strategies first(The fastest way to start investing today in our low-minimum Starter Portfolio)', '2022-07-04 14:36:57', '2022-07-04 14:37:11');
+INSERT INTO `questionaire_answers` (`id`, `questionaire_id`, `options`, `description`, `created_at`, `updated_at`) VALUES
+(45, 2, 'Novice', 'I’m new to investing', NULL, NULL),
+(46, 2, 'Beginner', 'I have an employer-based 401k, IRA, or other retirement account but my involvement is limited in selecting the actual investments', NULL, NULL),
+(47, 2, 'Competent', 'I’m relatively experienced when it comes to investing in the stock market and may be familiar with real estate investing', NULL, NULL),
+(48, 2, 'Proficient', 'I invest in a wide variety of stocks and bonds, this can include real estate investing', NULL, NULL),
+(49, 2, 'Expert', 'I have experience investing in private real estate deals or have owned my own investment properties', NULL, NULL),
+(50, 3, 'Investment advisor', 'I have an investment advisor that I pay to manage my portfolio', NULL, NULL),
+(51, 3, 'Friends and family', 'I rely on the advice of friends and family that I trust', NULL, NULL),
+(52, 3, 'I don’t seek advice', 'Historically, I don’t invest outside of my employer-based plan, so I own whatever they’ve selected for me', NULL, NULL),
+(53, 3, 'Self-educate', 'I read books and articles, picking investments based on my own in-depth analysis', NULL, NULL),
+(54, 5, 'Diversification', 'I’m looking to diversify outside of just the stock market', NULL, NULL),
+(55, 5, '\r\nIncome', 'I’m interested in generating consistent cash flow', NULL, NULL),
+(56, 5, '\r\nRetirement', 'I want to invest towards retirement', NULL, NULL),
+(57, 5, '\r\nMajor Purchase', 'I’m working towards a large purchase like home ownership', NULL, NULL),
+(58, 5, '\r\n\r\nEducation', 'I want to invest towards my child’s education', NULL, NULL),
+(59, 5, '\r\n\r\nBuilding Wealth', 'I’m generally interested in building wealth', NULL, NULL),
+(60, 6, '\r\n\r\nLess than 3 years', '', NULL, NULL),
+(61, 6, '\r\n\r\n3-5 years', '', NULL, NULL),
+(62, 6, '\r\n\r\n6-10 years', '', NULL, NULL),
+(63, 6, '\r\n\r\nMore than 10 years', '', NULL, NULL),
+(64, 7, '\r\n\r\nLess than $5,000', '', NULL, NULL),
+(65, 7, '\r\n\r\n$5,000 - $10,000', '', NULL, NULL),
+(66, 7, '\r\n\r\n$11,000 - $20,000', '', NULL, NULL),
+(67, 7, '\r\n\r\n$21,000 - $30,000', '', NULL, NULL),
+(68, 7, '\r\n\r\n$31,000 - $50,000', '', NULL, NULL),
+(69, 7, '\r\n\r\n$51,000 - $100,00', '', NULL, NULL),
+(70, 7, '\r\n\r\nMore than $100,000', '', NULL, NULL),
+(71, 4, 'Tv & Radio', NULL, NULL, NULL),
+(72, 4, 'Facebbok', NULL, NULL, NULL),
+(73, 4, 'Instagram', NULL, NULL, NULL),
+(74, 4, 'News Paper', NULL, NULL, NULL),
+(75, 4, 'Other', NULL, NULL, NULL),
+(76, 11, 'General Investing Account', 'A flexible investment account created to help you build long-term wealth', NULL, NULL),
+(77, 11, 'Retirement Account', 'Transfer, rollover, or start a new IRA with tax benefits for your retirement', NULL, NULL),
+(78, 12, 'Individual account', NULL, NULL, NULL),
+(79, 12, 'Other account type', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -954,6 +964,8 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(91) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'contains full address',
+  `country_of_citizenship` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country_of_residence` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `age` int(255) DEFAULT NULL,
   `deposit_wallet` decimal(18,8) NOT NULL DEFAULT 0.00000000,
   `interest_wallet` decimal(18,8) NOT NULL DEFAULT 0.00000000,
@@ -976,9 +988,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `mobile`, `ref_by`, `password`, `image`, `address`, `age`, `deposit_wallet`, `interest_wallet`, `status`, `ev`, `sv`, `ver_code`, `ver_code_send_at`, `ts`, `tv`, `tsc`, `provider`, `provider_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Shahrukh Akhter', 'Siddiqui', 'Shahrukh509', 'srkshah1998@gmail.com', '923442464509', NULL, '$2y$10$GLsVmCFLDVfhtCjWmgTqgefw1bRbDk8fbU.Z.1qY6BSg.YdEMrCDa', NULL, '{\"address\":\"\",\"state\":\"\",\"zip\":\"\",\"country\":\"Pakistan\",\"city\":\"\"}', NULL, '10.00000000', '0.00000000', 1, 1, 1, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, '2022-06-29 06:03:55', '2022-06-29 06:03:56'),
-(85, NULL, NULL, NULL, 'admin@admin.com', NULL, NULL, '$2y$10$7oHRQjhbUjLfyhLHih7Y6OpilCaHyOW9qtiqErwypk4bDG9deMAO6', NULL, NULL, 20, '0.00000000', '0.00000000', 1, 0, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, '2022-07-07 04:18:44', '2022-07-07 07:19:12');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `mobile`, `ref_by`, `password`, `image`, `address`, `country_of_citizenship`, `country_of_residence`, `age`, `deposit_wallet`, `interest_wallet`, `status`, `ev`, `sv`, `ver_code`, `ver_code_send_at`, `ts`, `tv`, `tsc`, `provider`, `provider_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Shahrukh Akhter', 'Siddiqui', 'Shahrukh509', 'srkshah1998@gmail.com', '923442464509', NULL, '$2y$10$GLsVmCFLDVfhtCjWmgTqgefw1bRbDk8fbU.Z.1qY6BSg.YdEMrCDa', NULL, '{\"address\":\"\",\"state\":\"\",\"zip\":\"\",\"country\":\"Pakistan\",\"city\":\"\"}', NULL, NULL, NULL, '10.00000000', '0.00000000', 1, 1, 1, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, '2022-06-29 06:03:55', '2022-06-29 06:03:56'),
+(141, 'amar', 'Siddiqui', NULL, 'amar100@gmail.com', NULL, NULL, '$2y$10$R3/UagfLiNEXf97evJHaX.BGk6riHW1NsXTz76Yktrf7.frUxQ2ae', NULL, NULL, 'America', 'America', 21, '0.00000000', '0.00000000', 1, 0, 0, NULL, NULL, 0, 1, NULL, NULL, NULL, NULL, '2022-07-21 03:59:27', '2022-07-21 06:50:31');
 
 -- --------------------------------------------------------
 
@@ -989,6 +1001,7 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `mobile
 CREATE TABLE `user_answers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
+  `questionaire_id` bigint(11) UNSIGNED NOT NULL,
   `questionaire_answer_id` bigint(20) UNSIGNED NOT NULL,
   `other` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -999,11 +1012,14 @@ CREATE TABLE `user_answers` (
 -- Dumping data for table `user_answers`
 --
 
-INSERT INTO `user_answers` (`id`, `user_id`, `questionaire_answer_id`, `other`, `created_at`, `updated_at`) VALUES
-(16, 85, 2, NULL, '2022-07-07 07:19:15', '2022-07-07 07:19:15'),
-(17, 85, 9, NULL, '2022-07-07 07:19:21', '2022-07-07 07:19:21'),
-(18, 85, 2, NULL, '2022-07-07 08:00:49', '2022-07-07 08:00:49'),
-(19, 85, 9, NULL, '2022-07-07 08:00:52', '2022-07-07 08:00:52');
+INSERT INTO `user_answers` (`id`, `user_id`, `questionaire_id`, `questionaire_answer_id`, `other`, `created_at`, `updated_at`) VALUES
+(306, 141, 11, 76, NULL, '2022-07-21 05:08:26', '2022-07-21 05:08:26'),
+(307, 141, 2, 47, NULL, '2022-07-21 05:08:40', '2022-07-21 05:08:40'),
+(308, 141, 3, 51, NULL, '2022-07-21 05:08:42', '2022-07-21 05:08:42'),
+(309, 141, 4, 71, NULL, '2022-07-21 05:08:44', '2022-07-21 05:08:44'),
+(310, 141, 5, 54, NULL, '2022-07-21 05:09:13', '2022-07-21 05:09:13'),
+(311, 141, 6, 60, NULL, '2022-07-21 05:09:59', '2022-07-21 05:09:59'),
+(312, 141, 7, 64, NULL, '2022-07-21 05:10:02', '2022-07-21 05:10:02');
 
 -- --------------------------------------------------------
 
@@ -1033,7 +1049,8 @@ CREATE TABLE `user_logins` (
 
 INSERT INTO `user_logins` (`id`, `user_id`, `user_ip`, `location`, `browser`, `os`, `longitude`, `latitude`, `country`, `country_code`, `city`, `created_at`, `updated_at`) VALUES
 (1, 1, '::1', ' - -  -  ', 'Chrome', 'Windows 10', '', '', '', '', '', '2022-06-29 06:03:56', '2022-06-29 06:03:56'),
-(2, 1, '::1', ' - -  -  ', 'Chrome', 'Windows 10', '', '', '', '', '', '2022-06-30 04:36:53', '2022-06-30 04:36:53');
+(2, 1, '::1', ' - -  -  ', 'Chrome', 'Windows 10', '', '', '', '', '', '2022-06-30 04:36:53', '2022-06-30 04:36:53'),
+(3, 1, '::1', ' - -  -  ', 'Chrome', 'Windows 10', '', '', '', '', '', '2022-07-20 03:51:56', '2022-07-20 03:51:56');
 
 -- --------------------------------------------------------
 
@@ -1183,6 +1200,13 @@ ALTER TABLE `invests`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `joint_accounts`
+--
+ALTER TABLE `joint_accounts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `joint_accounts_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `languages`
 --
 ALTER TABLE `languages`
@@ -1303,7 +1327,8 @@ ALTER TABLE `users`
 ALTER TABLE `user_answers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_answers_user_id_foreign` (`user_id`),
-  ADD KEY `user_answers_questionaire_answer_id_foreign` (`questionaire_answer_id`);
+  ADD KEY `questionaire_answer_id` (`questionaire_answer_id`),
+  ADD KEY `questionaire_id` (`questionaire_id`);
 
 --
 -- Indexes for table `user_logins`
@@ -1350,7 +1375,7 @@ ALTER TABLE `admin_password_resets`
 -- AUTO_INCREMENT for table `answeroptions`
 --
 ALTER TABLE `answeroptions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `commission_logs`
@@ -1368,7 +1393,7 @@ ALTER TABLE `deposits`
 -- AUTO_INCREMENT for table `email_logs`
 --
 ALTER TABLE `email_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `email_sms_templates`
@@ -1419,6 +1444,12 @@ ALTER TABLE `invests`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `joint_accounts`
+--
+ALTER TABLE `joint_accounts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
@@ -1428,7 +1459,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1464,13 +1495,13 @@ ALTER TABLE `promotion_tools`
 -- AUTO_INCREMENT for table `questionaires`
 --
 ALTER TABLE `questionaires`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `questionaire_answers`
 --
 ALTER TABLE `questionaire_answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `referrals`
@@ -1518,19 +1549,19 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT for table `user_answers`
 --
 ALTER TABLE `user_answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
 
 --
 -- AUTO_INCREMENT for table `user_logins`
 --
 ALTER TABLE `user_logins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `withdrawals`
@@ -1555,6 +1586,12 @@ ALTER TABLE `answeroptions`
   ADD CONSTRAINT `answeroptions_questionaire_answers_id_foreign` FOREIGN KEY (`questionaire_answers_id`) REFERENCES `questionaire_answers` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `joint_accounts`
+--
+ALTER TABLE `joint_accounts`
+  ADD CONSTRAINT `joint_accounts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `questionaire_answers`
 --
 ALTER TABLE `questionaire_answers`
@@ -1564,7 +1601,8 @@ ALTER TABLE `questionaire_answers`
 -- Constraints for table `user_answers`
 --
 ALTER TABLE `user_answers`
-  ADD CONSTRAINT `user_answers_questionaire_answer_id_foreign` FOREIGN KEY (`questionaire_answer_id`) REFERENCES `questionaire_answers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_answers_ibfk_1` FOREIGN KEY (`questionaire_answer_id`) REFERENCES `questionaire_answers` (`id`),
+  ADD CONSTRAINT `user_answers_ibfk_2` FOREIGN KEY (`questionaire_id`) REFERENCES `questionaires` (`id`),
   ADD CONSTRAINT `user_answers_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 

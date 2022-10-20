@@ -13,6 +13,7 @@
                     <!-- <span id="emaillabel">email address</span> -->
                 </label>
                 <form id="form-age"name="leadCapture" class="lead-capture position-relative mt-25" action="{{ route('user.step.age.store') }}">
+                    {{-- <input type="hidden" name="account_type" id="account-type" value="{{ $account_type }}"> --}}
                     <div class="lead-capture__fieldset">
                         <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">
                             <div>

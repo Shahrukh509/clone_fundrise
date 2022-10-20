@@ -206,82 +206,127 @@ $(document).on('submit','#form-account-type',function(e){
                  // FOR AGE
 
 
+// $(document).on('submit','#form-age',function(e){
+//     e.preventDefault();
 
-$(document).on('change','#age',function(){
+//     var url = $(this).attr('action');
+//     var age = $('#age').val();
 
-// if ($(this).val() >= 18) {
+//     // var after_url = $(this).attr('after-url');
+//     // alert(age);
+//     // return false;
+//     $.ajax({
+//     headers: {
+//     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     },
+//     type: "get",
+//     url: url,
+//     data: {
+//     age: age
+//     },
+//     // dataType: "json",
+//     beforeSend:function(){
 
-//   $('.button-fundrise-orange').css('background-color','#aa9469');
-//   $('.button-fundrise-orange').attr('disabled',false);
+//     $('#load-button').attr('disabled',true);
+//     $('#load-button').html('Please wait');
+//     $(document).find('span.text-error').text('');
 
-// }
-// else{
-//   $('.age-error').text('Age must be greater than 18 to proceed');
-//     $('.age-error').css('color','red');
-// }
+//     },
+//     success: function(response){
 
-});
+//     if(response.error_issue == true){
+
+//     // alert('at error true');
+
+//     $.each(response.error,function(prefix,val){
+
+//     $('span.'+prefix+'_error').text('*'+ val);
+
+//     });
+//     $('#load-button').attr('disabled',false);
+//     $('#load-button').html('Continue');
+
+//     }
+//     if(response.added == false){
+
+//     Swal.fire({
+//     icon: 'error',
+//     title: 'Sorry',
+//     text: 'something bad happened! unable to add data'
+
+//     })
+
+//     }
+//     if(response.error_issue != true && response.added != false){
+//     // console.log(response);
+
+
+//     // var after_url = 'signup-checkout/signup';
+//     // window.history.pushState({path: after_url}, "", after_url);
+//     // // window.location.replace("http:www.example.com");
+//     // $('.put-view-here').html(response);
+//     if(response.account_type=='retired'){
+//                     var after_url = 'signup-checkout/signup';
+//                 }else{
+//                     var after_url = 'investment-experience';
+//                 }
+//                 window.history.pushState({path: after_url}, "", after_url);
+//                 $('.put-view-here').html(response.view);
+
+//     }
+//     }
+
+//     });
+// });
 $(document).on('submit','#form-age',function(e){
     e.preventDefault();
 
     var url = $(this).attr('action');
+    var account_type = $('#account-type').val();
     var age = $('#age').val();
-
-    // var after_url = $(this).attr('after-url');
-    // alert(age);
-    // return false;
     $.ajax({
-    headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    type: "get",
-    url: url,
-    data: {
-    age: age
-    },
-    // dataType: "json",
-    beforeSend:function(){
-
-    $('#load-button').attr('disabled',true);
-    $('#load-button').html('Please wait');
-    $(document).find('span.text-error').text('');
-
-    },
-    success: function(response){
-
-    if(response.error_issue == true){
-
-    // alert('at error true');
-
-    $.each(response.error,function(prefix,val){
-
-    $('span.'+prefix+'_error').text('*'+ val);
-
-    });
-    $('#load-button').attr('disabled',false);
-    $('#load-button').html('Continue');
-
-    }
-    if(response.added == false){
-
-    Swal.fire({
-    icon: 'error',
-    title: 'Sorry',
-    text: 'something bad happened! unable to add data'
-
-    })
-
-    }
-    if(response.error_issue != true && response.added != false){
-    // console.log(response);
-    var after_url = 'investment-experience';
-    window.history.pushState({path: after_url}, "", after_url);
-    // window.location.replace("http:www.example.com");
-    $('.put-view-here').html(response);
-
-    }
-    }
-
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: "get",
+        url: url,
+        data: {
+            age: age,
+            account_type: account_type,
+        },
+        beforeSend:function(){
+            $('#load-button').attr('disabled',true);
+            $('#load-button').html('Please wait');
+            $(document).find('span.text-error').text('');
+        },
+        success: function(response){
+            if(response.error_issue == true){
+                $.each(response.error,function(prefix,val){
+                    $('span.'+prefix+'_error').text('*'+ val);
+                });
+                $('#load-button').attr('disabled',false);
+                $('#load-button').html('Continue');
+            }
+            if(response.added == false){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sorry',
+                    text: 'something bad happened! unable to add data'
+                })
+            }
+            if(response.error_issue != true && response.added != false){
+                if(response.account_type=='retired'){
+                    var after_url = 'signup-checkout/signup';
+                    window.history.pushState({path: after_url}, "", after_url);
+                    $('.put-view-here').html(response.view);
+                }else{
+                    var after_url = 'investment-experience';
+                    window.history.pushState({path: after_url}, "", after_url);
+                    $('.put-view-here').html(response);
+                }
+                
+            }
+        }
     });
 });
 
@@ -312,7 +357,7 @@ $(document).on('submit','#form-question',function(e){
     var question_id = $(this).attr('data-question-id');
 
     // var after_url = $(this).attr('after-url');
-    // alert(question_id);
+    // alert(url);
     // return false;
     $.ajax({
     type: "get",
@@ -487,10 +532,10 @@ $(document).on('click','#ajaxback',function(e){
 
 })
 
-// END OF AjaXBACK
+                   // END OF AjaXBACK
 
 
-// Multip-step-form script
+                 // Multip-step-form script
 
 $(document).ready(function(){
 
@@ -512,7 +557,7 @@ var country_residence = $('select[name="country_of_residence"]').val();
 // alert(url);
 // return false;
 
-//Add Class Active
+               //Add Class Active
 $.ajax({
 headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -582,21 +627,44 @@ duration: 600
 
 });
 
-// for next2 button
+                   // for next2 button
+
+$(document).on('change','.check-account',function(){
+ var input=$('input[name="form_account"]:checked').val();
+ if(input == 78){
+  
+   $('div.choose-account-type').css("display", "none");
+  $('div.display-individual-form').css("display", "block");
+
+ }
+ if(input == 79){
+
+  $('div.display-individual-form').css("display", "none");
+    $('div.choose-account-type').css("display", "block");
+ }
+
+});
+
+
+
 $(document).on('click', ".next2",function(){
 
-// alert('hi at next');
 
 current_fs = $(this).parent();
 next_fs = $(this).parent().next();
 var url = $('.toAccountDetails').attr('data-action');
+var questionaire_id = $('.check-account').attr('data-id');
+var question_answer_id=$('input[name="form_account"]:checked').val();
 var mobile = $('input[name="mobile"]').val();
-var address = $('textarea[name="address"]').val();
+var address = $('input[name="address"]').val();
+var city = $('input[name="city"]').val();
+var state = $('#state').val();
+var zip_code = $('input[name="zip_code"]').val();
 
-// alert(address);
+// alert(question_answer_id);
 // return false;
 
-//Add Class Active
+                //Add Class Active
 $.ajax({
 headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -604,7 +672,10 @@ headers: {
 type: "post",
 url: url,
 data: {
-mobile:mobile, address:address },
+    questionaire_id:questionaire_id, form_account :question_answer_id,
+mobile:mobile, address:address,
+ city:city, state:state, zip_code:zip_code
+  },
 // dataType: "json",
 beforeSend:function(){
 
@@ -665,7 +736,228 @@ duration: 600
 });
 
 });
-// end next2 button
+// for next2 button
+    $(document).on('click', ".retired-next2",function(){
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+        var url = $('.account-basic-address').attr('data-action');
+        var account_type = $('input[name="account_type"]').val();
+        var address = $('input[name="address"]').val();
+        var city = $('input[name="city"]').val();
+        var state = $('#input-state option:selected').val();
+        var zip = $('input[name="zip"]').val();
+        var phone = $('input[name="phone"]').val();
+        var social_security = $('input[name="social_security"]').val();
+        var date_of_birth = $('input[name="date_of_birth"]').val();
+        
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "post",
+            url: url,
+            data: {
+                address:address, city:city, state:state, zip:zip, account_type:account_type, 
+                phone:phone, social_security:social_security, date_of_birth:date_of_birth
+            },
+            beforeSend:function(){
+                $('input[name="next2"]').attr('disabled',true);
+                $('input[name="next2"]').html('Please wait');
+                $(document).find('span.error-text').text('');
+            },
+            success: function(response){
+                $('input[name="next2"]').attr('disabled',false);
+                $('input[name="next2"]').html('Next Step');
+
+                if(response.error_issue == true){
+                    $.each(response.error,function(prefix,val){
+                        $('span.'+prefix+'_error').text('*'+ val);
+                    });
+                }
+                if(response.success == true){
+                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                    //show the next fieldset
+                    next_fs.show(); 
+                    //hide the current fieldset with style
+                    current_fs.animate({opacity: 0}, {
+                        step: function(now) {
+                            // for making fielset appear animation
+                            opacity = 1 - now;
+
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            next_fs.css({'opacity': opacity});
+                        }, 
+                        duration: 600
+                    });
+                }
+            },
+            error: function(response) {
+                $('#error-address').text(response.responseJSON.errors.address);
+                $('#error-city').text(response.responseJSON.errors.city);
+                $('#error-state').text(response.responseJSON.errors.state);
+                $('#error-zip').text(response.responseJSON.errors.zip);
+                $('#error-phone').text(response.responseJSON.errors.phone);
+                $('#error-social_security').text(response.responseJSON.errors.social_security);
+                $('#error-date_of_birth').text(response.responseJSON.errors.date_of_birth);
+            },
+        });
+    });
+    // end next2 button
+                 // end next2 button
+
+
+
+            
+
+
+                 // for next3 button
+$(document).on('change','.check-bank',function(){
+  
+ var input=$(this).attr('data-option');
+   // alert(input);
+ if(input == 'Link a bank account'){
+  
+   $('div.link-bank-account').css("display", "block");
+  $('div.bank-account-info').css("display", "none");
+
+ }
+ if(input == 'Enter a bank account manually'){
+
+    $('div.link-bank-account').css("display", "none");
+  $('div.bank-account-info').css("display", "block");
+ }
+
+});
+                 // formatting social security number
+ $(document).on('keyup','#social_security', function() {
+     var res = this.value, //grabs the value
+         res = res.replace(/\D/g, '');
+    res = res.replace(/^(\d{3})/, '$1-');
+    res = res.replace(/-(\d{2})/, '-$1-');
+    res = res.replace(/(\d)-(\d{4}).*/, '$1-$2');
+    $("#social_security").val(res); //spits the value into the input
+});
+
+
+    // end of formatting social security number
+ // checking routing number
+$(document).on('keyup','#routing_number',function(){
+$('routing_number_error').text('');
+
+var val = $(this).val();
+var len = val.length;
+if(len > 9){
+ $('routing_number_error').text('value should not be more than 9 digits');
+}
+
+});
+ // end of checking routing
+
+           // saving form
+
+
+
+$(document).on('click', ".next3",function(){
+
+// alert('hi at q3');
+// return false;
+current_fs = $(this).parent();
+next_fs = $(this).parent().next();
+var url = $('.toFunding').attr('data-action');
+var amount = $('#initial_contribution').val();
+var question_id=$(this).attr('id');
+var answer_id = $('input[name="source_bank_account"]:checked').val();
+var social_sec_num = $('input[name="social_security_number"]').val();
+var dob = $('#date_of_birth').val();
+var account_type = $('#bank_account_type').val();
+var bank_name = $('input[name="bank_name"]').val();
+var routing_num = $('input[name="routing_number"]').val();
+var bank_account_number = $('input[name="bank_account_number"]').val();
+var confirm_bankaccno= $('input[name="confirm_bank_account_number"]').val();
+ 
+ // alert(dob);
+ // return false;
+
+                //Add Class Active
+$.ajax({
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+type: "post",
+url: url,
+data: {
+    questionaire_id:question_id, answer_id :answer_id,
+    amount: amount,social_sec_num:social_sec_num,routing_num:routing_num,
+    dob:dob,account_type:account_type,bank_name:bank_name,
+    bank_account_number:bank_account_number,confirm_bankaccno:confirm_bankaccno
+    },
+// dataType: "json",
+beforeSend:function(){
+
+$('input[name="next3"]').attr('disabled',true);
+$('input[name="next3"]').html('Please wait');
+$(document).find('span.error-text').text('');
+
+},
+success: function(response){
+
+
+$('input[name="next3"]').attr('disabled',false);
+$('input[name="next3"]').html('Next Step');
+// if(response.exist == true){
+
+//  // alert('at response exist');
+//  location.href = response.data;
+
+// }
+if(response.error_issue == true){
+
+// alert('at error true');
+
+$.each(response.error,function(prefix,val){
+
+$('span.'+prefix+'_error').text('*'+ val);
+
+});
+
+}
+if(response.success == true){
+
+$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+//show the next fieldset
+next_fs.show(); 
+//hide the current fieldset with style
+current_fs.animate({opacity: 0}, {
+step: function(now) {
+// for making fielset appear animation
+opacity = 1 - now;
+
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+next_fs.css({'opacity': opacity});
+}, 
+duration: 600
+});
+
+
+
+}
+}
+
+});
+
+});
+
+
+
+
+                 // end of next3 button
 
 $(document).on('click', ".previous",function(){
 
@@ -704,7 +996,7 @@ return false;
 })
 
 });
-// end of multi step form
+                     // end of multi step form
 
 
 

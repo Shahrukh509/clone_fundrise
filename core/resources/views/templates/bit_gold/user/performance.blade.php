@@ -188,7 +188,7 @@
                         </div>
 
                         <div class="card-body pb-0">
-                            <h5 class="card-title"> <span> Your portfolio</span> | $24,242.00 </h5>
+                            <h5 class="card-title"> <span> Your portfolio</span> | ${{ $contribution->amount }}</h5>
 
                             <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 

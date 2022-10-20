@@ -4,6 +4,7 @@
         <p class="font-style-italic mt-0 mb-150"> Tell us a bit more about yourself and we'll suggest the strategy that best fits your goals.</p>
         <h1 class="heading-2 line-height-150 mt-50 mb-100-smo mb-200-md">How old are you?</h1>
         <form id="form-age"name="leadCapture" class="lead-capture position-relative mt-25" action="{{ route('user.step.age.store') }}">
+            <input type="hidden" name="account_type" id="account-type" value="{{ $account_type }}">
             <div class="lead-capture__fieldset">
                 <div class="field__inner mb-200 overflow-hidden-lg" aria-labelledby="email">
                     <div>

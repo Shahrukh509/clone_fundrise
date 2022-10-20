@@ -26,7 +26,7 @@
                                     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Email Address</button>
                                     <button class="nav-link" id="v-pills-Password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Password" type="button" role="tab" aria-controls="v-pills-Password" aria-selected="false">Password</button>
                                     <button class="nav-link" id="v-pills-number-tab" data-bs-toggle="pill" data-bs-target="#v-pills-number" type="button" role="tab" aria-controls="v-pills-number" aria-selected="false">Mobile Number</button>
-                                    <button class="nav-link" id="v-pills-account-tab" data-bs-toggle="pill" data-bs-target="#v-pills-account" type="button" role="tab" aria-controls="v-pills-account" aria-selected="false">Account Nick Name</button>
+                                   
                                     <button class="nav-link" id="v-pills-investment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-investment" type="button" role="tab" aria-controls="v-pills-investment" aria-selected="false">Investment Plan</button>
                                     <button class="nav-link" id="v-pills-Reinvestment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Reinvestment" type="button" role="tab" aria-controls="v-pills-investment" aria-selected="false">Dividend Reinvestment</button>
                                     <button class="nav-link" id="v-pills-Payment-tab" data-bs-toggle="pill" data-bs-target="#v-pills-Payment" type="button" role="tab" aria-controls="v-pills-Payment" aria-selected="false">Payment Methods</button>
@@ -41,100 +41,116 @@
                                                 <i class="bi bi-pencil"></i> &nbsp; Edit
                                             </a>
                                         </span>
-                                        <table class="table table-borderless table-responsive d-block" id="viewinfo">
+                                       <table class="table table-borderless table-responsive d-block" id="viewinfo">
                                             <tbody>
                                                 <tr>
                                                     <td>Full name </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Farhan Aslam</td>
+                                                    <td><?php echo e(Auth::user()->firstname); ?> <?php echo e(Auth::user()->lastname); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Address </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Abs kahi
-                                                    </td>
+                                                    <td><?php echo e(Auth::user()->address??''); ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Address 2 </td>
-                                                    <td colspan="5" class="d-flex"></td>
-                                                    <td>St-24 karachi </td>
-                                                </tr>
+                                               
                                                 <tr>
                                                     <td>City</td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Canassa</td>
+                                                    <td><?php echo e(Auth::user()->city??''); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>State </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>AU </td>
+                                                    <td><?php echo e(Auth::user()->state??''); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>ZIP Code </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>1232 </td>
+                                                    <td><?php echo e(Auth::user()->zip_code??''); ?> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Country </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>AU </td>
+                                                    <td><?php echo e(Auth::user()->country_of_citizenship??''); ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <!-- on click it shws -->
-                                        <div class="form-card d-none" id="editinfo">
-                                            <h2 style="font-size: 20px;">Contact Information</h2>
-                                            <div class=" forms_edits">
-                                                <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                                <small>This should be the address used for tax purposes</small>
-                                            </div>
-                                            <div class="forms_edits">
-                                                <label for="exampleFormControlInput1">ADDRESS LINE 2</label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                                <!-- <small>This should be the address used for tax purposes</small> -->
-                                            </div>
-                                            <div class="form-row forms_edits">
-                                                <div class="form-group col-md-8">
-                                                    <label for="inputCity">City</label>
-                                                    <input type="text" class="form-control" id="inputCity">
-                                                </div>
-                                                <div class="form-group col-md-4 forms_edits">
-                                                    <label for="inputState">State</label>
-                                                    <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>...</option>
-                                              </select>
-                                                </div>
-                                                <div class="form-group col-md-2">
-                                                    <label for="inputZip">ZIP CODE</label>
-                                                    <input type="text" class="form-control" id="inputZip">
-                                                </div>
-                                                <div class="form-group col-12">
-                                                    <label for="inputAddress">PHONE NUMBER (MOBILE PREFERRED)</label>
-                                                    <input type="text" class="form-control" id="inputAddress" placeholder="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-start    pt-4">
-                                                        <button id="cancel_edit" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
-                                                    <small>Cancel</small> </button>
+                                         <div class="form-card d-none" id="editinfo">
+                                            <h2 style="font-size: 20px;">Personal Information</h2>
+                                            <form id="personal-info-form" url=<?php echo e(route('user.submitprofile')); ?>>
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="firstname">First Name</label>
+                                                        <input type="text" class="form-control" id="firstname" value="<?php echo e(Auth::user()->firstname); ?>" placeholder="Enter first name">
+                                                        <small id="error-firstname" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="lastname">Last Name</label>
+                                                        <input type="text" class="form-control" id="lastname" value="<?php echo e(Auth::user()->lastname); ?>" placeholder="Enter last name">
+                                                        <small id="error-lastname" style="color: red"></small>
                                                     </div>
                                                 </div>
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-end   pt-4">
-
-                                                        <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Save </button>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-sm-12 forms_edits">
+                                                        <label for="address_first">Address</label>
+                                                        <input type="text" class="form-control" id="address_first" value="<?php echo e(Auth::user()->address??''); ?>" placeholder="Enter first address">
+                                                        <small id="error-address_first" style="color: red"></small>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="city">City</label>
+                                                        <input type="text" class="form-control" id="city" value="<?php echo e(Auth::user()->city??''); ?>" placeholder="Enter city name">
+                                                        <small id="error-city" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="state">State</label>
+                                                        <input type="text" class="form-control" id="state" value="<?php echo e(Auth::user()->state??''); ?>" placeholder="Enter state name">
+                                                        <small id="error-state" style="color: red"></small>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="zip">Zip Code</label>
+                                                        <input type="text" class="form-control" id="zip" value="<?php echo e(Auth::user()->zip_code??''); ?>" placeholder="Enter zip code">
+                                                        <small id="error-zip" style="color: red"></small>
+                                                    </div>
+                                                    <div class="col-sm-6 forms_edits">
+                                                        <label for="country">Country</label>
+                                                        <input type="text" class="form-control" id="country" value="<?php echo e(Auth::user()->country_of_citizenship??''); ?>" placeholder="Enter country name">
+                                                        <small id="error-country" style="color: red"></small>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-start pt-4">
+                                                            <button id="cancel_edit" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
+                                                            <small>Cancel</small> </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-end   pt-4">
+                                                            <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Save </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                         <!-- on click it shws  ends-->
                                     </div>
                                     <!-- 1st tab ends -->
                                     <!-- 2nd tab strats -->
+                                    <?php
+                                    $notif = json_decode(Auth()->user()->notification_setting);
+                                    // print_r($notif);exit;
+                                    ?>
                                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <h5 class="card-title">Notifications</h5>
                                         <span class="d-flex justify-content-end"><a class="edit_notif_class"><i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
@@ -144,64 +160,75 @@
                                                 <tr>
                                                     <td>Insights and Resources </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Enabled </td>
+                                                    <td><?php if($notif): ?>
+                                                        <?php echo e($notif->InsightsAndResources? 'Enabled':'Disbaled'); ?><?php endif; ?> </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Product and Feature Announcements </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Enabled </td>
+                                                    <td><?php if($notif): ?>
+                                                        <?php echo e($notif->ProductAndFeatureAnnouncements? 'Enabled':'Disbaled'); ?><?php endif; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Portfolio Performance </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Enabled  </td>
+                                                    <td><?php if($notif): ?>
+                                                        <?php echo e($notif->PortfolioPerformance? 'Enabled':'Disbaled'); ?><?php endif; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Project Updates </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Enabled </td>
+                                                    <td><?php if($notif): ?>
+                                                        <?php echo e($notif->ProjectUpdates? 'Enabled':'Disbaled'); ?><?php endif; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Newsletter </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>Disabled </td>
+                                                    <td><?php if($notif): ?>
+                                                        <?php echo e($notif->Newsletter? 'Enabled':'Disbaled'); ?><?php endif; ?> </td>
                                                 </tr>
                                             </tbody>
                                         </table>
 
                                         <!-- on click it show 2nd tab -->
+                                        <form id ="notification-form" url="<?php echo e(route('user.change-notification')); ?>">
                                         <div class="form-card d-none" id="editnotif">
                                             <div class="card-body">
-                                                <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> &nbsp; I would like to receive email notifications about:
+                                               
                                                 <!-- List group With Checkboxes and radios -->
                                                 <ul class="list-group py-3">
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Insights and Resources <br>
+                                                        <input class="form-check-input me-1" type="checkbox" aria-label="..." id="insight" name="insight" value="1" <?php if($notif): ?>
+                                                        <?php echo e($notif->InsightsAndResources?'checked':''); ?><?php endif; ?>> Insights and Resources <br>
                                                         <span><small>Investor tips, articles, white papers, and other information to help you get the most out of
                                                     Fundrise.</small></span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Product and Feature Announcements <br>
+                                                        <input class="form-check-input me-1" type="checkbox" value="1" aria-label="..." id="product"name="product"<?php if($notif): ?>
+                                                        <?php echo e($notif->ProductAndFeatureAnnouncements?'checked':''); ?><?php endif; ?>> Product and Feature Announcements <br>
                                                         <span>
                                                             <small>New product launches, offerings, and investment features. </small>
                                                         </span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Portfolio Performance <br>
+                                                        <input class="form-check-input me-1" type="checkbox" value="1" aria-label="..." id="portfolio" name="portfolio" <?php if($notif): ?>
+                                                        <?php echo e($notif->PortfolioPerformance?'checked':''); ?><?php endif; ?>> Portfolio Performance <br>
                                                         <span><small>
                                                     Updates and account reminders about your Fundrise investments.
                                         
                                                   </small></span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Project Updates <br>
+                                                        <input class="form-check-input me-1" type="checkbox" value="1" aria-label="..." id="project" name="project"<?php if($notif): ?>
+                                                        <?php echo e($notif->ProjectUpdates?'checked':''); ?><?php endif; ?>> Project Updates <br>
                                                         <span><small>
                                                     Progress updates about the projects included in your portfolio.
                                         
                                                   </small></span>
                                                     </li>
                                                     <li class="list-group-item">
-                                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="..."> Newsletter <br>
+                                                        <input class="form-check-input me-1" type="checkbox" value="1" aria-label="..." id="newsletter" name="newsletter" <?php if($notif): ?>
+                                                        <?php echo e($notif->Newsletter?'checked':''); ?><?php endif; ?>> Newsletter <br>
                                                         <span><small>
                                                     A weekly newsletter dedicated to long-term thinking.
                                         
@@ -232,23 +259,28 @@
                                     <!-- 3rd  tab strats -->
                                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                         <h5 class="card-title">Email Address</h5>
-                                        <span class="d-flex justify-content-end"><a class="edit_email"><i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
+                                        <span class="d-flex justify-content-end"><a class="edit_email">
+                                            <i class="bi bi-pencil"></i> &nbsp; Edit</a></span>
                                         <table class="table table-borderless table-responsive d-block" id="viewemail">
+                                            <table class="table table-borderless table-responsive d-block" id="viewemail">
                                             <tbody>
                                                 <tr>
                                                     <td>My Email </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>farhan_aslam@gmail.com </td>
+                                                    <td><?php echo e(Auth::user()->email); ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 3rd tab div -->
+                                        <form id="email-form" url="<?php echo e(route('user.change-email')); ?>">
                                         <div class="form-card d-none" id="editemail">
-                                            <p>Fundrise uses this email address to contact you with important information regarding the status of your account. Please keep it current.</p>
-                                            <label for="exampleFormControlInput1">ADDRESS LINE 1</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                            <small>This should be the address used for tax purposes</small>
+                                            
+                                            <label for="email">Edit Email</label>
+                                            <input type="email" name="email"  value="<?php echo e(Auth::user()->email); ?>" class="form-control" id="email" placeholder="">
+
+                                            <span id="error-email" style="color: red"></span>
+                                           
                                             <div class="row">
                                                 <div class="col">
                                                     <div class=" d-flex justify-content-start    pt-4">
@@ -263,6 +295,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </form>
                                     </div>
                                     <!-- 3rd  tab ends -->
 
@@ -275,47 +308,52 @@
                                                 <tr>
                                                     <td>Password </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>******* </td>
+                                                    <td>*******</td>
                                                 </tr>
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 4rd tab div -->
-                                        <div class="form-card d-none" id="editpass">
-                                            <p>To change your password, enter your current password and then create a new one using the following form.</p>
-                                            <label for="exampleFormControlInput1">CURRENT PASSWORD</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
-                                            <br>
-                                            <label for="exampleFormControlInput1">NEW PASSWORD</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="New password">
-                                            <small>Must be at least 8 characters long, and must include one letter and one number</small>
+                                        <form id="password-form" url=<?php echo e(route('user.change-password')); ?>>
+                                            <div class="form-card d-none" id="editpass">
+                                                <p>To change your password, enter your current password and then create a new one using the following form.</p>
+                                                <label for="current_password">CURRENT PASSWORD</label>
+                                                <input type="password" class="form-control" id="current_password" placeholder="password">
+                                                <span id="error-current_password" style="color: red"></span>
+                                                <br>
+                                                <label for="password">NEW PASSWORD</label>
+                                                <input type="password" class="form-control" id="password" placeholder="New password">
+                                                <small>Must be at least 8 characters long, and must include one letter and one number</small><br />
+                                                <span id="error-password" style="color: red"></span>
 
-                                            <br><br>
-                                            <label for="exampleFormControlInput1">CONFIRM NEW PASSWORD</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirm New password">
-                                            <small>Type your new password again.</small>
+                                                <br><br>
+                                                <label for="confirmed">CONFIRM NEW PASSWORD</label>
+                                                <input type="password" class="form-control" id="confirmed" placeholder="Confirm New password">
+                                                <small>Type your new password again.</small><br />
+                                                <span id="error-confirmed" style="color: red"></span>
 
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-start    pt-4">
-                                                        <button id="cancel_edit_pass" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
-                                                          <small>Cancel</small> </button>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-start    pt-4">
+                                                            <button id="cancel_edit_pass" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
+                                                            <small>Cancel</small> </button>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-end pt-4">
-                                                        <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Change Password </button>
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-end pt-4">
+                                                            <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> Change Password </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                     <!-- 4rd  tab ends -->
 
 
                                     <!-- 5th  tab strats -->
-                                    <div class="tab-pane fade" id="v-pills-number" role="tabpanel" aria-labelledby="v-pills-number-tab">
+                                   <div class="tab-pane fade" id="v-pills-number" role="tabpanel" aria-labelledby="v-pills-number-tab">
                                         <h5 class="card-title">Mobile Number</h5>
                                         <span class="d-flex justify-content-end">
                                             <a class="edit_number">
@@ -331,14 +369,10 @@
                                                 <tr>
                                                     <td>Phone number </td>
                                                     <td colspan="5" class="d-flex"></td>
-                                                    <td>
-                                                        (234) 342-4244
-                                                    </td>
+                                                    <td><?php echo e(Auth::user()->mobile); ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
-                                                        Status
-                                                    </td>
+                                                    <td>Status</td>
                                                     <td colspan="5" class="d-flex"></td>
                                                     <td>
                                                         <i class="fa fa-ban"></i> Unverified
@@ -348,77 +382,34 @@
                                         </table>
 
                                         <!-- on click show this 5th tab div -->
-                                        <div class="form-card d-none" id="editnum">
-                                            <label for="exampleFormControlInput1">PHONE NUMBER</label>
-                                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="(234) 342-4244">
-                                            <br>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-start    pt-4">
-                                                        <button id="cancel_edit_num" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
-                                                            <small>Cancel</small> </button>
+                                        <form id="mobile-number-form">
+                                            <div class="form-card d-none" id="editnum">
+                                                <label for="mobile">PHONE NUMBER</label>
+                                                <input type="number" class="form-control" value="<?php echo e(Auth::user()->mobile); ?>" id="mobile" placeholder="Enter mobile number">
+                                                <span id="error-mobile" style="color: red"></span>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-start    pt-4">
+                                                            <button id="cancel_edit_num" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
+                                                                <small>Cancel</small> </button>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-end pt-4">
-                                                        <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> 
-                                                            Verify </button>
+                                                    <div class="col">
+                                                        <div class=" d-flex justify-content-end pt-4">
+                                                            <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit"> 
+                                                                Verify </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                     <!-- 5th  tab ends -->
 
                                     <!-- 6th  tab strats -->
-                                    <div class="tab-pane fade" id="v-pills-account" role="tabpanel" aria-labelledby="v-pills-account-tab">
-                                        <h5 class="card-title">Account Nickname</h5>
-                                        <span class="d-flex justify-content-end">
-                                            <a class="edit_nick">
-                                                <i class="bi bi-pencil"></i>&nbsp;Edit
-                                            </a>
-                                        </span>
-                                        <table class="table table-borderless table-responsive d-block" id="view_nick">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Account Nickname </td>
-                                                    <td colspan="5" class="d-flex"></td>
-                                                    <td>
-                                                        n/a
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        Status
-                                                    </td>
-                                                    <td colspan="5" class="d-flex"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <!-- on click show this 6th tab div -->
-                                        <div class="form-card d-none" id="editnick">
-                                            <label for="exampleFormControlInput1">NICKNAME</label>
-                                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="(234) 342-4244">
-                                            <br>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-start    pt-4">
-                                                        <button id="cancel_edit_nick" type="submit" class="button  bg-light text-dark button-fundrise-orange" data-test="lead-capture-submit">
-                                                            <small>Cancel</small> </button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col">
-                                                    <div class=" d-flex justify-content-end pt-4">
-                                                        <button type="submit" class="button  button-fundrise-orange" data-test="lead-capture-submit">
-                                                            Verify </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <!-- 6th  tab ends -->
 
 
@@ -479,13 +470,19 @@
                                     <!-- 7th  tab ends -->
 
                                     <!-- 8th  tab strats -->
-                                    <div class="tab-pane fade" id="v-pills-Reinvestment" role="tabpanel" aria-labelledby="v-pills-Reinvestment-tab">
+                                    <div class="tab-pane fade " id="v-pills-Reinvestment" role="tabpanel" aria-labelledby="v-pills-Reinvestment-tab">
                                         <h5 class="card-title">Dividend Reinvestment</h5>
                                         <span class="d-flex justify-content-end">
                                             <a class="edit_dividends">
                                                 <i class="bi bi-pencil"></i>&nbsp;Edit
                                             </a>
                                         </span>
+                                        <?php
+                                         $id = App\Models\Questionaire::where('url_slug','dividend-reinvestment')->first()->id;
+                                         $questions = \App\Models\QuestionaireAnswer::where('questionaire_id',$id)->get();
+                                        $answer = \App\Models\UserAnswer::where('user_id',Auth()->user()->id)->where('questionaire_id',$id)->first();
+                                        // dd($answer);
+                                        ?>
 
                                         <table class="table table-borderless table-responsive d-block" id="view_dividens">
                                             <tbody>
@@ -493,34 +490,32 @@
                                                     <td>Preference </td>
                                                     <td colspan="5" class="d-flex"></td>
                                                     <td>
-                                                        Enabled
+                                                        <?php if($answer): ?><?php echo e($answer->questionaire_answer_id == 98? 'Enabled':'Disabled'); ?><?php endif; ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-
+                                    <form id="dividend-reinvest-form" url="<?php echo e(route('user.dividend-reinvest')); ?> " id-of-ques=<?php echo e($id); ?> >
                                         <!-- on click show this 8th tab div -->
-                                        <div class="form-card " id="editdividends">
+                                        <div class="form-card  d-none" id="editdividends">
+                                            <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=> $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                <input class="form-check-input" type="radio" name="dividend-reinvest" id="dividend-reinvest" value="<?php echo e($data->id); ?>" <?php if($data): ?><?php echo e($data->id== $answer->questionaire_answer_id?'checked':''); ?> <?php endif; ?>>
                                                 <label class="form-check-label" for="flexRadioDefault1">
-                                                    Enabled - Automatically reinvest my dividends according to my investment plan.
+                                                    
+                                                    <?php echo e($key==0? 'Disabled':'Enabled'); ?> - <?php echo e($data->options); ?>
+
                                                 </label>
                                             </div>
 
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                Disabled - I would like my dividends distributed to my account.
-                                                </label>
-                                            </div>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" value="" class="termsAndCondition_">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     I would like Fundrise Advisors to reinvest my dividends according to the Services section of the Fundrise Advisors
-                                                    Client Agreement and agree to its terms and conditions.
+                                                    Client Agreement and agree to its terms and conditions. <span style="color:red">(Please checked this box if you selected the the option enable)</span>
                                                 </label>
                                             </div>
 
@@ -540,6 +535,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </form>
                                     </div>
                                     <!-- 8th  tab ends -->
 
@@ -561,55 +557,52 @@
                                                     <th scope="col">Bank Account</th>
                                                     <th scope="col">Type</th>
                                                     <th scope="col">Account #</th>
+                                                    <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                $bank = \App\Models\BankDetail::where('user_id',Auth()->user()->id)->get();
+                                                ?>
+                                                <?php $__currentLoopData = $bank; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
-                                                    <td>Farhan</td>
-                                                    <td>single</td>
-                                                    <td>$3245</td>
+                                                    <td><?php echo e($data->name); ?></td>
+                                                    <td><?php echo e($data->account_type); ?></td>
+                                                    <td><?php echo e(substr($data->account_number,0,4)); ?></td>
+                                                    <td><?php echo e($data->status==1?'Active':'Inactive'); ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Farhan</td>
-                                                    <td>single</td>
-                                                    <td>$3245</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Farhan</td>
-                                                    <td>single</td>
-                                                    <td>$3245</td>
-                                                </tr>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        
                                             </tbody>
                                         </table>
 
                                         <!-- on click show this 9th tab div -->
-                                        <div class="form-card  d-none" id="editpay">
+                                        <form id="form-payment-update" url="<?php echo e(route('user.update-payment-method')); ?>">
+                                        <div class="form-card  d-none payment-div" id="editpay">
                                             <table class="table table-borderless table-responsive d-block">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Bank Account</th>
                                                         <th scope="col">Type</th>
                                                         <th scope="col">Account #</th>
+                                                        <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php $__currentLoopData = $bank; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    
                                                     <tr>
-                                                        <td>Farhan</td>
-                                                        <td>single</td>
-                                                        <td>$3245</td>
-                                                        <td><button class="button_new">Make primary</button></td>
-                                                        <td><button class="button_new">Remove</button></td>
+                                                    <td><?php echo e($data->name); ?></td>
+                                                    <td><?php echo e($data->account_type); ?></td>
+                                                    <td><?php echo e(substr($data->account_number,0,4)); ?></td>
+                                                    <td><?php echo e($data->status==1?'Active':'Inactive'); ?></td>
+                                                
+
+                                                        <td><button class="button_new payment-update <?php echo e($data->status? 'd-none':'d-block'); ?>" value="1" id="<?php echo e($data->id); ?>">Make primary</button></td>
+                                                       
                                                     </tr>
-                                                    <tr>
-                                                        <td>Farhan</td>
-                                                        <td>single</td>
-                                                        <td>$3245</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Farhan</td>
-                                                        <td>single</td>
-                                                        <td>$3245</td>
-                                                    </tr>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+                                                    
                                                 </tbody>
                                             </table>
 
@@ -629,6 +622,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </form>
                                     </div>
                                     <!-- 9th  tab ends -->
 
@@ -743,158 +737,6 @@
         </section>
     </main>
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('js'); ?>
-<script>
-    $('.edit_info_class').click(function(event) {
-        event.preventDefault();
-        $('#viewinfo').removeClass('d-block');
-        $('#viewinfo').addClass('d-none');
 
-        $('#editinfo').removeClass('d-none');
-        $('#editinfo').addClass('d-block');
-    });
 
-    $('#cancel_edit').click(function(event) {
-        event.preventDefault();
-        $('#viewinfo').removeClass('d-none');
-        $('#viewinfo').addClass('d-block');
-
-        $('#editinfo').removeClass('d-block');
-        $('#editinfo').addClass('d-none');
-    });
-
-    //notification
-    $('.edit_notif_class').click(function(event) {
-        event.preventDefault();
-        $('#viewnotif').removeClass('d-block');
-        $('#viewnotif').addClass('d-none');
-
-        $('#editnotif').removeClass('d-none');
-        $('#editnotif').addClass('d-block');
-    });
-
-    $('#cancel_edit_notif').click(function(event) {
-        event.preventDefault();
-        $('#viewnotif').removeClass('d-none');
-        $('#viewnotif').addClass('d-block');
-
-        $('#editnotif').removeClass('d-block');
-        $('#editnotif').addClass('d-none');
-    });
-
-    //email
-    $('.edit_email').click(function(event) {
-        event.preventDefault();
-        $('#viewemail').removeClass('d-block');
-        $('#viewemail').addClass('d-none');
-
-        $('#editemail').removeClass('d-none');
-        $('#editemail').addClass('d-block');
-    });
-
-    $('#cancel_edit_email').click(function(event) {
-        event.preventDefault();
-        $('#viewemail').removeClass('d-none');
-        $('#viewnotif').addClass('d-block');
-
-        $('#editemail').removeClass('d-block');
-        $('#editemail').addClass('d-none');
-    });
-
-    //password
-    $('.edit_password').click(function(event) {
-        event.preventDefault();
-        $('#viewpass').removeClass('d-block');
-        $('#viewpass').addClass('d-none');
-
-        $('#editpass').removeClass('d-none');
-        $('#editpass').addClass('d-block');
-    });
-
-    $('#cancel_edit_pass').click(function(event) {
-        event.preventDefault();
-        $('#viewpass').removeClass('d-none');
-        $('#viewpass').addClass('d-block');
-
-        $('#editpass').removeClass('d-block');
-        $('#editpass').addClass('d-none');
-    });
-    //mobile num
-
-    $('.edit_number').click(function(event) {
-        event.preventDefault();
-        $('#view_num').removeClass('d-block');
-        $('#view_num').addClass('d-none');
-
-        $('#editnum').removeClass('d-none');
-        $('#editnum').addClass('d-block');
-    });
-
-    $('#cancel_edit_num').click(function(event) {
-        event.preventDefault();
-        $('#view_num').removeClass('d-none');
-        $('#view_num').addClass('d-block');
-
-        $('#editnum').removeClass('d-block');
-        $('#editnum').addClass('d-none');
-    });
-    //edit nick
-
-    $('.edit_nick').click(function(event) {
-        event.preventDefault();
-        $('#view_nick').removeClass('d-block');
-        $('#view_nick').addClass('d-none');
-
-        $('#editnick').removeClass('d-none');
-        $('#editnick').addClass('d-block');
-    });
-
-    $('#cancel_edit_nick').click(function(event) {
-        event.preventDefault();
-        $('#view_nick').removeClass('d-none');
-        $('#view_nick').addClass('d-block');
-
-        $('#editnick').removeClass('d-block');
-        $('#editnick').addClass('d-none');
-    });
-    //edit Dividend Reinvestment
-
-    $('.edit_dividends').click(function(event) {
-        event.preventDefault();
-        $('#view_dividens').removeClass('d-block');
-        $('#view_dividens').addClass('d-none');
-
-        $('#editdividends').removeClass('d-none');
-        $('#editdividends').addClass('d-block');
-    });
-
-    $('#cancel_edit_dividens').click(function(event) {
-        event.preventDefault();
-        $('#view_dividens').removeClass('d-none');
-        $('#view_dividens').addClass('d-block');
-
-        $('#editdividends').removeClass('d-block');
-        $('#editdividends').addClass('d-none');
-    });
-    //edit pay
-
-    $('.edit_pay').click(function(event) {
-        event.preventDefault();
-        $('#view_pay').removeClass('d-block');
-        $('#view_pay').addClass('d-none');
-
-        $('#editpay').removeClass('d-none');
-        $('#editpay').addClass('d-block');
-    });
-
-    $('#cancel_edit_pay').click(function(event) {
-        event.preventDefault();
-        $('#view_pay').removeClass('d-none');
-        $('#view_pay').addClass('d-block');
-
-        $('#editpay').removeClass('d-block');
-        $('#editpay').addClass('d-none');
-    });
-</script>
-<?php $__env->stopSection(); ?>
 <?php echo $__env->make($activeTemplate.'user.dashboard.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\towork\core\resources\views/templates/bit_gold/user/profile_settings.blade.php ENDPATH**/ ?>

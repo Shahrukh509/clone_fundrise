@@ -384,8 +384,9 @@ Route::name('user.')->prefix('user')->group(function () {
             Route::get('dashboard', 'UserController@home')->name('home');
 
             
-            Route::get('change-password', 'UserController@changePassword')->name('change-password');
-            Route::post('change-password', 'UserController@submitPassword');
+            Route::get('show-change-password', 'UserController@changePassword');
+
+            Route::post('change-password', 'UserController@submitPassword')->name('change-password');
 
             //Balance Transfer
             Route::get('transfer-balance','UserController@transfer')->name('transfer.balance');
@@ -412,10 +413,10 @@ Route::name('user.')->prefix('user')->group(function () {
             Route::post('/withdraw/preview', 'UserController@withdrawSubmit')->name('withdraw.submit');
             Route::get('/withdraw/history', 'UserController@withdrawLog')->name('withdraw.history');
 
-            // Transaction
+           
 
 
-            // Customization
+            // Dashboard settings
 
  Route::get('transactions', 'UserController@transactions')->name('transactions');
 
@@ -429,10 +430,31 @@ Route::name('user.')->prefix('user')->group(function () {
 
   Route::post('add_joint_account', 'JointAccountController@add_joint_account')->name('add.joint.account');
 
+    Route::post('profile-setting', 'UserController@submitProfile')->name('submitprofile');
+
+    Route::post('change-password', 'UserController@submitPassword')->name('change-password');
+
+    Route::post('change-email', 'UserController@submitEmail')->name('change-email');
+
+    Route::post('change-notification', 'UserController@submitNotification')->name('change-notification');
 
 
-            //end of customization
+    Route::post('dividend-reinvestment', 'UserController@submitDividend')->name('dividend-reinvest');
 
+     Route::post('payment-methods-updation', 'UserController@submitPaymentMethod')->name('update-payment-method');
+
+
+    // Route::post('change-password', 'UserController@submitPassword');
+    Route::post('mobile-number', 'UserController@updateMobile');
+
+    Route::post('add_joint_account', 'JointAccountController@add_joint_account')->name('add.joint.account');
+
+            //end of Dashboard settings
+
+
+
+        
+          // Transaction
             Route::get('transactions/deposit-wallet', 'UserController@transactionsDeposit')->name('transactions.deposit');
             Route::get('transactions/interest-wallet', 'UserController@transactionsInterest')->name('transactions.interest');
 
@@ -553,7 +575,8 @@ Route::name('user.')->group(function () {
   }); 
   
   Route::get('questionnaire/motivation/store','Auth\QuestionaireController@motivationStore')->name('motivation.store');
-  // END OF Motivation QUESTION
+              
+               // END OF Motivation QUESTION
 
   // DUration of investment
   Route::get('questionnaire/duration-of-investment',function(){
@@ -561,27 +584,36 @@ Route::name('user.')->group(function () {
   }); 
 
   Route::get('questionnaire/duration-of-investment/store','Auth\QuestionaireController@dofinvestmentStore')->name('dofinvestmen.store');
-  // END OF DUration investment
+                 // END OF DUration investment
 
-  // investment planning
+                // investment planning
   Route::get('questionnaire/investment-planning',function(){
     return redirect()->route('user.step.age');
   }); 
   
   Route::get('questionnaire/investment-planning/store','Auth\QuestionaireController@investingplanStore')->name('investingplanstore.store');
-  // END OF investment planning
+              
+              // END OF investment planning
 
-  // AJAX BACK
+                   // AJAX BACK
   Route::get('questionnaire/ajax/back','Auth\QuestionaireController@ajax_back')->name('ajaxback');
-  // END OF AJAX BACK
+                  // END OF AJAX BACK
                
-  // signup-checkout/signup
+                 // signup-checkout/signup
   Route::get('questionnaire/signup-checkout/signup','Auth\QuestionaireController@showsignup')->name('show.signup.page');
+
+                  // basic info
 
   Route::Post('signup/basic-info/storing','Auth\QuestionaireController@storingbasicinfo')->name('store.signup.basicinfo');
 
+                // account details
+
   Route::Post('signup/account-details/storing','Auth\QuestionaireController@storingaccdetails')->name('store.signup.accountdetails');
 
+                //funding
+
   Route::Post('signup/funding/storing','Auth\QuestionaireController@storingfunding')->name('store.signup.funding');
+  
+  Route::Post('ira/address','Auth\QuestionaireController@storeIraAddress')->name('ira.address');
 });
-//custimzation
+             //custimzation

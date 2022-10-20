@@ -58,7 +58,7 @@
                                         <tbody>
                                             <tr>
 
-                                                <td>Flagship Real Estate Fund</td>
+                                                <td>{{ Auth()->user()->firstname }}</td>
                                                 <td>100.0%</td>
                                                 <td>$0.00</td>
                                                 <td>$0.00</td>
@@ -70,7 +70,7 @@
                                                 <td>100.0%</td>
                                                 <td>$0.00</td>
                                                 <td>$0.00</td>
-                                                <td>$110.00</td>
+                                                <td>${{ $contribution }}</td>
                                             </tr>
 
                                         </tbody>
@@ -111,7 +111,7 @@
                         </div>
 
                         <div class="card-body pb-0">
-                            <h5 class="card-title"> <span> Your portfolio</span> | $24,242.00 </h5>
+                            <h5 class="card-title"> <span> Your portfolio</span> | ${{ $contribution }} </h5>
 
                             <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
@@ -132,7 +132,7 @@
                                             radius: ['40%', '70%'],
                                             avoidLabelOverlap: false,
                                             label: {
-                                                show: false,
+                                                show: true,
                                                 position: 'center'
                                             },
                                             emphasis: {
@@ -147,7 +147,7 @@
                                             },
                                             data: [{
                                                 value: 1048,
-                                                name: 'Search Engine'
+                                                name: 'Your Portfolio | ${{ $contribution }}'
                                             }, {
                                                 value: 735,
                                                 name: 'Direct'

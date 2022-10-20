@@ -117,4 +117,15 @@ class User extends Authenticatable
         return $this->where('sv', 1);
     }
 
+    public function user_answers(){
+
+      return $this->hasMany(UserAnswer::class,'user_id','id');
+    }
+
+    public function bankdetails()
+    {
+
+        return $this->hasOne(BankDetail::class,'user_id','id');
+    }
+
 }

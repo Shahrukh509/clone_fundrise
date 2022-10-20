@@ -19,7 +19,7 @@
                                 @foreach($question->options as $data)
                                 <li class="radio-checkbox-item-large"><label>
                                     <input type="radio" id="account_type" name="account_type"
-                                            data-test="TAXABLE" value="{{ $data->id }}"{{ $answer->questionaire_answer_id == $data->id?'checked':'' }}>
+                                            data-test="TAXABLE" value="{{ $data->id }}"@if(isset($answer)){{ $answer->questionaire_answer_id == $data->id?'checked':'' }}@endif>
                                             <span class="mask"></span>
                                         <div class="pl-3">
                                             <p class="font-weight-bold heading-text-color mb-0">{{ $data->options }}</p>

@@ -25,17 +25,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Pending </h5>
-
+                              @foreach($plans as $key=> $plan)
                             <div class="accordion accordion-flush" id="faq-group-2">
-
+                               
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                                          Investment – Starter Portfolio <span class="offset-3">$24,242.00</span>
-                                          <span> &nbsp;&nbsp;Jul 4, 2022</span>
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-1-{{ $key }}" type="button" data-bs-toggle="collapse">
+                                          Investment – {{ $plan->questionnaire_answers->options }}
+                                          <strong class="offset-5">${{ $plan->amount }}</strong>
+
+                                          
                                        </button>
+                                       <span style="font-size:1rem">&nbsp;{{ $plan->created_at->format('M D, Y') }}</span>
+
                                     </h2>
-                                    <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                                    <div id="faqsTwo-1-{{ $key }}" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
                                         <div class="accordion-body">
                                             <div class="card">
                                                 <div class="card-body">
@@ -54,10 +58,10 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <th scope="row">G2968851</th>
-                                                                <td>Jul 4, 2022</td>
-                                                                <td>abc 6702 (Checking)</td>
-                                                                <td><button type="button" class="btn btn-sm bg-transparent" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                                                                <th scope="row">{{ $plan->id }}</th>
+                                                                <td>{{ $plan->created_at->format('M D , Y') }}</td>
+                                                                <td>{{ $plan->bankdetails->name }}&nbsp; {{ substr($plan->bankdetails->account_number,0,5) }} &nbsp; ({{ $plan->bankdetails->account_type }})</td>
+                                                                <td><button type="button" class="btn btn-sm bg-transparent" data-bs-toggle="modal" data-bs-target="#verticalycentered-{{ $key }}">
                                                                   Edit
                                                                 </button></td>
                                                                 <td><button type="button" class="btn btn-link">Cancel</button></td>
@@ -85,7 +89,7 @@
                                                                 <td>--</td>
                                                                 <td>--</td>
                                                                 <td></td>
-                                                                <td>$24,242.00</td>
+                                                                <td>${{ $plan->amount }}</td>
 
 
 
@@ -111,7 +115,7 @@
 
                                     <!-- Vertically centered Modal -->
 
-                                    <div class="modal fade" id="verticalycentered" tabindex="-1">
+                                    <div class="modal fade" id="verticalycentered-{{ $key }}" tabindex="-1">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -141,6 +145,7 @@
 
                                 </div>
                             </div>
+                            @endforeach
 
                         </div>
                     </div>
@@ -153,7 +158,7 @@
                 <div class="col-lg-3">
 
                     <div class="card-body pb-0">
-                        <h5 class="card-title"> <span> Your portfolio</span> | $24,242.00 </h5>
+                        <h5 class="card-title"> <span> Your portfolio</span> | ${{ $contribution }}</h5>
 
                         <div id="trafficChart" style="min-height: 400px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" class="echart" _echarts_instance_="ec_1657708039491">
                             <div style="position: relative; width: 309px; height: 400px; padding: 0px; margin: 0px; border-width: 0px;">
